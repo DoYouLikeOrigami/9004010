@@ -2,11 +2,8 @@
 
 var
 	gulp        = require('gulp'),
-	browserSync = require('browser-sync'),
-	//compass     = require('gulp-compass'),
 	jade        = require('gulp-jade'),
 	scss = require('gulp-sass'),
-	browserSync = require('browser-sync').create(),
 	plumber     = require('gulp-plumber'),
 	autoprefixer = require('gulp-autoprefixer');
 
@@ -15,47 +12,22 @@ var
 var
 	paths = {
 		jade : {
-			location: 'markups/**/*.jade',
-			compiled: 'markups/_pages/*.jade',
-			destination: 'app'
+			location: 'app/markups/**/*.jade',
+			compiled: 'app/markups/_pages/*.jade',
+			destination: 'antipark/templates'
 		},
 
 		scss : {
-			location    : 'scss/**/*.scss',
+			location    : 'app/scss/**/*.scss',
 			entryPoint  : 'app/css/main.css',
 			destination: 'app/css'
 		},
 
-		/*compass : {
-			configFile  : 'config.rb',
-			cssFolder   : 'css',
-			scssFolder  : 'styles',
-			imgFolder   : 'img'
-		},*/
-
-		browserSync : {
-			baseDir : 'app',
-			watchPaths : ['app/*.html', 
-						  'app/css/**/*.css', 
-						  'app/js/**/*.js']
-		},
-
 		compile__css : {
-			location : 'app/css/**/*.css',
-			destination : 'dist/css'
+			location : 'app/css/*.css',
+			destination : 'antipark/static/css'
 		}
 	};
-
-/* --------- browser sync --------- */
-
-gulp.task('sync', function() {
-	browserSync.init({
-		port: 9000,
-		server: {
-			baseDir: paths.browserSync.baseDir
-		}
-	});
-});
 
 /* --------- jade --------- */
 
@@ -94,9 +66,8 @@ gulp.task('watch', function(){
 	gulp.watch(paths.jade.location, ['jade']);
 	gulp.watch(paths.scss.location, ['scss']);
 	gulp.watch(paths.compile__css.location, ['autoprefixer']);
-	gulp.watch(paths.browserSync.watchPaths).on('change', browserSync.reload);
 });
 
 /* --------- default --------- */
 
-gulp.task('default', ['jade', 'sync', 'scss', 'autoprefixer', 'watch']);
+gulp.task('default', ['jade', 'scss', 'autoprefixer', 'watch']);

@@ -1,0 +1,5 @@
+app/css
+node_modules
+new
+__pycache__/
+*/**/__pycache/
