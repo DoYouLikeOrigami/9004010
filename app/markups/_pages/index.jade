@@ -1,9 +1,9 @@
 extends ../main
 
 block personalStyle
-	link(rel="stylesheet", type="text/css", href="bower/slick-carousel/slick/slick.css")
-	link(rel="stylesheet", type="text/css", href="bower/slick-carousel/slick/slick-theme.css")
-	link(rel="stylesheet", type="text/css", href="css/index.css")
+	link(rel="stylesheet", type="text/css", href="static/bower/slick-carousel/slick/slick.css")
+	link(rel="stylesheet", type="text/css", href="static/bower/slick-carousel/slick/slick-theme.css")
+	link(rel="stylesheet", type="text/css", href="static/css/index.css")
 
 block title
 	| Ограждения и благоустройство
@@ -13,7 +13,9 @@ block main-content
 		header.section__header
 			h2.section__header-name Категории товаров
 		ul.list.goods__list
+			//Замени на соответствующий вывод из БД
 			- var goods = {'stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj': 'Столбики','barjer-kupit-cena-parkovochnyj-skladnoy': 'Барьеры','konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj': 'Конусы', 'polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja': 'Полусферы', 'vazon-betonnyj-kupit-cena-dlja-cvetov': 'Вазоны Бетонные', 'urna-betonnaya-kupit-cena-dlja-musora': 'Урны Бетонные','skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka': 'Уличные Скамейки', 'znak': 'Дорожные Знаки', 'setka': 'Сетки Пластиковые', 'lenta': 'Лента Сигнальная', 'shlagbaum': 'Автоматические Шлагбаумы', 'turniket': 'Турникеты', 'privodi': 'Приводы для Ворот', 'police': 'Лежачий Полицейский'}
+			//это в тело for. val и index  на соответствующие переменные замени
 			each val, index in goods
 				li.list__item.goods__item
 					a(class="goods__link", href= index + '.html')
@@ -25,6 +27,7 @@ block main-content
 		header.section__header
 			h2.section__header-name Предоставляемые услуги
 		ul.list.service__list
+			// аналогично
 			- var service = ['Доставка товаров по Санкт-Петербургу и Ленинградской области', 'Установка антипарковочного обордования', 'Проектирование, создание проектно-сметной документации', 'Производство изделий по вашим чертежам и эскизам', 'Помощь в получении допуска СРО на все виды работ', 'Согласование разработанной документации', 'Ремонт дорог', 'Дорожная разметка', 'Доставка топлива']
 			- var service__img = ['dostavka.jpg', 'ustanovka.jpg', 'proect.jpg', 'proizvodstvo.jpg', 'sro.jpg', 'nadzor.png', 'remont.jpg', 'razmetka.jpg', 'toplivo.jpg']
 			- var service__link = ['dostavka', 'ustanovka', 'proect', 'proizvodstvo', 'sro', 'nadzor', 'remont', 'razmetka', 'toplivo']
@@ -152,6 +155,6 @@ block main-content
 
 
 block personalScript
-	script(src="bower/slick-carousel/slick/slick.min.js")
-	script(src="js/index.js")
+	script(src="static/bower/slick-carousel/slick/slick.min.js")
+	script(src="static/js/index.js")
 
