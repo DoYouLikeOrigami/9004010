@@ -1,0 +1,19 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="static/css/product.css")
+
+block title
+	| Вход в систему
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'.': 'Главная', '/login' : 'Вход'}
+			each val, index in items
+				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+  
+	// Здесь просто передай переменные
+	section.section.productSection
+		+product__page('Столбик парковочный бетонируемый ПШ-201', 'stolbiki/', '1', ['Высота', 'Диаметр корпуса', 'Материал'], ['750 мм', '76 мм', 'Сталь'], '899', '1199')
