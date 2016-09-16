@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, url_for, redirect, flash
 from . import app, db
 from .models import Product
 
-
+'''
 @app.route('/db/')
 def db():
     db.create_all()
@@ -25,9 +25,29 @@ def db():
     db.session.add(prod_test)
     db.session.commit()
     return "DF"
-
+'''
 
 @app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+
+
+@app.route('/goods')
+def about():
+    return render_template('goods.html')
+
+
+@app.route('/goods-item')
+def goods_item():
+    return render_template('goods-item.html')
+
+
+@app.route('/goods-category')
+def goods_category():
+    return render_template('goods-category.html')
+
+
+'''
 def db_page():
     
     with open('antipark/db.json', encoding='utf-8') as json_file:
@@ -53,3 +73,4 @@ def db_page():
     
     else:
         return render_template('db.html', all_products=data['products'].keys())
+'''
