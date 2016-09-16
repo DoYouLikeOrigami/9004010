@@ -1,0 +1,26 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/product.css")
+
+block title
+	| Столбики парковочные
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'.': 'Главная', 'goods.html' : 'Товары', 'Stolbiki.html': 'Столбики', '#' : 'Стобик ПШ-201'}
+			each val, index in items
+				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+	section.section.productSection
+		+product__page('Столбик парковочный бетонируемый ПШ-201', 'stolbiki/', '1', ['Высота', 'Диаметр корпуса', 'Материал'], ['750 мм', '76 мм', 'Сталь'], '899', '1199')
+
+
+					
+
+
+
+			
+

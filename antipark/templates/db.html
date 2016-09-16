@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+
+{% block body %}
+
+<h1>База продуктов</h1>
+
+<form method='POST'>
+    <select name='product'>
+        {% for prod in all_products %}
+        <option>{{ prod }}
+        {% endfor %}
+    </select>
+    <br><br>
+    Look at the product
+    <br>
+    <button type='submit' name='submit' value='db-look'>here</button>
+    <button type='submit' name='submit' value='product-info-page'>on a new page</button>
+</form>
+
+{% if product %}
+<h2>{{ product['name'] }}</h2>
+<table>
+    <tr>
+        <td>Описание</th>
+        <td>{{ product['desc'] }}</th>
+    </tr>
+    <tr>
+        <td>Изделия</th>
+        <td>
+            {% for var_i in range(len_variations) %}
+            <h3>Подкатегория: {{ product['variations'][variations[var_i][0]]['general'] }}</h3>
+            <table>
+                <tr>
+                    <th rowspan=2>Название</th>
+                    <th rowspan=2>Аттрибуты</th>
+                    <th colspan={{ variations[var_i][2] }}>Характеристики</th>
+                    <th rowspan=2>Цена</th>
+                    <th rowspan=2>Установка</th>
+                </tr>
+                <tr>
+                    {% for char in product['variations'][variations[var_i][0]]['chars'].split(',') %}
+                    <th>{{ char }}</th>
+                    {% endfor %}
+                </tr>
+                {% for i in range(variations[var_i][1]) %}
+                <tr>
+                    <td>{{ product['variations'][variations[var_i][0]]['names'].split(',')[i] }}</td>
+                    <td>{{ product['variations'][variations[var_i][0]]['attrs'].split(',')[i] }}</td>
+                    {% for j in range(variations[var_i][2]) %}
+                    <td>{{ product['variations'][variations[var_i][0]]['values'].split('],')[i].split(',')[j] }}</td>
+                    {% endfor %}
+                    <td>{{ product['variations'][variations[var_i][0]]['prices'].split(',')[i] }}</td>
+                    <td>{{ product['variations'][variations[var_i][0]]['stage'].split(',')[i] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <br>
+            {% endfor %}
+        </td>
+    </tr>
+</table>
+
+{% endif %}
+
+{% endblock %}
+

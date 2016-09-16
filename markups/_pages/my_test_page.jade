@@ -1,0 +1,26 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/index.css")
+
+block title
+	| Услуги
+
+block main-content
+	section.section.service
+		header.section__header
+			h2.section__header-name #[ {% if 2==2 %} wer {% endif %} ]
+		ul.list.service__list
+			- var service = ['Доставка товаров по Санкт-Петербургу и Ленинградской области', 'Установка антипарковочного обордования', 'Проектирование, создание проектно-сметной документации', 'Производство изделий по вашим чертежам и эскизам', 'Помощь в получении допуска СРО на все виды работ', 'Согласование разработанной документации', 'Ремонт дорог', 'Дорожная разметка', 'Доставка топлива']
+			- var service__img = ['dostavka.jpg', 'ustanovka.jpg', 'proect.jpg', 'proizvodstvo.jpg', 'sro.jpg', 'nadzor.png', 'remont.jpg', 'razmetka.jpg', 'toplivo.jpg']
+			- var service__link = ['dostavka', 'ustanovka', 'proect', 'proizvodstvo', 'sro', 'nadzor', 'remont', 'razmetka', 'toplivo']
+			- for (var i = 0; i < service.length; i++)
+				li.list__item.service__item
+					a(class="service__link service__link-popup", href= service__link[i] + '.html')
+						wrapper.service__wrapper
+							wrapper.service__wrapper-inner
+								img(src= "img/service/" + service__img[i], alt= service[i], class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
+						span.service__text= service[i]
+
+block personalScript
+	script(src="js/index.js")

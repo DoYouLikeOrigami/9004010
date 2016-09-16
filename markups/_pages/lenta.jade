@@ -1,0 +1,236 @@
+
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/page.css")
+
+block title
+	| Оградительные ленты
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'index.html': 'Главная', 'goods.html' : 'Товары', '#': 'Оградительные ленты'}
+			each val, index in items
+				li(class="bread__item" + ((val=== 'Оградительные ленты') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+	section.section.goodsSection
+		header.section__header.lenta__header
+			h2.section__header-name Оградительная лента
+		ul.products__list
+			- var products__attrs = ['Оградительная лента ЛОЭ.150', 'Оградительная лента ЛОЭ.200', 'Оградительная лента ЛОЭ.200Ш', 'Оградительная лента ЛОС.100', 'Оградительная лента ЛОС.250', 'Оградительная лента ЛОС.500', 'Оградительная лента ЛОУ.250', 'Оградительная лента "Опасная зона!"', 'Оградительная лента "Проход запрещен!"', 'Оградительная лента "Внимание ДТП"', 'Оградительная лента "Опасная зона МЧС России телефон 01"', 'Оградительная лента "Зона таможенного контроля"']
+			- var products__names = ['Лента оградительная "Эконом"', 'Лента оградительная "Эконом"', 'Лента оградительная "Эконом"', 'Лента оградительная "Стандарт"', 'Лента оградительная "Стандарт"', 'Лента оградительная "Стандарт"', 'Лента оградительная "Усиленная"', 'Лента оградительная "Опасная зона!"', 'Лента оградительная "Проход запрещен!"', 'Лента оградительная "Внимание ДТП"', 'Лента оградительная "Опасная зона МЧС России телефон 01"', 'Лента оградительная "Зона таможенного контроля"']
+			- var products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- var products__dest = 'lenti/'
+			- var products__images = ['eco', 'eco', 'eco', 'standart', 'standart', 'standart', 'str', 'lenta', 'lenta', 'lenta', 'lenta', 'lenta']
+			- var products__chars = ['Ширина', 'Толщина', 'Размер']
+			- var products__values = [['50 мм', '35 мкм', '150 п.м.'], ['50 мм', '35 мкм', '200 п.м.'], ['75 мм', '35 мкм', '200 п.м.'], ['75 мм', '50 мкм', '100 п.м.'], ['75 мм', '50 мкм', '250 п.м.'], ['75 мм', '50 мкм', '500 п.м.'], ['75 мм', '80 мкм', '250 п.м.'], ['75 мм', '50 мкм', '250 п.м.'], ['75 мм', '50 мкм', '250 п.м.'], ['75 мм', '50 мкм', '250 п.м.'], ['75 мм', '50 мкм', '250 п.м.'], ['100 мм', '50 мкм', '250 п.м.']]
+			- var products__prices = ['-', '104', '132', '-', '198', '-', '-', '213', '360', '213', '213', '261']
+			- var products__stage = ['-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Связь" - ЛСС
+		ul.products__list
+			- products__attrs = ['Сигнальная лента ЛСС.40', 'Сигнальная лента ЛСС.50', 'Сигнальная лента ЛСС.75', 'Сигнальная лента ЛСС.100', ]
+			- products__names = ['Лента "Не копать, ниже кабель"', 'Лента "Не копать, ниже кабель"', 'Лента "Не копать, ниже кабель"', 'Лента "Не копать, ниже кабель"']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['sv', 'sv', 'sv', 'sv']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['40 мм', '300 мкм', '250 п.м.'], ['50 мм', '300 мкм', '250 п.м.'], ['75 мм', '300 мкм', '250 п.м.'], ['100 мм', '300 мкм', '250 п.м.']]
+			- products__prices = ['427', '552', '794', '1060']
+			- products__stage = ['-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Электра" - ЛСЭ
+		ul.products__list
+			- products__attrs = ['Сигнальная лента ЛСЭ.150', 'Сигнальная лента ЛСЭ.250', 'Сигнальная лента ЛСЭ.300', 'Сигнальная лента ЛСЭ.450', 'Сигнальная лента ЛСЭ.600', 'Сигнальная лента ЛСЭ.750', 'Сигнальная лента ЛСЭ.900']
+			- products__names = ['Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"', 'Лента "ОСТОРОЖНО КАБЕЛЬ"']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['kab', 'kab', 'kab', 'kab', 'kab', 'kab', 'kab']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['150 мм', '300 мкм', '100 п.м.'], ['250 мм', '300 мкм', '100 п.м.'], ['300 мм', '300 мкм', '100 п.м.'], ['450 мм', '300 мкм', '100 п.м.'], ['600 мм', '300 мкм', '100 п.м.'], ['750 мм', '300 мкм', '100 п.м.'], ['900 мм', '300 мкм', '100 п.м.']]
+			- products__prices = ['612', '1029', '1226', '1829', '2482', '3102', '3528']
+			- products__stage = ['-', '-', '-', '-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Оптика" - ЛСО
+		ul.products__list
+			- products__attrs = ['Сигнальная лента ЛСО.40', 'Сигнальная лента ЛСО.70']
+			- products__names = ['Лента "Осторожно! Оптический кабель"', 'Лента "Осторожно! Оптический кабель"']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['opt', 'opt']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['40 мм', '100 мкм', '500 п.м.'], ['70 мм', '100 мкм', '500 п.м.']]
+			- products__prices = ['303', '528']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Газ" - ЛСГ
+		ul.products__list
+			- products__attrs = ['Сигнальная лента ГРГ.200', 'Сигнальная лента ГРГ.200.Д1', 'Сигнальная лента ГРГ.200.ЧЖ', 'Сигнальная лента ГРГ.200.КЖ', 'Сигнальная лента ГРГ.200.Д1', 'Сигнальная лента ГРГ.200.Д2']
+			- products__names = ['Лента "Газпромрегионгаз, Огнеопасно Газ"', 'Лента "Газпромрегионгаз, Огнеопасно Газ"', 'Лента  "Газ"', 'Лента  "Опасно Газ"', 'Лента  "ОПАСНО Газ"', 'Лента  "ОПАСНО Газ"']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['gas', 'gas', 'gas', 'gas', 'gas', 'gas']
+			- products__chars = ['Ширина', 'Толщина', 'Размер', '']
+			- products__values = [['200 мм', '200 мкм', '250 п.м.', ''], ['200 мм', '200 мкм', '150 п.м.', '1 Проводник'], ['200 мм', '50 мкм', '250 п.м.', ''], ['200 мм', '50 мкм', '250 п.м.', ''], ['200 мм', '50 мкм', '250 п.м.', '1 Проводник'], ['200 мм', '50 мкм', '250 п.м.', '2 Проводника']]
+			- products__prices = ['-', '-', '-', '366', '776', '-']
+			- products__stage = ['-', '-', '-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Теплосеть" - ЛСТ
+		ul.products__list
+			- products__attrs = ['ССигнальная лента ЛСТ', 'Сигнальная лента ЛСТ.Д1']
+			- products__names = ['Лента "Внимание теплосеть"', 'Лента "Внимание теплосеть"']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['att', 'att']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['200 мм', '200 мкм', '250 п.м.'], ['200 мм', '200 мкм', '150 п.м.']]
+			- products__prices = ['1795', '1314']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Теплосеть" - ЛСК
+		ul.products__list
+			- products__attrs = ['ССигнальная лента ЛСК', 'Сигнальная лента ЛСК.Д1']
+			- products__names = ['Лента "Внимание канализация"', 'Лента "Внимание канализация"']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['att', 'att']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['200 мм', '200 мкм', '250 п.м.'], ['200 мм', '200 мкм', '150 п.м.']]
+			- products__prices = ['1795', '1314']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+		header.section__header.lenta__header
+			h2.section__header-name Лента сигнальная "Теплосеть" - ЛСВ
+		ul.products__list
+			- products__attrs = ['ССигнальная лента ЛСВ', 'Сигнальная лента ЛСВ.Д1']
+			- products__names = ['Лента "Внимание водопровод"', 'Лента "Внимание водопровод"']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'lenti/'
+			- products__images = ['att', 'att']
+			- products__chars = ['Ширина', 'Толщина', 'Размер']
+			- products__values = [['200 мм', '200 мкм', '250 п.м.'], ['200 мм', '200 мкм', '150 п.м.']]
+			- products__prices = ['1795', '1314']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+
+	- var this_desc_title = 'Описание "Пластиковые сетки"'
+	- var this_img_src = ['http://www.strod-servis.ru/images/000.jpg','http://www.mosarz10.ru/_pictures/dsc01310.jpg','http://golovinskiy.mos.ru/upload/medialibrary/816/vydvizhnye-stolbiki.jpg'] 
+	- var this_desc_for_img = ['Ограждение территории','Защита индивидуального парковочного места', 'Заградитель проезда']
+	- var this_paragraph_below = '<p>Пластиковые сетки</p>'
+	
+	section.section
+		header.section__header
+			h2.section__header-name= this_desc_title
+		.full-desc__first-part__wrapper
+			+full-desc__first-part(this_img_src, this_desc_for_img, this_paragraph_below)
+
+			- var this_title_list = 'В данный момент мы предлагаем 5 вариантов парковочных барьеров:' 
+			- var this_list_values = ['парковочный барьер "треугольный" БТК-3','стандартный антипарковочный барьер АБ-1','усиленный парковочный барьер АБ-1У','усиленный люксовый парковочный барьер АБ-1УЛ', 'нержавеющий парковочный барьер АБН-1']
+
+			-var this_list_href = ['#','#','#','#','#']
+
+			//+fullDesc__list(this_title_list, this_list_values, this_list_href)

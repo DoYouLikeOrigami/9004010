@@ -1,0 +1,300 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/page.css")
+
+block title
+	| Автоматические шлагбаумы
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'index.html': 'Главная', 'goods.html' : 'Товары', '#': 'Автоматические шлагбаумы'}
+			each val, index in items
+				li(class="bread__item" + ((val=== 'Автоматические шлагбаумы') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+	section.section.goodsSection
+		ul.products__list
+			- var products__attrs = ['Шлагбаум автоматический Barrier.5000', 'Шлагбаум автоматический Barrier.6000', 'Шлагбаум автоматический CAME.2500', 'Шлагбаум автоматический CAME.4000', 'Шлагбаум автоматический CAME.6000', 'Шлагбаум автоматический CAME.G4040/2', 'Шлагбаум автоматический CAME.G4040/4', 'Шлагбаум автоматический CAME.G8000.6', 'Шлагбаум автоматический CAME.G8000.8', 'Шлагбаум автоматический NICE.WIL.4', 'Шлагбаум автоматический NICE.WIL.6', 'Шлагбаум автоматический SIGNO.4', 'Шлагбаум автоматический SIGNO.6']
+			- var products__names = ['Шлагбаум автоматический', 'Шлагбаум автоматический', 'Шлагбаум автоматический эконом', 'Шлагбаум автоматический стандарт', 'Шлагбаум автоматический стандарт', 'Шлагбаум автоматический премиум', 'Шлагбаум автоматический премиум', 'Шлагбаум автоматический премиум', 'Шлагбаум автоматический премиум', 'Шлагбаум автоматический', 'Шлагбаум автоматический', 'Шлагбаум автоматический', 'Шлагбаум автоматический']
+			- var products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- var products__dest = 'shlagbaumi/'
+			- var products__images = ['a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95']
+			- var products__chars = ['Напряжение', 'Интенсивность', 'Длина стрелы']
+			- var products__values = [['~220 В', '80%', '5м'], ['~220 В', '80%', '6м'], ['~220 В', '30%', '2,5м'], ['~220 В', '80%', '4м'], ['~220 В', '80%', '6,5м'], ['~220 В', '100%', '2м'], ['~220 В', '100%', '4м'], ['~220 В', '100%', '6м'], ['~220 В', '100%', '8м'], ['~220 В', '80%', '4м'], ['~220 В', '80%', '6м'], ['~220 В', '80%', '4м'], ['~220 В', '80%', '6м']]
+			- var products__prices = ['26990', '31990', '31990', '34990', '52990', '45990', '48990', '73990', '76990', '29990', '34990', '34990', '41990']
+			- var products__stage = ['от 12999', 'от 12999', 'от 10999', 'от 11999', 'от 14999', 'от 10999', 'от 11999', 'от 14999', 'от 15999', 'от 11999', 'от 14999', 'от 11999', 'от 14999']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Пост управления шлагбаумом КП.102']
+			- products__names = ['Пост управления шлагбаумом']
+			- products__href = ['PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b']
+			- products__chars = ['Материал', 'Тип', 'Размеры']
+			- products__values = [['Пластик', 'Накладной', '110х71х65 мм']]
+			- products__prices = ['300']
+			- products__stage = ['-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Система радиоуправления шлагбаумом CAME.AF43S', 'Система радиоуправления шлагбаумом CAME.RE432']
+			- products__names = ['Система радиоуправления шлагбаумом', 'Система радиоуправления шлагбаумом']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b']
+			- products__chars = ['Дальность', 'Каналы', 'Тип']
+			- products__values = [['50м', '2 канала', 'Радиобрелок'], ['50м', '2 канала', 'Канальный брелок']]
+			- products__prices = ['2750', '4100']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Радиобрелок с двумя кнопками TOP.432.NA', 'Радиобрелок с двумя кнопками NICE FLO2R.S', 'Радиобрелок с четырмя кнопками CAME TOP 434NA', 'Радиобрелок с четырмя кнопками NICE FLO4R.S', 'Радиобрелок с четырмя кнопками MSRF4']
+			- products__names = ['Радиобрелок с двумя кнопками', 'Радиобрелок с двумя кнопками', 'Радиобрелок с четырмя кнопками', 'Радиобрелок с четырмя кнопками', 'Радиобрелок с четырмя кнопками']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b', 'b', 'b']
+			- products__chars = ['Размеры', 'Работа']
+			- products__values = [['32х68х13 мм', 'от другого брелка'], ['32х68х13 мм', 'от другого брелка'], ['40х85х12 мм', 'от другого брелка'], ['40х85х12 мм', 'от другого брелка'], ['28х61х8 мм', 'программируемый']]
+			- products__prices = ['1000', '900', '1300', '950', 'от 490']
+			- products__stage = ['-', '-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Система радиоуправления автоматическим шлагбаумом MSRF.4/1']
+			- products__names = ['Система радиоуправления выносная']
+			- products__href = ['PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b']
+			- products__chars = ['Дальность', '']
+			- products__values = [['20 м', 'Брелок в комплекте']]
+			- products__prices = ['1900']
+			- products__stage = ['-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Лампа сигнальная САМЕ', 'Лампа сигнальная Doorhan']
+			- products__names = ['Лампа сигнальная CAME', 'Лампа сигнальная Doorhan']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b']
+			- products__chars = ['Размеры', 'Напряжение']
+			- products__values = [['170х130х76 мм', '24/220 В'], ['124х100х140 мм', '24/220 В']]
+			- products__prices = ['1100', '1100']
+			- products__stage = ['-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Фотоэлементы безопасности Doorhan', 'Фотоэлементы CAME DOC.I', 'Фотоэлементы CAME DIR.10', 'Стойка для DOC-элементов', 'Стойка для DIR-элементов', 'Комплект беспроводных фотоэлементов']
+			- products__names = ['Фотоэлементы безопасности Doorhan', 'Фотоэлементы CAME', 'Фотоэлементы CAME', 'Стойка для DOC-элементов', 'Стойка для DIR-элементов', 'Комплект беспроводных фотоэлементов']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b', 'b', 'b', 'b']
+			- products__chars = ['']
+			- products__values = [['Накладного типа (до 25м)'], ['Врезного типа (до 18м)'], ['Накладного типа (до 10м)'], ['В комплекте с закладной DOC-L'], ['В комплекте с закладной DIR-L'], ['CAME/Doorhan']]
+			- products__prices = ['1500', '2000', '2000', '1250', '1000', '2900']
+			- products__stage = ['-', '-', '-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Алюминиевая рейка для шлагбаума CAME 2,7 м', 'Алюминиевая рейка для шлагбаума CAME 4,2 м', 'Алюминиевая рейка для шлагбаума CAME 6,85 м']
+			- products__names = ['Рейка для шлагбаума CAME 2,7 м', 'Рейка для шлагбаума CAME 4,2 м', 'Рейка для шлагбаума CAME 6,85 м']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b']
+			- products__chars = ['Стрела', 'Заглушка']
+			- products__values = [['Алюминий', 'Пластик'], ['Алюминий', 'Пластик'], ['Алюминий', 'Пластик']]
+			- products__prices = ['1800', '2700', '6900']
+			- products__stage = ['-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Наклейки светоотражающие']
+			- products__names = ['Наклейки светоотражающие']
+			- products__href = ['PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b']
+			- products__chars = ['Комплект']
+			- products__values = [['24 шт']]
+			- products__prices = ['600']
+			- products__stage = ['-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Ребра CAME 4м', 'Ребра NICE 4м', 'Ребра CAME 6м', 'Ребра NICE 4м']
+			- products__names = ['Ребра безопасности рейки шлагбаума CAME', 'Ребра безопасности рейки шлагбаума NICE', 'Ребра безопасности рейки шлагбаума CAME', 'Ребра безопасности рейки шлагбаума NICE']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b', 'b']
+			- products__chars = ['Длина', 'Комплект']
+			- products__values = [['4 м', '2 шт'], ['4 м', '2 шт'], ['6 м', '2 шт'], ['6 м', '2 шт']]
+			- products__prices = ['2000', '1800', '3400', '2700']
+			- products__stage = ['-', '-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Кабель для подключения дюралайта', 'Дюралайт для подсветки стрелы', 'Шторка стрелы автоматического шлагбаума']
+			- products__names = ['Кабель для подключения дюралайта', 'Дюралайт', 'Шторка стрелы шлагбаума']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b']
+			- products__chars = ['']
+			- products__values = [[''], ['Для подсветки стрелы шлагбаумов G4040/G8000'], ['Секция 2м']]
+			- products__prices = ['450', '350 р/м', '4900']
+			- products__stage = ['-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Опорная стойка для стрелы шлагбаума Doorhan', 'Опорная стойка для стрелы шлагбаума CAME', 'Опорная стойка для стрелы шлагбаума NICE']
+			- products__names = ['Опорная стойка для стрелы шлагбаума', 'Опорная стойка для стрелы шлагбаума', 'Опорная стойка для стрелы шлагбаума']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'shlagbaumi/'
+			- products__images = ['b', 'b', 'b']
+			- products__chars = ['Материал']
+			- products__values = [['сталь'], ['сталь'], ['сталь']]
+			- products__prices = ['1300', '2300', '3200']
+			- products__stage = ['-', '-', '-']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+
+	- var this_desc_title = 'Описание "Пластиковые сетки"'
+	- var this_img_src = ['http://www.strod-servis.ru/images/000.jpg','http://www.mosarz10.ru/_pictures/dsc01310.jpg','http://golovinskiy.mos.ru/upload/medialibrary/816/vydvizhnye-stolbiki.jpg'] 
+	- var this_desc_for_img = ['Ограждение территории','Защита индивидуального парковочного места', 'Заградитель проезда']
+	- var this_paragraph_below = '<p>Пластиковые сетки</p>'
+	
+	section.section
+		header.section__header
+			h2.section__header-name= this_desc_title
+		.full-desc__first-part__wrapper
+			+full-desc__first-part(this_img_src, this_desc_for_img, this_paragraph_below)
+
+			- var this_title_list = 'В данный момент мы предлагаем 5 вариантов парковочных барьеров:' 
+			- var this_list_values = ['парковочный барьер "треугольный" БТК-3','стандартный антипарковочный барьер АБ-1','усиленный парковочный барьер АБ-1У','усиленный люксовый парковочный барьер АБ-1УЛ', 'нержавеющий парковочный барьер АБН-1']
+
+			-var this_list_href = ['#','#','#','#','#']
+
+			//+fullDesc__list(this_title_list, this_list_values, this_list_href)

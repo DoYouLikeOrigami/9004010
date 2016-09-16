@@ -1,0 +1,123 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/page.css")
+
+block title
+	| Турникеты
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'index.html': 'Главная', 'goods.html' : 'Товары', '#': 'Турникеты'}
+			each val, index in items
+				li(class="bread__item" + ((val=== 'Турникеты') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+	section.section.goodsSection
+		ul.products__list
+			- var products__attrs = ['Турникет-трипод Ростов Дон Т9М', 'Турникет-трипод ОМА 26.461/1', 'Турникет-трипод Ростов Дон Т2ММ', 'Турникет-трипод Ростов Дон Т83М', 'Турникет-трипод Praktika T.01', 'Турникет-трипод ОМА 26.561', 'Турникет-трипод ОМА 26.461/2', 'Турникет Ростов Дон Т283М', 'Турникет-трипод тумбовый Praktika t-02', 'Турникет тумбовый Ростов Дон ТТ10']
+			- var products__names = ['Турникет-трипод Ростов Дон Т9М', 'Турникет-трипод ОМА 26.461/1', 'Турникет-трипод Ростов Дон Т2ММ', 'Турникет Ростов Дон Т83М', 'Турникет-трипод Praktika T.01', 'Турникет-трипод ОМА 26.561', 'Турникет-трипод ОМА 26.461/2', 'Турникет Ростов Дон Т283М', 'Турникет-трипод тумбовый Praktika T.02', 'Турникет тумбовый Ростов Дон ТТ10']
+			- var products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- var products__dest = 'turniketi/'
+			- var products__images = ['a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95', 'a95']
+			- var products__chars = ['', 'Ширина', 'Высота', 'Планки']
+			- var products__values = [['~3 А', '745 мм', '995 мм', '595 мм'], ['~220 В', '785 мм', '1000 мм', '550 мм'], ['~12 В', '780 мм', '990 мм', '595 мм'], ['~12 В', '735 мм', '990 мм', '595 мм'], ['Электромеханический', '750 мм', '1190 мм', '850 мм'], ['~12 В', '715 мм', '1000 мм', '550 мм'], ['~220 В', '1570 мм', '1000 мм', '550 мм'], ['~220 В', '1465 мм', '990 мм', '595 мм'], ['Электромеханический', '985 мм', '1090 мм', '840 мм'], ['~12 В', '785 мм', '1020 мм', '595 мм']]
+			- var products__prices = ['37900', '33990', '34900', '41800', '68600', '52990', '63990', '66990', '79990', '67300']
+			- var products__stage = ['от 7500', 'от 6800', 'от 7000', 'от 8400', 'от 13700', 'от 10600', 'от 12800', 'от 13400', 'от 16000', 'от 13500']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Турникет роторный Ростов-Дон Р31М', 'Турникет Ростов-Дон Р2М1/3', 'Турникет Ростов-Дон Р2М2/3', 'Турникет Ростов-Дон Р2С/3']
+			- products__names = ['Турникет роторный Ростов-Дон Р31М', 'Турникет Ростов-Дон Р2М1/3', 'Турникет Ростов-Дон Р2М2/3', 'Турникет Ростов-Дон Р2С/3']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'turniketi/'
+			- products__images = ['b', 'b', 'b', 'b']
+			- products__chars = ['', 'Высота', 'Диаметр вращения лопастей']
+			- products__values = [['Односторонний', '1020 мм', '1220 мм'], ['~12 В', '1095 мм', '1260 мм'], ['~12 В', '1095 мм', '1260 мм'], ['~12 В', '1090 мм', '1260 мм']]
+			- products__prices = ['17350', '70400', '70400', '76400']
+			- products__stage = ['от 4900', 'от 12000', 'от 12000', 'от 9900']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Полуростовой роторный турникет Ома 16.581', 'Полуростовой роторный турникет Ома 16.587']
+			- products__names = ['Полуростовой роторный турникет Ома 16.581', 'Полуростовой роторный турникет Ома 16.587']
+			- products__href = ['PSH_201', 'PSH_201']
+			- products__dest = 'turniketi/'
+			- products__images = ['b', 'b']
+			- products__chars = ['', 'Ширина всего прохода', 'Высота', 'Ширина прохода между стойкой и ограждением']
+			- products__values = [['~220 В', '1410 мм', '1025 мм', '640 мм'], ['~220 В', '1410 мм', '1025 мм', '640 мм']]
+			- products__prices = ['111990', '129990']
+			- products__stage = ['от 15000', 'от 15000']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+			- products__attrs = ['Турникет полноростовой Ростов-Дон ПР1/3', 'Турникет полноростовой Ростов-Дон ПР1Л/3', 'Турникет полноростовой Ростов-Дон ПР2/3']
+			- products__names = ['Турникет полноростовой Ростов-Дон ПР1/3', 'Турникет полноростовой Ростов-Дон ПР1Л/3', 'Турникет полноростовой Ростов-Дон ПР2/3']
+			- products__href = ['PSH_201', 'PSH_201', 'PSH_201']
+			- products__dest = 'turniketi/'
+			- products__images = ['b', 'b', 'b']
+			- products__chars = ['Габаритные размеры', 'Напряжение']
+			- products__values = [['1500х1500х2410 мм', '12 В/2,5 А'], ['1500х1185х2410 мм', '12 В/2,5 А'], ['2210х1500х2410 мм', '12 В/2,5 А']]
+			- products__prices = ['215300', '178400', '393600']
+			- products__stage = ['от 39000', 'от 39000', 'от 59000']
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__attrs[i],
+					products__names[i],
+					products__href[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+	- var this_desc_title = 'Описание "Турникеты-триподы и роторные"'
+	- var this_img_src = ['http://www.strod-servis.ru/images/000.jpg','http://www.mosarz10.ru/_pictures/dsc01310.jpg','http://golovinskiy.mos.ru/upload/medialibrary/816/vydvizhnye-stolbiki.jpg'] 
+	- var this_desc_for_img = ['Ограждение территории','Защита индивидуального парковочного места', 'Заградитель проезда']
+	- var this_paragraph_below = '<p>Турникеты-триподы и роторные</p>'
+	
+	section.section
+		header.section__header
+			h2.section__header-name= this_desc_title
+		.full-desc__first-part__wrapper
+			+full-desc__first-part(this_img_src, this_desc_for_img, this_paragraph_below)
+
+			- var this_title_list = 'В данный момент мы предлагаем 5 вариантов парковочных барьеров:' 
+			- var this_list_values = ['парковочный барьер "треугольный" БТК-3','стандартный антипарковочный барьер АБ-1','усиленный парковочный барьер АБ-1У','усиленный люксовый парковочный барьер АБ-1УЛ', 'нержавеющий парковочный барьер АБН-1']
+
+			-var this_list_href = ['#','#','#','#','#']
+
+			//+fullDesc__list(this_title_list, this_list_values, this_list_href)

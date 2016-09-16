@@ -1,0 +1,90 @@
+mixin service__descr(indx, descr__name, descr__text)
+	div(class="popup", id='descr__popup-' + indx)
+		header.popup__header
+			| descr__name
+			a(class="popup__close b-close", id="close-popup") Крестик
+		.popup__descr
+			span.popup__text desrc__text
+
+mixin products__item(attr, name, href, dest, img, chars, values, price, stage)
+	li.products__item
+		.products__item-inner.clearfix
+			.products__left
+				.products__left-container
+					.products__attr
+						a(href= href + '.html').products__attr-name= attr
+			.products__about.clearfix
+				.products__image
+					a(href= href + '.html').products__image-display
+						img(src="img/" + dest + img + ".jpg", alt= name).products__image-pic
+				.products__desc
+					a(href= href + '.html').products__desc-title= name
+					ul.products__desc-options 
+						- var index = 0;
+						- for (var i = 0; i < chars.length; i++)
+							li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
+								.products__options-key= chars[i]
+								.products__options-value= values[i]
+			.products__right
+				.products__info
+					.products__price
+						span.products__price-label Цена
+						span.products__price-num= price
+							i.rub
+					.products__price
+						span.products__price-label Установка
+						span.products__price-num= stage
+							i.rub
+				.products__info-button
+					a(href="#").products__buy-btn Заказать
+
+mixin full-desc__first-part(img_src, desc_for_img, paragraph_below)
+	//h2.full-desc__first-part__title!=title
+	each val, index in img_src
+		.full-desc__first-part__foto-and-desc
+			.full-desc__first-part__foto
+				img(src!=val, width=200)
+			h3.full-desc__first-part__desc!=desc_for_img[index]
+	wrapper.full-desc__first-part__text-wrapper
+		p.full-desc__first-part__p-below!=paragraph_below 
+
+mixin fullDesc__list(title_list, list_values, list_href)
+	.fullDesc__list-wrapper
+		h3.fullDesc__list-title!=title_list
+		ul.fullDesc__list-listUl
+			each val, index in list_values
+				li.fullDesc__list-listLi
+					a(href=list_href[index], class='fullDesc__list-listA')!=val
+
+mixin full-desc__pUsual(text)
+	p.full-desc__pUsual!=text
+
+mixin product__page(name, dest, img, chars, values, price, stage)
+	.product__page
+		header.product__page-header
+			h2.product__page-name= name
+		article.product__page-info
+			wrapper.product__page-wrapper
+				wrapper.product__page-wrapper-inner
+					img(src="img/" + dest + img + '.jpg', alt= name).product__page-img
+			.product__page-desc.description
+				header.description__header
+					h3.description__header-text Характеристики
+				ul.description__list
+					- var index = 0;
+					- for (var i = 0; i < chars.length; i++)
+						li(class="description__list-item " + ((index++ % 2) ? '' : 'description__list-item-odd') ).clearfix
+							.description__options-key= chars[i]
+							.description__options-value= values[i]
+			.product__page-price.price
+				.price__info
+					.price__info-text.clearfix
+						span.price__label Цена
+						span.price__num= price
+							i.rub
+					.price__info-text.clearfix
+						span.price__label Установка
+						span.price__num= stage
+							i.rub
+				.price__btn
+					a(href="#").price__btn-buy Заказать

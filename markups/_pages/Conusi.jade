@@ -1,0 +1,56 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="css/page.css")
+
+block title
+	| Конус дорожный сигнальный
+
+block main-content	
+	nav.bread
+		ul.bread__list
+			- var items = {'index.html': 'Главная', 'goods.html' : 'Товары', '#': 'Барьеры'}
+			each val, index in items
+				li(class="bread__item" + ((val=== 'Барьеры') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+	section.section.goodsSection
+		ul.products__list
+			- var products__names = ['Конус сигнальный' ,'Автоконус с вехой', 'Конус дорожный', 'Конус дорожный с ухом для цепи', 'Конус дорожный с утяжелителем', 'Конус дорожный с утяжелитем и ухом для цепи', 'Автоконус с вехой', 'Конус парковочный мягкий']
+			- var products__dest = 'conusi/'
+			- var products__images = ['1', '2', '3', '4', '5', '6', '7', '8']
+			- var products__chars = ['Высота', 'Вес', 'Материал']
+			- var products__values = [['316 мм', '0,2 кг', 'пластик'], ['1200 мм', '0,4 кг', 'пластик'], ['520 мм', '0,8 кг', 'пластик'], [' 577 мм', '1 кг', 'пластик'], [' 520 мм', '3 кг', 'пластик'], ['577мм', '3,2 кг', 'пластик'], ['1200 мм', '0,6 кг', 'пластик'], ['520 мм', '0,8 кг', 'пластик']]
+			- var products__prices = ['119', '279', '279', '369', '499', '599', '449', '299']
+			- var products__stage = new Array(8)
+			-for (i=7; i>=0; i--) products__stage[i] = 'Бесплатно'
+
+			- for (var i = 0; i < products__names.length; i++)
+				+products__item(
+					products__names[i],
+					products__dest,
+					products__images[i],
+					products__chars,
+					products__values[i],
+					products__prices[i],
+					products__stage[i])
+
+	- var this_desc_title = 'Описание "Конус дорожный сигнальный парковочный"'
+	- var this_img_src = ['http://www.strod-servis.ru/images/000.jpg','http://www.mosarz10.ru/_pictures/dsc01310.jpg','http://golovinskiy.mos.ru/upload/medialibrary/816/vydvizhnye-stolbiki.jpg'] 
+	- var this_desc_for_img = ['Ограждение парковочных мест','Заграждение мест проведения дорожных и строительных работ', 'Распределение автомобильных потоков']
+	- var this_paragraph_below = 'Существует три варианта исполнения конуса сигнального дорожного: жёсткий конус, полумягкий конус и мягкий конус. Мягкий дорожный конус имеет большой коэффициент упругости, благодаря чему конус восстанавливает свою первоначальную форму при механическом воздействии, например, столкновении с автомобилем. '
+	- var paragraph_usual_1 = 'Конус сигнальный дорожный предназначен к использованию в широком диапазоне температурных колебаний: от минус 30 до плюс 60 градусов Цельсия.'
+	- var list_title = 'Сигнальные дорожные конусы существуют в пяти типоразмерах: '
+	- var list_values = ['конус дорожный сигнальный высотой 320мм', 'конус дорожный сигнальный высотой 520мм', 'конус дорожный сигнальный высотой 750мм ', 'конус дорожный сигнальный высотой 1000мм', 'автоконус дорожный с вехой высотой 1200мм']
+	- var list_href = new Array(5);
+	- for (i=4; i>=0; i--) list_href[i]='#'
+	-  var paragraph_usual_2 = 'Наиболее универсальным и распространённым является исполнение дорожного конуса высотой 520мм.'
+	
+	section.section
+		header.section__header
+			h2.section__header-name= this_desc_title
+		.full-desc__first-part__wrapper
+			+full-desc__first-part(this_img_src, this_desc_for_img, this_paragraph_below)
+			+full-desc__pUsual(paragraph_usual_1)
+			+fullDesc__list(list_title, list_values, list_href)
+			+full-desc__pUsual(paragraph_usual_2)

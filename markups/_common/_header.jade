@@ -1,0 +1,48 @@
+header#mainHeader.mainHeader
+	wrapper.mainHeader__top
+		wrapper.container.clearfix
+			.mainHeader__left.sm__padding-left
+				ul.mainHeader__mail-list
+					li.mainHeader__mail-item.city-change.spb-city
+						a(href="mailto:spb@9004010.ru").mainHeader__mail-link spb@9004010.ru
+					li.mainHeader__mail-item.city-change.msc-city.hidden
+						a(href="mailto:msk@9004010.ru").mainHeader__mail-link msk@9004010.ru
+					li.mainHeader__mail-item.city-change.novosib-city.hidden
+						a(href="mailto:novosib@9004010.ru").mainHeader__mail-link novosib@9004010.ru
+			.mainHeader__right.sm__padding-right
+				.city
+					label.city__label Ваш город
+					select(name="select-city", class="city__select")
+						option(value="spb", class="city__option" selected) Санкт-Петербург
+						option(value="msc", class="city__option") Москва
+						option(value="novosib", class="city__option") Новосибирск
+
+	wrapper.mainHeader__bottom
+		wrapper.container.clearfix.sm__padding-left
+			a(href=".").logo
+				.logo__img
+					img(src="img/logo.jpg", class="logo__img-pic", alt="Лого")
+				.logo__text
+					span.logo__text-descr Ограждения и благоустройство
+					h1.logo__text-name Столбик.рф
+
+			wrapper.callUs
+				.callUs__text
+					h3.callUs__text-name Звоните нам ежедневно
+					span.callUs__text-descr с 8:00 до 23:00
+					
+
+			wrapper.contacts.sm__padding-right
+				a(href="tel:+7(812)900-40-10").contacts__tel.city-change.spb-city +7(812) 
+					span.contacts__strong 900-40-10	
+				a(href="tel:+7(812)900-40-10").contacts__tel.city-change.msc-city.hidden +7(915)
+					span.contacts__strong 340-20-10	
+				a(href="tel:+7(812)900-40-10").contacts__tel.city-change.novosib-city.hidden +7(952)
+					span.contacts__strong 909-98-88
+				a(href="#").contacts__button Заказать звонок
+
+			
+
+				
+					
+		

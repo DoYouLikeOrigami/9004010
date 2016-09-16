@@ -1,0 +1,62 @@
+include _common/mixins
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width")
+		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+			
+		//IE
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		
+		//SEO
+		meta(name="description", content="Товары для ограждения территории. Услуги по благоустройтсву")
+		meta(name="keywords", content="Ограждение ограждения благоустройство территории СПб Санкт-Петербург Москва Новосибирск")
+		meta(name="author", content="")
+
+		//fonts
+		link(rel="stylesheet", type="text/css", href="fonts/fonts.css")
+
+		//Modernizer
+		script(src="bower/modernizr/src/modernizr.js")
+
+		//styles
+		link(rel="stylesheet", type="text/css", href="bower/normalize-css/normalize.css")
+		link(rel="stylesheet", type="text/css" href="css/main.css")
+		block personalStyle
+		
+		//Title
+		title
+			block title
+
+	body
+		wrapper.mainWrapper
+			include _common/_header
+			include _common/_nav
+			include _common/_aside
+			.container
+				block main-content
+
+		.orderCall__popup
+			form(action="php/orderCall.php", class="orderCall__form")
+				.server-mes.success-mes
+				.server-mes.error-mes
+				label.orderCall__form-label.clearfix
+					span.orderCall__form-label-name Ваше имя
+					input(type="text", name="personName", placeholder="Как к Вам обращаться", class="orderCall__form-label-input" id="personName", required)
+				label.orderCall__form-label.clearfix
+					span.orderCall__form-label-name Номер телефона
+					input(type="text", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
+				button(type="submit", class="orderCall__form-button") Заказать
+
+		.buttonUp
+			.buttonUp-body(href='0')
+				.buttonUp-triangleUp
+
+		include _common/_footer
+
+
+		script(src="bower/jquery/jquery.min.js")
+		script(src="bower/bPopup/jquery.bpopup.min.js")
+		script(src="js/main.js")
+		block personalScript
