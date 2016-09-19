@@ -38,13 +38,13 @@ mixin products__item(attr, name, href, dest, img, chars, values, price, stage)
 				.products__info-button
 					a(href="#").products__buy-btn Заказать
 
-mixin full-desc__first-part(img_src, desc_for_img, paragraph_below)
+mixin full-desc__first-part(paragraph_below)
 	//h2.full-desc__first-part__title!=title
-	each val, index in img_src
-		.full-desc__first-part__foto-and-desc
-			.full-desc__first-part__foto
-				img(src!=val, width=200)
-			h3.full-desc__first-part__desc!=desc_for_img[index]
+	//each val, index in img_src
+	//	.full-desc__first-part__foto-and-desc
+	//		.full-desc__first-part__foto
+	//			img(src!=val, width=200)
+	//		h3.full-desc__first-part__desc!=desc_for_img[index]
 	wrapper.full-desc__first-part__text-wrapper
 		p.full-desc__first-part__p-below!=paragraph_below 
 

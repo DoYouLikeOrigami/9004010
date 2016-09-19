@@ -11,15 +11,13 @@ block main-content
 		header.section__header
 			h2.section__header-name Категории товаров
 		ul.list.goods__list
-			//Замени на соответствующий вывод из БД
-			- var goods = {'stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj': 'Столбики','barjer-kupit-cena-parkovochnyj-skladnoy': 'Барьеры','konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj': 'Конусы', 'polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja': 'Полусферы', 'vazon-betonnyj-kupit-cena-dlja-cvetov': 'Вазоны Бетонные', 'urna-betonnaya-kupit-cena-dlja-musora': 'Урны Бетонные','skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka': 'Уличные Скамейки', 'Znaki': 'Дорожные Знаки', 'setka': 'СеткиПластиковые', 'lenta': 'Лента Сигнальная', 'shlagbaum': 'Автоматические Шлагбаумы', 'turniket': 'Турникеты', 'privodi': 'Приводы для Ворот', 'police': 'Лежачий Полицейский'}
-			each val, index in goods
-				//это в тело for. val и index  на соответствующие переменные замени
-				li.list__item.goods__item
-					a(class="goods__link", href= index + '.html')
-						wrapper.goods__img-wrapper
-							img(src='img/goods/' + index + '.jpg', class="goods__img", alt= val)
-						span.goods__text= val
+			| {% for category_i in categories %}
+			li.list__item.goods__item
+				a(class="goods__link", href= '/goods-item/' + '{{ category_i.category }}')
+					wrapper.goods__img-wrapper
+						img(src='img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= val)
+					span.goods__text {{ category_i.category }}
+			| {% endfor %}
 
 block personalScript
 	script(src="static/js/index.js")

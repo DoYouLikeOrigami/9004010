@@ -17,4 +17,6 @@ block main-content
   
 	// Здесь просто передай переменные
 	section.section.productSection
-		+product__page('Столбик парковочный бетонируемый ПШ-201', 'stolbiki/', '1', ['Высота', 'Диаметр корпуса', 'Материал'], ['750 мм', '76 мм', 'Сталь'], '899', '1199')
+		| {% for goods_i in goods %}
+		var product = #[ {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }} ] )
+		| {% endfor %}

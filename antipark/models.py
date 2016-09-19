@@ -4,6 +4,7 @@ __email__ = 'info@jokerinteractive.ru'
 
 from . import db
 
+
 class Category(db.Model):
     __tablename__ = "categories"
     id = db.Column(db.Integer, primary_key=True)
