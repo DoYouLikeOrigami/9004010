@@ -47,6 +47,11 @@ def goods_category():
     return render_template('goods-category.html')
 
 
+@app.route('/file')
+def file():
+    return render_template('file.html')
+
+
 '''
 def db_page():
     
