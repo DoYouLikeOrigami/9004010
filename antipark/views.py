@@ -30,3 +30,6 @@ def goods_category():
     return render_template('goods-category.html', categories=all_categories)
 
 
+@app.route('/file')
+def file():
+    return render_template('file.html')
