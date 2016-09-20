@@ -17,6 +17,13 @@ block main-content
   
 	// Здесь просто передай переменные
 	section.section.productSection
-		| {% for goods_i in goods %}
-		var product = #[ {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }} ] )
-		| {% endfor %}
+		ul.products__list
+			| {% for goods_i in goods %}
+			li.list__item.goods__item
+				span.goods__text {{ goods_i.subcategory }}
+				span.goods__text {{ goods_i.title }}
+				span.goods__text {{ goods_i.specs }}
+				span.goods__text {{ goods_i.price }}
+				span.goods__text {{ goods_i.stage_price }}
+				img(src='/static/img/' + '{{ goods_i.image }}', class='goods__img', alt= '{{goods_i.title }}')
+			| {% endfor %}
