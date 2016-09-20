@@ -1,9 +1,9 @@
 extends ../main
 
 block personalStyle
-	link(rel="stylesheet", type="text/css", href="static/bower/slick-carousel/slick/slick.css")
-	link(rel="stylesheet", type="text/css", href="static/bower/slick-carousel/slick/slick-theme.css")
-	link(rel="stylesheet", type="text/css", href="static/css/index.css")
+	link(rel="stylesheet", type="text/css", href="/static/bower/slick-carousel/slick/slick.css")
+	link(rel="stylesheet", type="text/css", href="/static/bower/slick-carousel/slick/slick-theme.css")
+	link(rel="stylesheet", type="text/css", href="/static/css/index.css")
 
 block title
 	| Ограждения и благоустройство
@@ -17,7 +17,7 @@ block main-content
 			li.list__item.goods__item
 				a(class="goods__link", href= '/goods-item/' + '{{ category_i.category }}')
 					wrapper.goods__img-wrapper
-						img(src='img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= val)
+						img(src='/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= val)
 					span.goods__text {{ category_i.category }}
 			| {% endfor %}
 
@@ -34,7 +34,7 @@ block main-content
 					a(class="service__link service__link-popup", href= service__link[i] + '.html')
 						wrapper.service__wrapper
 							wrapper.service__wrapper-inner
-								img(src= "img/service/" + service__img[i], alt= service[i], class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
+								img(src= "/img/service/" + service__img[i], alt= service[i], class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
 						span.service__text= service[i]
 						//span.service__about Подробнее...
 	
@@ -153,6 +153,6 @@ block main-content
 
 
 block personalScript
-	script(src="static/bower/slick-carousel/slick/slick.min.js")
-	script(src="static/js/index.js")
+	script(src="/static/bower/slick-carousel/slick/slick.min.js")
+	script(src="/static/js/index.js")
 

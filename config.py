@@ -4,7 +4,7 @@ __email__ = 'info@jokerinteractive.ru'
 CSRF_ENABLED = True
 SECRET_KEY = 'c}Zfya3$#2&^M3N0X#V;'
 
-SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://autores:ways425_chic2@95.213.252.226/antipark'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://antipark:ways425_chic2@95.213.252.226/antipark'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_ECHO = True
 """

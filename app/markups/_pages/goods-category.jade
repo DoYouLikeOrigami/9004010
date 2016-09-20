@@ -1,7 +1,7 @@
 extends ../main
 
 block personalStyle
-	link(rel="stylesheet", type="text/css", href="static/css/page.css")
+	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
 	| Название категории
@@ -9,7 +9,7 @@ block main-content
 	nav.bread
 		ul.bread__list
 			// Только ссылки измени. Джеид оставь
-			- var items = {'index.html': 'Главная', 'goods.html' : 'Товары', '#': 'Барьеры'}
+			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': 'Барьеры'}
 			each val, index in items
 				li(class="bread__item" + ((val=== 'Барьеры') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val

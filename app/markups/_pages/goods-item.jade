@@ -1,7 +1,7 @@
 extends ../main
 
 block personalStyle
-	link(rel="stylesheet", type="text/css", href="static/css/product.css")
+	link(rel="stylesheet", type="text/css", href="/static/css/product.css")
 
 block title
 	| Название товара
@@ -10,7 +10,7 @@ block main-content
 	nav.bread
 		ul.bread__list
 			//Здесь оставь jade, но пропиши пути к вьюшкам
-			- var items = {'.': 'Главная', 'goods.html' : 'Товары', 'Stolbiki.html': 'Столбики', '#' : 'Стобик ПШ-201'}
+			- var items = {'.': 'Главная', '/goods' : 'Товары', 'Stolbiki.html': 'Столбики', '#' : 'Стобик ПШ-201'}
 			each val, index in items
 				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
