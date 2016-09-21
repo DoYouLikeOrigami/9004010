@@ -5,12 +5,12 @@ block personalStyle
 	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
-	| Название товара
+	| {{ goods_item.title }}
 
 block main-content	
 	nav.bread
 		ul.bread__list
-			- var items = {'.': 'Главная', '/goods' : 'Товары', '{{ category_i.id }}': '{{ category_i.title }}', '#' : '{{ goods_i.title }}' }
+			- var items = {'.': 'Главная', '/goods' : 'Товары', '/goods-category/{{ category.id }}/': '{{ category.category }}', '#' : '{{ goods_item.title }}' }
 			each val, index in items
 				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
@@ -22,15 +22,15 @@ block main-content
 					.products__left 
 						.products__left-container
 							.products__attr
-								a(href= "#").products__attr-name {{ goods_i.title }}
+								a(href= "/goods-item/{{ goods_item.id }}/").products__attr-name {{ goods_item.title }}
 					.products__about.clearfix
 						.products__image
-							a(href="#").products__image-display
-								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+							a(href="/goods-item/{{ goods_item.id }}/").products__image-display
+								img(src='/static/img/' + '{{ goods_item.image }}', alt= '{{ goods_item.title }}').products__image-pic.goods__img
 						.products__desc
-							a(href= '#').products__desc-title {{ goods_i.title }}
+							a(href= '/goods-item/{{ goods_item.id }}/').products__desc-title {{ goods_item.title }}
 							ul.products__desc-options 
-								| {% for spec in goods_i.specs.strip('{}').split("', '") %}
+								| {% for spec in goods_item.specs.strip('{}').split("', '") %}
 								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
 									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
 									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
@@ -40,11 +40,11 @@ block main-content
 						.products__info
 							.products__price
 								span.products__price-label Цена
-								span.products__price-num {{ goods_i.price }}
+								span.products__price-num {{ goods_item.price }}
 									i.rub
 							.products__price
 								span.products__price-label Установка
-								span.products__price-num {{ goods_i.stage_price }}
+								span.products__price-num {{ goods_item.stage_price }}
 									i.rub
 							.products__info-button
 								a(href="#").products__buy-btn Заказать

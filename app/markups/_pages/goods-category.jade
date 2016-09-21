@@ -8,10 +8,11 @@ block title
 block main-content	
 	nav.bread
 		ul.bread__list
-			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': '{{ goods_i.title }}'}
+			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': '{{ category.category }}'}
 			each val, index in items
-				li(class="bread__item" + ((val=== '{{ goods_i.title }}') ? ' active' : '' ) )
+				li(class="bread__item" + ((val=== '{{ category.category }}') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
+			
 
 	section.section.goodsSection
 		ul.products__list
@@ -21,13 +22,13 @@ block main-content
 					.products__left 
 						.products__left-container
 							.products__attr
-								a(href= "#").products__attr-name {{ goods_i.title }}
+								a(href= "/goods-item/{{ goods_i.id }}/").products__attr-name {{ goods_i.title }}
 					.products__about.clearfix
 						.products__image
-							a(href="#").products__image-display
+							a(href="/goods-item/{{ goods_i.id }}/").products__image-display
 								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
 						.products__desc
-							a(href= '#').products__desc-title {{ goods_i.title }}
+							a(href= '/goods-item/{{ goods_i.id }}/').products__desc-title {{ goods_i.title }}
 							ul.products__desc-options 
 								| {% for spec in goods_i.specs.strip('{}').split("', '") %}
 								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
@@ -52,7 +53,7 @@ block main-content
 
 			header.section__header
 				h2.section__header-name
-					| {{ category_i.category }}
+					| {{ category.category }}
 				.full-desc__first-part__wrapper
-					+full-desc__first-part('{{ category_i.description }}')
+					+full-desc__first-part('{{ category.description }}')
 
