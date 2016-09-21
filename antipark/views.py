@@ -65,5 +65,7 @@ def get_db():
 
     df = pd.DataFrame(prods)
     df.set_index('id', inplace=True)
+    # только в файл cur_base
     df.to_excel('cur_base.xlsx')
-    return 'Done'
+    flash('Db is saved')
+    return redirect(url_for('file'))
