@@ -180,7 +180,7 @@ $akcentGrey: #e6e6e6;
 		border-top: 0 none;
 	}
 
-	.products__option-item-odd {
+	.products__option-item:nth-of-type(even) {
 		background: $mainColor;
 	}
 
@@ -194,10 +194,6 @@ $akcentGrey: #e6e6e6;
 
 	&:nth-of-type(2n) {
 		background: #fff;
-
-		.products__option-item-odd {
-			background: $akcentGrey;
-		}
 
 		.products__info {
 			border-color: $akcentGrey;

@@ -94,32 +94,56 @@
 			<div class="container">
 				<nav class="bread">
 					<ul class="bread__list">
-						<!-- Только ссылки измени. Джеид оставь-->
 						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">Барьеры</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_i.title }}</a></li>
 					</ul>
 				</nav>
 				<section class="section goodsSection">
-					<ul class="products__list">{% for category_i in categories %}
-						<li class="list__item goods__item">
-							<section class="section">
-								<header class="section__header">
-									<h2 class="section__header-name">{{ category_i.category }}</h2>
-								</header>
-								<div class="full-desc__first-part__wrapper">
-									<!--h2.full-desc__first-part__title!=title-->
-									<!--each val, index in img_src-->
-									<!--	.full-desc__first-part__foto-and-desc-->
-									<!--		.full-desc__first-part__foto-->
-									<!--			img(src!=val, width=200)-->
-									<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
-									<wrapper class="full-desc__first-part__text-wrapper">
-										<p class="full-desc__first-part__p-below"><p>{{ category_i.description }}</p></p>
-									</wrapper>
+					<ul class="products__list">{% for goods_i in goods %}
+						<li class="products__item">
+							<div class="products__item-inner clearfix"> 
+								<div class="products__left"> 
+									<div class="products__left-container">
+										<div class="products__attr"><a href="#" class="products__attr-name">{{ goods_i.title }}</a></div>
+									</div>
 								</div>
-							</section>
+								<div class="products__about clearfix">
+									<div class="products__image"><a href="#" class="products__image-display"><img src="/static/img/{{ goods_i.image }}" alt="{{ goods_i.title }}" class="products__image-pic goods__img"></a></div>
+									<div class="products__desc"><a href="#" class="products__desc-title">{{ goods_i.title }}</a>
+										<ul class="products__desc-options">
+											 
+											{% for spec in goods_i.specs.strip('{}').split("', '") %}
+											<li class="products__option-item products__option-item-odd">
+												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
+												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>
+											</li>{% endfor %}
+										</ul>
+									</div>
+								</div>
+								<div class="products__right">
+									<div class="products__info">
+										<div class="products__price"><span class="products__price-label">Цена</span><span class="products__price-num">{{ goods_i.price }}<i class="rub"></i></span></div>
+										<div class="products__price"><span class="products__price-label">Установка</span><span class="products__price-num">{{ goods_i.stage_price }}<i class="rub"></i></span></div>
+										<div class="products__info-button"><a href="#" class="products__buy-btn">Заказать</a></div>
+									</div>
+								</div>
+							</div>
 						</li>{% endfor %}
+						<header class="section__header">
+							<h2 class="section__header-name">{{ category_i.category }}</h2>
+							<div class="full-desc__first-part__wrapper">
+								<!--h2.full-desc__first-part__title!=title-->
+								<!--each val, index in img_src-->
+								<!--	.full-desc__first-part__foto-and-desc-->
+								<!--		.full-desc__first-part__foto-->
+								<!--			img(src!=val, width=200)-->
+								<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
+								<wrapper class="full-desc__first-part__text-wrapper">
+									<p class="full-desc__first-part__p-below">{{ category_i.description }}</p>
+								</wrapper>
+							</div>
+						</header>
 					</ul>
 				</section>
 			</div>

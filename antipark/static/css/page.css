@@ -80,7 +80,7 @@
   background: #e6e6e6; }
   .products__item:first-child {
     border-top: 0 none; }
-  .products__item .products__option-item-odd {
+  .products__item .products__option-item:nth-of-type(even) {
     background: #fff; }
   .products__item .products__info {
     border-color: #fff; }
@@ -88,8 +88,6 @@
     border-color: #fff; }
   .products__item:nth-of-type(2n) {
     background: #fff; }
-    .products__item:nth-of-type(2n) .products__option-item-odd {
-      background: #e6e6e6; }
     .products__item:nth-of-type(2n) .products__info {
       border-color: #e6e6e6; }
     .products__item:nth-of-type(2n) .products__left {

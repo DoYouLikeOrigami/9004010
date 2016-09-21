@@ -8,20 +8,51 @@ block title
 block main-content	
 	nav.bread
 		ul.bread__list
-			// Только ссылки измени. Джеид оставь
-			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': 'Барьеры'}
+			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': '{{ goods_i.title }}'}
 			each val, index in items
-				li(class="bread__item" + ((val=== 'Барьеры') ? ' active' : '' ) )
+				li(class="bread__item" + ((val=== '{{ goods_i.title }}') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
 
 	section.section.goodsSection
 		ul.products__list
-			| {% for category_i in categories %}
-			li.list__item.goods__item
-				section.section
-					header.section__header
-						h2.section__header-name
-							| {{ category_i.category }}
-					.full-desc__first-part__wrapper
-						+full-desc__first-part('<p>' + '{{ category_i.description }}' + '</p>')
+			| {% for goods_i in goods %}
+			li.products__item
+				.products__item-inner.clearfix 
+					.products__left 
+						.products__left-container
+							.products__attr
+								a(href= "#").products__attr-name {{ goods_i.title }}
+					.products__about.clearfix
+						.products__image
+							a(href="#").products__image-display
+								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+						.products__desc
+							a(href= '#').products__desc-title {{ goods_i.title }}
+							ul.products__desc-options 
+								| {% for spec in goods_i.specs.strip('{}').split("', '") %}
+								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
+									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
+									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
+								| {% endfor %}
+							
+					.products__right
+						.products__info
+							.products__price
+								span.products__price-label Цена
+								span.products__price-num {{ goods_i.price }}
+									i.rub
+							.products__price
+								span.products__price-label Установка
+								span.products__price-num {{ goods_i.stage_price }}
+									i.rub
+							.products__info-button
+								a(href="#").products__buy-btn Заказать
+
 			| {% endfor %}
+
+			header.section__header
+				h2.section__header-name
+					| {{ category_i.category }}
+				.full-desc__first-part__wrapper
+					+full-desc__first-part('{{ category_i.description }}')
+

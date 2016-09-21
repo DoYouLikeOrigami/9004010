@@ -69,7 +69,8 @@
   margin-right: 2px; }
 
 .productSection {
-  background: #fff; }
+  background: #fff;
+  padding: 0; }
 
 .product__page {
   display: block;

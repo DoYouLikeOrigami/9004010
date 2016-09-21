@@ -94,13 +94,13 @@
 			<div class="container">
 				<section class="section section--white">
 					<div class="file">
-						<form action="/send-file" method="POST" data-form="file" class="form">
+						<form method="POST" data-form="file" class="form">
 							<label>Загрузите xls файл
-								<input type="file">
+								<input type="file" name="file_xls">
 							</label>
 							<input type="submit" value="Загрузить">
 						</form>
-						<div class="file__buttons"><a href="#" class="btn btn--reload-file">Обновить файл на Я́ндекс.маркет</a><a href="#" class="btn btn--download-file">Скачать файл</a><a href="." class="btn btn--secondary">На главную</a></div>
+						<div class="file__buttons"><a href="#" class="btn btn--reload-file">Обновить файл на Я́ндекс.маркет</a><a href="/get_db/" class="btn btn--download-file">Скачать файл</a><a href="/" class="btn btn--secondary">На главную</a></div>
 					</div>
 				</section>
 			</div>

@@ -2,6 +2,7 @@ extends ../main
 
 block personalStyle
 	link(rel="stylesheet", type="text/css", href="/static/css/product.css")
+	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
 	| Название товара
@@ -9,26 +10,41 @@ block title
 block main-content	
 	nav.bread
 		ul.bread__list
-			//Здесь оставь jade, но пропиши пути к вьюшкам
-			- var items = {'.': 'Главная', '/goods' : 'Товары', 'Stolbiki.html': 'Столбики', '#' : 'Стобик ПШ-201'}
+			- var items = {'.': 'Главная', '/goods' : 'Товары', '{{ category_i.id }}': '{{ category_i.title }}', '#' : '{{ goods_i.title }}' }
 			each val, index in items
 				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
   
-	// Здесь просто передай переменные
 	section.section.productSection
 		ul.products__list
-			| {% for goods_i in goods %}
-			li.list__item.goods__item
-				span.goods__text {{ goods_i.subcategory }}
-				span.goods__text {{ goods_i.title }}
-				| {% for spec in goods_i.specs.strip('{}').split("', '") %}
-				// техСвойство
-				| <h3> {{ spec.split(": '")[0].lstrip("'").rstrip("'") }} </h3>
-				// значение
-				| <h4> {{ spec.split(": '")[1].lstrip("'").rstrip("'") }} <h4>
-				| {% endfor %}
-				span.goods__text {{ goods_i.price }}
-				span.goods__text {{ goods_i.stage_price }}
-				img(src='/static/img/' + '{{ goods_i.image }}', class='goods__img', alt= '{{ goods_i.title }}')
-			| {% endfor %}
+			li.products__item
+				.products__item-inner.clearfix 
+					.products__left 
+						.products__left-container
+							.products__attr
+								a(href= "#").products__attr-name {{ goods_i.title }}
+					.products__about.clearfix
+						.products__image
+							a(href="#").products__image-display
+								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+						.products__desc
+							a(href= '#').products__desc-title {{ goods_i.title }}
+							ul.products__desc-options 
+								| {% for spec in goods_i.specs.strip('{}').split("', '") %}
+								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
+									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
+									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
+								| {% endfor %}
+							
+					.products__right
+						.products__info
+							.products__price
+								span.products__price-label Цена
+								span.products__price-num {{ goods_i.price }}
+									i.rub
+							.products__price
+								span.products__price-label Установка
+								span.products__price-num {{ goods_i.stage_price }}
+									i.rub
+							.products__info-button
+								a(href="#").products__buy-btn Заказать

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="/static/bower/normalize-css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/page.css">
 		<!--Title-->
 		<title>Название товара</title>
 	</head>
@@ -94,16 +95,44 @@
 			<div class="container">
 				<nav class="bread">
 					<ul class="bread__list">
-						<!--Здесь оставь jade, но пропиши пути к вьюшкам-->
 						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
-						<li class="bread__item"><a href="Stolbiki.html" class="bread__link">Столбики</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">Стобик ПШ-201</a></li>
+						<li class="bread__item"><a href="{{ category_i.id }}" class="bread__link">{{ category_i.title }}</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_i.title }}</a></li>
 					</ul>
 				</nav>
-				<!-- Здесь просто передай переменные-->
-				<section class="section productSection">{% for goods_i in goods %}
-					<var>product = {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }}  )</var>{% endfor %}
+				<section class="section productSection">
+					<ul class="products__list">
+						<li class="products__item">
+							<div class="products__item-inner clearfix"> 
+								<div class="products__left"> 
+									<div class="products__left-container">
+										<div class="products__attr"><a href="#" class="products__attr-name">{{ goods_i.title }}</a></div>
+									</div>
+								</div>
+								<div class="products__about clearfix">
+									<div class="products__image"><a href="#" class="products__image-display"><img src="/static/img/{{ goods_i.image }}" alt="{{ goods_i.title }}" class="products__image-pic goods__img"></a></div>
+									<div class="products__desc"><a href="#" class="products__desc-title">{{ goods_i.title }}</a>
+										<ul class="products__desc-options">
+											 
+											{% for spec in goods_i.specs.strip('{}').split("', '") %}
+											<li class="products__option-item products__option-item-odd">
+												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
+												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>
+											</li>{% endfor %}
+										</ul>
+									</div>
+								</div>
+								<div class="products__right">
+									<div class="products__info">
+										<div class="products__price"><span class="products__price-label">Цена</span><span class="products__price-num">{{ goods_i.price }}<i class="rub"></i></span></div>
+										<div class="products__price"><span class="products__price-label">Установка</span><span class="products__price-num">{{ goods_i.stage_price }}<i class="rub"></i></span></div>
+										<div class="products__info-button"><a href="#" class="products__buy-btn">Заказать</a></div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
 				</section>
 			</div>
 		</wrapper>

@@ -97,8 +97,8 @@
 						<h2 class="section__header-name">Категории товаров</h2>
 					</header>
 					<ul class="list goods__list">{% for category_i in categories %}
-						<li class="list__item goods__item"><a href="/goods-item/{{ category_i.category }}" class="goods__link">
-								<wrapper class="goods__img-wrapper"><img src="/img/goods/{{ category_i.category }}.jpg" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
+						<li class="list__item goods__item"><a href="/goods-item/{{ category_i.id }}" class="goods__link">
+								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
 					</ul>
 				</section>
 			</div>
