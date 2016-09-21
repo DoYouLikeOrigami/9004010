@@ -22,8 +22,13 @@ block main-content
 			li.list__item.goods__item
 				span.goods__text {{ goods_i.subcategory }}
 				span.goods__text {{ goods_i.title }}
-				span.goods__text {{ goods_i.specs }}
+				| {% for spec in goods_i.specs.strip('{}').split("', '") %}
+				// техСвойство
+				| <h3> {{ spec.split(": '")[0].lstrip("'").rstrip("'") }} </h3>
+				// значение
+				| <h4> {{ spec.split(": '")[1].lstrip("'").rstrip("'") }} <h4>
+				| {% endfor %}
 				span.goods__text {{ goods_i.price }}
 				span.goods__text {{ goods_i.stage_price }}
-				img(src='/static/img/' + '{{ goods_i.image }}', class='goods__img', alt= '{{goods_i.title }}')
+				img(src='/static/img/' + '{{ goods_i.image }}', class='goods__img', alt= '{{ goods_i.title }}')
 			| {% endfor %}
