@@ -39,25 +39,29 @@ def goods_item(goods_item_id):
 
 @app.route('/file/', methods=['GET', 'POST'])
 def file():
-    if request.method == 'POST':
-        import pandas 
-
-        # вместо cur_base.xlsx нужна ссылка на загружаемый файл
-        df_new = pd.read_excel('database/database.xlsx', index_col='id')
-
-        for prod in df_new.itertuples():
-            upd_product = Product.query.get(prod.Index)
-            for field in prod._fields[1:]:
-                setattr(upd_product, field, getattr(prod, field))
-            db.session.commit()
-
-        return 'Saved'
     return render_template('file.html')
 
 
-@app.route('/get_db/', methods=['GET', 'POST'])
+@app.route('/save_db/')
+def save_db():
+    import pandas as pd
+
+    # вместо cur_base.xlsx нужна ссылка на загружаемый файл
+    df_new = pd.read_excel('database/database.xlsx', index_col='id')
+    print(df_new.head(10))
+
+    for prod in df_new.itertuples():
+        upd_product = Product.query.get(str(prod.Index))
+        for field in prod._fields[1:]:
+            setattr(upd_product, field, getattr(prod, field))
+        db.session.commit()
+
+    flash('Db is updated')
+    return redirect(url_for('file'))
+
+
+@app.route('/get_db/')
 def get_db():
-    # if request.method == 'POST':
     import pandas as pd
     from collections import defaultdict
 
@@ -72,5 +76,6 @@ def get_db():
     df.set_index('id', inplace=True)
     # только в файл cur_base
     df.to_excel('database/database.xlsx')
+
     flash('Db is saved')
     return redirect(url_for('file'))
