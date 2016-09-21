@@ -43,7 +43,7 @@ def file():
         import pandas 
 
         # вместо cur_base.xlsx нужна ссылка на загружаемый файл
-        df_new = pd.read_excel('cur_base.xlsx', index_col='id')
+        df_new = pd.read_excel('database/database.xlsx', index_col='id')
 
         for prod in df_new.itertuples():
             upd_product = Product.query.get(prod.Index)
@@ -71,6 +71,6 @@ def get_db():
     df = pd.DataFrame(prods)
     df.set_index('id', inplace=True)
     # только в файл cur_base
-    df.to_excel('cur_base.xlsx')
+    df.to_excel('database/database.xlsx')
     flash('Db is saved')
     return redirect(url_for('file'))
