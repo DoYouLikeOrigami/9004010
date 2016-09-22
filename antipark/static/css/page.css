@@ -12,15 +12,15 @@
 }
 
 .rub {
-	font-family: 'als_rublregular';
-	font-style: normal;
+  font-family: 'als_rublregular';
+  font-style: normal;
 
-	&:after {
-		content: 'a';
-		font-style: inherit;
-		font-size: inherit;
-		line-height: inherit;
-	}
+  &:after {
+    content: 'a';
+    font-style: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
 */
 /* Mixins */
 .section:last-of-type {
@@ -199,7 +199,7 @@
 
 .products__option-item {
   color: #000;
-  background: transparent;
+  background: #e6e6e6;
   display: block;
   padding: 2px 4px; }
   .products__option-item:before, .products__option-item:after {

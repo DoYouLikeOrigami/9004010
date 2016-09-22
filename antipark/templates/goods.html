@@ -63,7 +63,7 @@
 			<wrapper class="container">
 				<nav class="mainNav">
 					<ul class="mainNav__list clearfix">
-						<li class="mainNav__item"><a href="." class="mainNav__link">Главная</a></li>
+						<li class="mainNav__item"><a href="/." class="mainNav__link">Главная</a></li>
 						<li class="mainNav__item"><a href="/goods" class="mainNav__link">Товары</a></li>
 						<li class="mainNav__item"><a href="/services" class="mainNav__link">Услуги</a></li>
 						<li class="mainNav__item"><a href="#contacts" class="mainNav__link">Контакты</a></li>
@@ -92,13 +92,13 @@
 				</nav>
 			</aside>
 			<div class="container">
-				<section id="goods" class="section goods">
+				<section class="section goods">
 					<header class="section__header">
 						<h2 class="section__header-name">Категории товаров</h2>
 					</header>
 					<ul class="list goods__list">{% for category_i in categories %}
-						<li class="list__item goods__item"><a href="/goods-item/{{ category_i.id }}" class="goods__link">
-								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
+						<li class="list__item goods__item"><a href="/goods-category/{{ category_i.id }}" class="goods__link">
+								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
 					</ul>
 				</section>
 			</div>

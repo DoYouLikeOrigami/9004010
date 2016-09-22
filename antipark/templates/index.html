@@ -65,7 +65,7 @@
 			<wrapper class="container">
 				<nav class="mainNav">
 					<ul class="mainNav__list clearfix">
-						<li class="mainNav__item"><a href="." class="mainNav__link">Главная</a></li>
+						<li class="mainNav__item"><a href="/." class="mainNav__link">Главная</a></li>
 						<li class="mainNav__item"><a href="/goods" class="mainNav__link">Товары</a></li>
 						<li class="mainNav__item"><a href="/services" class="mainNav__link">Услуги</a></li>
 						<li class="mainNav__item"><a href="#contacts" class="mainNav__link">Контакты</a></li>
@@ -99,8 +99,8 @@
 						<h2 class="section__header-name">Категории товаров</h2>
 					</header>
 					<ul class="list goods__list">{% for category_i in categories %}
-						<li class="list__item goods__item"><a href="/goods-item/{{ category_i.category }}" class="goods__link">
-								<wrapper class="goods__img-wrapper"><img src="/img/goods/{{ category_i.category }}.jpg" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
+						<li class="list__item goods__item"><a href="/goods-category/{{ category_i.id }}" class="goods__link">
+								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a></li>{% endfor %}
 					</ul>
 				</section>
 				<section id="service" class="section service">
@@ -220,24 +220,24 @@
 						.popup__descr
 							ul.popup__list
 								li.popup__list-item
-									| Стоимость доставки по Санкт-Петербургу - 
+									| Стоимость доставки по Санкт-Петербургу -
 									span.strong 600р
 								li.popup__list-item
-									| При заказе товаров  
-									span.strong от 10000р 
-									| - 
+									| При заказе товаров
+									span.strong от 10000р
+									| -
 									span.strong 300р
 								li.popup__list-item
 									| При заказе на установку парковочного барьера -
 									span.strong 300р
 								li.popup__list-item
-									| При заказе товаров от 
-									span.strong 20000р 
+									| При заказе товаров от
+									span.strong 20000р
 									| - бесплатная доставка по Санкт-Петербургу
 								li.popup__list-item
 									| Цена на доставку по Ленинградской области договорная
 								li.popup__list-item
-									span.strong Внимание: 
+									span.strong Внимание:
 									| цена за доставку бетонных изделий обсуждается в отдельном порядке и зависит от района города и количества доставляемого товара!
 				
 				div(class="popup__wrapper" id="service__popup-1")
@@ -250,7 +250,7 @@
 								li.popup__list-item
 									| Произведём монтаж антипарковочного оборудования в короткие сроки
 								li.popup__list-item
-									| Цены на установку каждой позиции представлены в 
+									| Цены на установку каждой позиции представлены в
 									a(class="popup__list-link", href="#") прайс-листе
 				
 				div(class="popup__wrapper" id="service__popup-2")
@@ -261,7 +261,7 @@
 						.popup__descr
 							ul.popup__list
 								li.popup__list-item
-									| Компания "Антипарк" предлагает услуги по проектированию автопарковок и автостоянок. Опытные специалисты подготовят проектно-сметную документацию для Вашего проекта в нескольких вариантах 
+									| Компания "Антипарк" предлагает услуги по проектированию автопарковок и автостоянок. Опытные специалисты подготовят проектно-сметную документацию для Вашего проекта в нескольких вариантах
 								li.popup__list-item
 									| Возможен выезд специалиста на объект для снятия замеров и обсуждения Ваших пожеланий по организации автопарковки. Также существует возможность удалённой работы по Вашему техническому заданию
 								li.popup__list-item
@@ -291,7 +291,7 @@
 						.popup__descr
 							ul.popup__list
 								li.popup__list-item
-									| Федеральная служба по надзору в сфере защиты прав потребителей и благополучия человека г. Москва 
+									| Федеральная служба по надзору в сфере защиты прав потребителей и благополучия человека г. Москва
 								li.popup__list-item
 									| Управление Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека по Санкт-Петербургу
 								li.popup__list-item

@@ -4,22 +4,22 @@ block personalStyle
 	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
-	| Название категории
-block main-content	
+	| {{ category.category }}
+block main-content
 	nav.bread
 		ul.bread__list
 			- var items = {'.': 'Главная', '/goods' : 'Товары', '#': '{{ category.category }}'}
 			each val, index in items
 				li(class="bread__item" + ((val=== '{{ category.category }}') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
-			
+
 
 	section.section.goodsSection
 		ul.products__list
 			| {% for goods_i in goods %}
 			li.products__item
-				.products__item-inner.clearfix 
-					.products__left 
+				.products__item-inner.clearfix
+					.products__left
 						.products__left-container
 							.products__attr
 								a(href= "/goods-item/{{ goods_i.id }}/").products__attr-name {{ goods_i.title }}
@@ -29,13 +29,13 @@ block main-content
 								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
 						.products__desc
 							a(href= '/goods-item/{{ goods_i.id }}/').products__desc-title {{ goods_i.title }}
-							ul.products__desc-options 
+							ul.products__desc-options
 								| {% for spec in goods_i.specs.strip('{}').split("', '") %}
-								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
+								li.products__option-item
 									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
 									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
 								| {% endfor %}
-							
+
 					.products__right
 						.products__info
 							.products__price

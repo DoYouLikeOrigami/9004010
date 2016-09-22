@@ -10,7 +10,7 @@ from .models import Product, Category
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html', categories=all_categories)
 
 all_categories = Category.query.all()
 all_goods      = Product.query.all()
@@ -70,7 +70,7 @@ def get_db():
     prods = defaultdict(list)
     for col in price_cols:
         for product in all_goods:
-            prods[col].append(getattr(product, col))    
+            prods[col].append(getattr(product, col))
 
     df = pd.DataFrame(prods)
     df.set_index('id', inplace=True)

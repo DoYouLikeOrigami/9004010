@@ -31,7 +31,7 @@ block main-content
 							a(href= '/goods-item/{{ goods_item.id }}/').products__desc-title {{ goods_item.title }}
 							ul.products__desc-options 
 								| {% for spec in goods_item.specs.strip('{}').split("', '") %}
-								li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
+								li.products__option-item
 									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
 									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
 								| {% endfor %}

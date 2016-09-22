@@ -15,9 +15,9 @@ block main-content
 		ul.list.goods__list
 			| {% for category_i in categories %}
 			li.list__item.goods__item
-				a(class="goods__link", href= '/goods-item/' + '{{ category_i.category }}')
+				a(class="goods__link", href= '/goods-category/' + '{{ category_i.id }}')
 					wrapper.goods__img-wrapper
-						img(src='/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= val)
+						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}")
 					span.goods__text {{ category_i.category }}
 			| {% endfor %}
 
@@ -37,7 +37,7 @@ block main-content
 								img(src= "/img/service/" + service__img[i], alt= service[i], class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
 						span.service__text= service[i]
 						//span.service__about Подробнее...
-	
+
 	section.section.about#about
 		header.section__header
 			h2.section__header-name О нашей компании
@@ -67,24 +67,24 @@ block main-content
 				.popup__descr
 					ul.popup__list
 						li.popup__list-item
-							| Стоимость доставки по Санкт-Петербургу - 
+							| Стоимость доставки по Санкт-Петербургу -
 							span.strong 600р
 						li.popup__list-item
-							| При заказе товаров  
-							span.strong от 10000р 
-							| - 
+							| При заказе товаров
+							span.strong от 10000р
+							| -
 							span.strong 300р
 						li.popup__list-item
 							| При заказе на установку парковочного барьера -
 							span.strong 300р
 						li.popup__list-item
-							| При заказе товаров от 
-							span.strong 20000р 
+							| При заказе товаров от
+							span.strong 20000р
 							| - бесплатная доставка по Санкт-Петербургу
 						li.popup__list-item
 							| Цена на доставку по Ленинградской области договорная
 						li.popup__list-item
-							span.strong Внимание: 
+							span.strong Внимание:
 							| цена за доставку бетонных изделий обсуждается в отдельном порядке и зависит от района города и количества доставляемого товара!
 
 		div(class="popup__wrapper" id="service__popup-1")
@@ -97,7 +97,7 @@ block main-content
 						li.popup__list-item
 							| Произведём монтаж антипарковочного оборудования в короткие сроки
 						li.popup__list-item
-							| Цены на установку каждой позиции представлены в 
+							| Цены на установку каждой позиции представлены в
 							a(class="popup__list-link", href="#") прайс-листе
 
 		div(class="popup__wrapper" id="service__popup-2")
@@ -108,7 +108,7 @@ block main-content
 				.popup__descr
 					ul.popup__list
 						li.popup__list-item
-							| Компания "Антипарк" предлагает услуги по проектированию автопарковок и автостоянок. Опытные специалисты подготовят проектно-сметную документацию для Вашего проекта в нескольких вариантах 
+							| Компания "Антипарк" предлагает услуги по проектированию автопарковок и автостоянок. Опытные специалисты подготовят проектно-сметную документацию для Вашего проекта в нескольких вариантах
 						li.popup__list-item
 							| Возможен выезд специалиста на объект для снятия замеров и обсуждения Ваших пожеланий по организации автопарковки. Также существует возможность удалённой работы по Вашему техническому заданию
 						li.popup__list-item
@@ -138,7 +138,7 @@ block main-content
 				.popup__descr
 					ul.popup__list
 						li.popup__list-item
-							| Федеральная служба по надзору в сфере защиты прав потребителей и благополучия человека г. Москва 
+							| Федеральная служба по надзору в сфере защиты прав потребителей и благополучия человека г. Москва
 						li.popup__list-item
 							| Управление Федеральной службы по надзору в сфере защиты прав потребителей и благополучия человека по Санкт-Петербургу
 						li.popup__list-item
