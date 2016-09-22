@@ -94,11 +94,12 @@
 			<div class="container">
 				<section class="section section--white">
 					<div class="file">
-						<!--form.form(action='/save_db/', method="POST", data-form="file")-->
-						<!--	label-->
-						<!--		| Загрузите xls файл-->
-						<!--		input(type="file", name='file_xls')-->
-						<!--	input(type="submit", value="Загрузить")-->
+						<form action="/save_db/" method="POST" data-form="file" class="form">
+							<label>Загрузите xls файл
+								<input type="file" name="file_xls">
+							</label>
+							<input type="submit" value="Загрузить">
+						</form>
 						<div class="file__buttons"><a href="/get_db/" class="btn btn--download-file">Скачать файл</a><a href="/save_db/" class="btn btn--reload-file">Обновить базу</a><a href="#" class="btn btn--reload-file">Обновить файл на Я́ндекс.маркет</a><a href="/" class="btn btn--secondary">На главную</a></div>
 					</div>
 				</section>
