@@ -23,7 +23,8 @@ def about():
 def goods_category(category_id):
     category = Category.query.get(category_id)
     goods = Product.query.filter_by(category=category_id).all()
-    return render_template('goods-category.html', category=category, goods=goods)
+    return render_template('goods-category.html', categories=all_categories,
+                                category=category, goods=goods)
 
 
 @app.route('/goods-item/<goods_item_id>/', methods=['GET', 'POST'])
@@ -32,13 +33,13 @@ def goods_item(goods_item_id):
         goods_item = Product.query.get(str(goods_item_id))
         category_id = goods_item.category
         category = Category.query.get(category_id)
-        return render_template('goods-item.html', category=category,
-                                                    goods_item=goods_item)
+        return render_template('goods-item.html', categories=all_categories,
+                                    category=category, goods_item=goods_item)
 
 
 @app.route('/file/', methods=['GET', 'POST'])
 def file():
-    return render_template('file.html')
+    return render_template('file.html', categories=all_categories)
 
 
 @app.route('/save_db/')

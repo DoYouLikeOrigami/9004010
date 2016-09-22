@@ -1,10 +1,8 @@
-﻿- var goods = {'stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj': 'Столбики','barjer-kupit-cena-parkovochnyj-skladnoy': 'Барьеры','konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj': 'Конусы', 'polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja': 'Полусферы', 'vazon-betonnyj-kupit-cena-dlja-cvetov': 'Вазоны Бетонные', 'urna-betonnaya-kupit-cena-dlja-musora': 'Урны Бетонные','skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka': 'Уличные Скамейки', 'Znaki': 'Дорожные Знаки', 'setka': 'Сетки Пластиковые', 'lenta': 'Лента Сигнальная', 'shlagbaum': 'Автоматические Шлагбаумы', 'turniket': 'Турникеты', 'privodi': 'Приводы для Ворот', 'police': 'Лежачий Полицейский'}
-
-aside.aside
+﻿aside.aside
 	nav.aside__nav
 		ul.aside__list
-			each val, index in goods
-				li(class="aside__item", qtip-text= val)
-					a(class="aside__item-link aside__item-" + index, href= index + '.html')
-						img(src="/static/img/small/" + index + '.jpg', alt= val).aside__item-img
-					
+			| {% for category_i in categories %}
+			li(class="aside__item", qtip-text= '{{ category_i.category }}')
+				a(class="aside__item-link aside__item-" + '{{ category_i.category }}', href= '/goods-category/{{ category_i.id }}/')
+					img(src="/static/img/small/{{ category_i.category }}.jpg", alt= '{{ category_i.category }}').aside__item-img
+			| {% endfor %}
