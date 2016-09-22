@@ -82,7 +82,7 @@
 			$('.buttonUp-body').addClass('buttonUp-transform');
 		}
 	};
-
+    /*
 	var _formSubmit = function (e) {
 		e.preventDefault();
 		
@@ -100,6 +100,7 @@
 		if (inputFile === "") {
 			return;
 		}
+
 
     btn.attr("value", "Отправка...");
 
@@ -119,7 +120,7 @@
     		}
     	}
     };
-
+*/
     setTimeout(function() {
     	btn.attr("value", "Загрузить");
     }, 2000);

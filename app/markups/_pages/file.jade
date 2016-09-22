@@ -9,10 +9,10 @@ block main-content
 
 	section.section.section--white
 		.file
-			form.form(action='/save_db/', method="POST", data-form="file")
+			form.form(action='/save_db/', method="POST", data-form="file", enctype='multipart/form-data' )
 				label
 					| Загрузите xls файл
-					input(type="file", name='file_xls')
+					input(type="file", name='file')
 				input(type="submit", value="Загрузить")
 			.file__buttons
 				a.btn.btn--download-file(href='/get_db/') Скачать файл

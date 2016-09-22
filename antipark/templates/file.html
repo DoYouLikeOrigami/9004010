@@ -81,9 +81,9 @@
 			<div class="container">
 				<section class="section section--white">
 					<div class="file">
-						<form action="/save_db/" method="POST" data-form="file" class="form">
+						<form action="/save_db/" method="POST" data-form="file" enctype="multipart/form-data" class="form">
 							<label>Загрузите xls файл
-								<input type="file" name="file_xls">
+								<input type="file" name="file">
 							</label>
 							<input type="submit" value="Загрузить">
 						</form>
