@@ -9,11 +9,11 @@ block main-content
 
 	section.section.section--white
 		.file
-			//form.form(action='/save_db/', method="POST", data-form="file")
-			//	label
-			//		| Загрузите xls файл
-			//		input(type="file", name='file_xls')
-			//	input(type="submit", value="Загрузить")
+			form.form(action='/save_db/', method="POST", data-form="file")
+				label
+					| Загрузите xls файл
+					input(type="file", name='file_xls')
+				input(type="submit", value="Загрузить")
 			.file__buttons
 				a.btn.btn--download-file(href='/get_db/') Скачать файл
 				a.btn.btn--reload-file(href='/save_db/') Обновить базу
