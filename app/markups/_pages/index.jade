@@ -25,18 +25,14 @@ block main-content
 		header.section__header
 			h2.section__header-name Предоставляемые услуги
 		ul.list.service__list
-			// аналогично
-			- var service = ['Доставка товаров по Санкт-Петербургу и Ленинградской области', 'Установка антипарковочного обордования', 'Проектирование, создание проектно-сметной документации', 'Производство изделий по вашим чертежам и эскизам', 'Помощь в получении допуска СРО на все виды работ', 'Согласование разработанной документации', 'Ремонт дорог', 'Дорожная разметка', 'Доставка топлива']
-			- var service__img = ['dostavka.jpg', 'ustanovka.jpg', 'proect.jpg', 'proizvodstvo.jpg', 'sro.jpg', 'nadzor.png', 'remont.jpg', 'razmetka.jpg', 'toplivo.jpg']
-			- var service__link = ['dostavka', 'ustanovka', 'proect', 'proizvodstvo', 'sro', 'nadzor', 'remont', 'razmetka', 'toplivo']
-			- for (var i = 0; i < service.length; i++)
-				li.list__item.service__item
-					a(class="service__link service__link-popup", href= service__link[i] + '.html')
+			| {% for service_i in services %}
+			li.list__item.service__item
+					a(class="service__link service__link-popup", href= '{{ service_i.link }}' + '.html')
 						wrapper.service__wrapper
 							wrapper.service__wrapper-inner
-								img(src= "/img/service/" + service__img[i], alt= service[i], class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
-						span.service__text= service[i]
-						//span.service__about Подробнее...
+								img(src= "/static/img/{{ service_i.image }}", alt='{{ service_i.name }}', class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
+						span.service__text='{{ service_i.name }}'
+			| {% endfor %}
 
 	section.section.about#about
 		header.section__header
