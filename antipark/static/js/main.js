@@ -1,4 +1,4 @@
-﻿var mainModule = (function () {
+var mainModule = (function () {
 
 	var init = function () {
 		_setUpListeners();
@@ -9,7 +9,7 @@
 		$('.city__select').on('change', _changeCity);
 		$('.buttonUp').on('click',_buttonUp);
 		$(window).on('scroll',_triangleWhere);
-		$('.form').on('submit', _formSubmit);
+		//$('.form').on('submit', _formSubmit);
 	};
 
 	var _showPopup = function (e) {
@@ -39,7 +39,7 @@
 			at: 'left center'
 			},
 			text = el.attr('qtip-text');
-	
+
 		el.qtip({
 			content: {
 				text: text
@@ -85,7 +85,7 @@
     /*
 	var _formSubmit = function (e) {
 		e.preventDefault();
-		
+
 		var form = $(this)
 		    data = form.data("form"),
 		    action = form.attr("action"),
@@ -106,7 +106,7 @@
 
     var formData = new FormData(form),
         xhr = new XMLHttpRequest();
-    
+
     xhr.open(method, action);
     xhr.onreadystatechange = function() {
     	if (xhr.readyState == 4) {
@@ -127,7 +127,7 @@
 
     xhr.send(formData);
 	};
-  	
+
 	return {
 		init: init
 	};
