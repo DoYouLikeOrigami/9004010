@@ -87,8 +87,15 @@
 						<li class="bread__item active"><a href="#" class="bread__link">{{ service.name }}</a></li>
 					</ul>
 				</nav>
-				<section class="section productSection">
-					<p>{{ service.text }}</p>
+				<section class="section">
+					<header class="section__header">
+						<h2 class="section__header-name">{{ service.name }}</h2>
+					</header>
+					<div class="full-desc__first-part__wrapper">
+						<div class="full-desc__first-part__text-wrapper">
+							<p class="full-desc__first-part__p-below">{{ service.text|striptags }}</p>
+						</div>
+					</div>
 				</section>
 			</div>
 		</wrapper>

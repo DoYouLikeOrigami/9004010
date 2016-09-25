@@ -27,7 +27,7 @@ block main-content
 		ul.list.service__list
 			| {% for service_i in services %}
 			li.list__item.service__item
-					a(class="service__link service__link-popup", href= '{{ service_i.link }}' + '.html')
+					a(class="service__link", href= '/service-item/{{ service_i.id }}')
 						wrapper.service__wrapper
 							wrapper.service__wrapper-inner
 								img(src= "/static/img/{{ service_i.image }}", alt='{{ service_i.name }}', class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
