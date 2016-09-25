@@ -6,15 +6,19 @@ from flask import Flask, render_template, request, url_for, redirect, flash, \
                             send_file
 
 from . import app, db
-from .models import Product, Category
+from .models import Product, Category, Service
 
-
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html', categories=all_categories)
 
 all_categories = Category.query.all()
 all_goods      = Product.query.all()
+all_services   = Service.query.all()
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', categories=all_categories,
+                                         services=all_services)
+
 
 @app.route('/goods/')
 def about():
@@ -29,20 +33,31 @@ def goods_category(category_id):
                                 category=category, goods=goods)
 
 
-@app.route('/goods-item/<goods_item_id>/', methods=['GET', 'POST'])
+@app.route('/goods-item/<goods_item_id>/')
 def goods_item(goods_item_id):
-    if request.method == 'GET':
-        goods_item = Product.query.get(str(goods_item_id))
-        category_id = goods_item.category
-        category = Category.query.get(category_id)
-        return render_template('goods-item.html', categories=all_categories,
-                                    category=category, goods_item=goods_item)
+    goods_item = Product.query.get(str(goods_item_id))
+    category_id = goods_item.category
+    category = Category.query.get(category_id)
+    return render_template('goods-item.html', categories=all_categories,
+                                category=category, goods_item=goods_item)
 
 
-@app.route('/file/', methods=['GET', 'POST'])
+@app.route('/services/')
+def services():
+    return render_template('services.html', services=all_services,
+                                            categories=all_categories)
+
+
+@app.route('/service-item/<service_item_id>')
+def service_item(service_item_id):
+    service_item = Service.query.get(str(service_item_id))
+    return render_template('service-item.html', service=service_item,
+                                            categories=all_categories)
+
+
+@app.route('/file/')
 def file():
     return render_template('file.html', categories=all_categories)
-
 
 
 @app.route('/save_db/', methods=['GET', 'POST'])
@@ -59,11 +74,11 @@ def save_db():
         if file.filename == '':
             return 'Bad'
         if file and allowed_file(file.filename):
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'database.xlsx'))
 
             import pandas as pd
 
-            df_new = pd.read_excel('database/' + file.filename, index_col='id')
+            df_new = pd.read_excel('database/database.xlsx', index_col='id')
             
             for prod in df_new.itertuples():
                 upd_product = Product.query.get(str(prod.Index))

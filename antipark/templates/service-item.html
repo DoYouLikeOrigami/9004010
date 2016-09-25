@@ -17,9 +17,10 @@
 		<!--styles-->
 		<link rel="stylesheet" type="text/css" href="/static/bower/normalize-css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/page.css">
 		<!--Title-->
-		<title>{{ category.category }}</title>
+		<title>{{ service.name }}</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
@@ -82,54 +83,12 @@
 				<nav class="bread">
 					<ul class="bread__list">
 						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
-						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">{{ category.category }}</a></li>
+						<li class="bread__item"><a href="/services" class="bread__link">Услуги</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">{{ service.name }}</a></li>
 					</ul>
 				</nav>
-				<section class="section goodsSection">
-					<ul class="products__list">{% for goods_i in goods %}
-						<li class="products__item">
-							<div class="products__item-inner clearfix">
-								<div class="products__left">
-									<div class="products__left-container">
-										<div class="products__attr"><a href="/goods-item/{{ goods_i.id }}/" class="products__attr-name">{{ goods_i.title }}</a></div>
-									</div>
-								</div>
-								<div class="products__about clearfix">
-									<div class="products__image"><a href="/goods-item/{{ goods_i.id }}/" class="products__image-display"><img src="/static/img/{{ goods_i.image }}" alt="{{ goods_i.title }}" class="products__image-pic goods__img"></a></div>
-									<div class="products__desc"><a href="/goods-item/{{ goods_i.id }}/" class="products__desc-title">{{ goods_i.title }}</a>
-										<ul class="products__desc-options">{% for spec in goods_i.specs.strip('{}').split("', '") %}
-											<li class="products__option-item">
-												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
-												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>
-											</li>{% endfor %}
-										</ul>
-									</div>
-								</div>
-								<div class="products__right">
-									<div class="products__info">
-										<div class="products__price"><span class="products__price-label">Цена</span><span class="products__price-num">{{ goods_i.price }}<i class="rub"></i></span></div>
-										<div class="products__price"><span class="products__price-label">Установка</span><span class="products__price-num">{{ goods_i.stage_price }}<i class="rub"></i></span></div>
-										<div class="products__info-button"><a href="#" class="products__buy-btn">Заказать</a></div>
-									</div>
-								</div>
-							</div>
-						</li>{% endfor %}
-						<header class="section__header">
-							<h2 class="section__header-name">{{ category.category }}</h2>
-							<div class="full-desc__first-part__wrapper">
-								<!--h2.full-desc__first-part__title!=title-->
-								<!--each val, index in img_src-->
-								<!--	.full-desc__first-part__foto-and-desc-->
-								<!--		.full-desc__first-part__foto-->
-								<!--			img(src!=val, width=200)-->
-								<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
-								<wrapper class="full-desc__first-part__text-wrapper">
-									<p class="full-desc__first-part__p-below">{{ category.description }}</p>
-								</wrapper>
-							</div>
-						</header>
-					</ul>
+				<section class="section productSection">
+					<p>{{ service.text }}</p>
 				</section>
 			</div>
 		</wrapper>

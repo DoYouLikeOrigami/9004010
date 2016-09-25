@@ -30,3 +30,15 @@ class Product(db.Model):
 
     def __unicode__(self):
         return self.title
+
+
+class Service(db.Model):
+    __tablename__ = "services"
+    id = db.Column(db.Integer, primary_key=True)
+    # alias = db.Column(db.Unicode(100))
+    name  = db.Column(db.Unicode(64))
+    image = db.Column(db.Unicode(128))
+    text  = db.Column(db.UnicodeText())
+
+    def __unicode__(self):
+        return self.category
