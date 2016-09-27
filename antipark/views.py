@@ -14,6 +14,9 @@ all_goods      = Product.query.all()
 all_services   = Service.query.all()
 
 
+site_url = 'http://antipark.ru/'
+
+
 @app.route('/')
 def index():
     return render_template('index.html', categories=all_categories,
@@ -60,7 +63,38 @@ def file():
     return render_template('file.html', categories=all_categories)
 
 
-@app.route('/save_db/', methods=['GET', 'POST'])
+@app.route('/update_market/')
+def update_market():
+    import pandas as pd
+    import re
+    from collections import defaultdict
+
+    price_cols = ['id', 'title', 'price', 'category', 'url', 'currencyId']
+
+    prods = defaultdict(list)
+    for col in price_cols:
+        for product in all_goods:
+            if col == 'url':
+                prods[col].append(site_url + 'goods-item/' + str(product.id))
+            elif col == 'currencyId':
+                prods[col].append('RUR')
+            elif col == 'price':
+                pr = re.sub('\D', '', getattr(product, col))
+                if not pr:
+                    pr = '1'
+                prods[col].append(pr)
+            else:
+                prods[col].append(getattr(product, col))
+
+    df = pd.DataFrame(prods)
+    df.set_index('id', inplace=True)
+    df.rename(columns={'title': 'name'}, inplace=True)
+    df.to_excel('database/market.xlsx')
+
+    return 'OK'
+
+
+@app.route('/save_db/', methods=['POST'])
 def save_db():
 
     def allowed_file(filename):
