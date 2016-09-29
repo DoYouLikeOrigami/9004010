@@ -7,14 +7,14 @@ block personalStyle
 block title
 	| {{ service.name }}
 
-block main-content	
+block main-content
 	nav.bread
 		ul.bread__list
 			- var items = {'.': 'Главная', '/services' : 'Услуги', '#' : '{{ service.name }}' }
 			each val, index in items
 				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
-  
+
 	section.section.productSection
 		p
-			| {{ service.text }}
+			| {{ service.text|safe }}
