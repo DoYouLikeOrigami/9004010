@@ -14,6 +14,26 @@ var mainModule = (function () {
 		$('.order-popup__form').on('submit', _makeOrder);
 	};
 
+	var _showSuccPopup = function (message) {
+		console.log('show succ');
+		var succPopup = $('.info-popup--success').text(message);
+		succPopup.fadeIn(400, function() {
+			var timer = setTimeout(function() {
+				succPopup.fadeOut('400');
+			}, 2000);
+		});
+	}
+
+	var _showErrPopup = function (message) {
+		console.log('show error');
+		var errPopup = $('.info-popup--error').text(message);
+		errPopup.fadeIn(400, function() {
+			var timer = setTimeout(function() {
+				errPopup.fadeOut('400');
+			}, 2000);
+		});
+	}
+
 	var _request = function(method, url, data, fn) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url);
@@ -84,10 +104,11 @@ var mainModule = (function () {
     _request('post', '/order', data, function (response) {
       if (response === 'OK') {
         console.info('Успешно отправлено');
-        //popupThanks.classList.add('popup--active');
+        _showSuccPopup('Заявка получена');
       }
       else {
         console.info('Ошибка');
+        _showErrPopup('Ошибка на сервере');
       }
       _hideOrderPopup();
       btn.val('Заказать');

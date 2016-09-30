@@ -915,3 +915,29 @@ p {
 			}
 		}
 	}
+
+	.info-popup {
+		display: none;
+		position: fixed;
+
+		top: 5%;
+		right: 5%;
+
+		font-size: 20px;
+		padding: 15px 20px;
+		color: #fff;
+		background: royalblue;
+		border-radius: 4px;
+
+		box-shadow: 0 0 4px 2px #777;
+
+		z-index: 3;
+
+		&--success {
+			background: #12b112;
+		}
+
+		&--error {
+			background: #fb3f36;
+		}
+	}

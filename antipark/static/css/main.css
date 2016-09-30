@@ -651,3 +651,22 @@ p {
       background-color: transparent;
       color: #aaa;
       text-decoration: underline; }
+
+.info-popup {
+  display: none;
+  position: fixed;
+  top: 5%;
+  right: 5%;
+  font-size: 20px;
+  padding: 15px 20px;
+  color: #fff;
+  background: royalblue;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 4px 2px #777;
+  box-shadow: 0 0 4px 2px #777;
+  z-index: 3; }
+  .info-popup--success {
+    background: #12b112; }
+  .info-popup--error {
+    background: #fb3f36; }
