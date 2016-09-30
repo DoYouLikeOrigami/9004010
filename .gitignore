@@ -3,3 +3,5 @@ node_modules
 new
 __pycache__/
 */**/__pycache/
+app/bower
+antipark/static/bower
