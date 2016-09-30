@@ -1,20 +1,24 @@
 extends ../main
 
 block personalStyle
-	link(rel="stylesheet", type="text/css", href="/static/css/product.css")
-	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
+  link(rel="stylesheet", type="text/css", href="/static/css/product.css")
+  link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
-	| {{ service.name }}
+  | {{ service.name }}
 
 block main-content
-	nav.bread
-		ul.bread__list
-			- var items = {'.': 'Главная', '/services' : 'Услуги', '#' : '{{ service.name }}' }
-			each val, index in items
-				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
-					a(href= index, class="bread__link")= val
+  nav.bread
+    ul.bread__list
+      - var items = {'.': 'Главная', '/services' : 'Услуги', '#' : '{{ service.name }}' }
+      each val, index in items
+        li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
+          a(href= index, class="bread__link")= val
 
-	section.section.productSection
-		p
-			| {{ service.text|safe }}
+  section.section
+    header.section__header
+      h2.section__header-name
+        | {{ service.name }}
+    .full-desc__first-part__wrapper
+      .full-desc__first-part__text-wrapper
+        p.full-desc__first-part__p-below {{ service.text|safe }}

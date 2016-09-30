@@ -333,11 +333,14 @@
 
 .full-desc__first-part__text-wrapper {
   display: block;
-  padding: 20px 20px; }
-  .full-desc__first-part__text-wrapper p {
-    color: #4c4c4c;
-    margin-bottom: 10px;
-    text-indent: 20px; }
+  padding: 20px 20px;
+  color: #4c4c4c; }
+  .full-desc__first-part__text-wrapper p, .full-desc__first-part__text-wrapper h2 {
+    margin-bottom: 10px; }
+  .full-desc__first-part__text-wrapper h2 {
+    font-size: 18px; }
+  .full-desc__first-part__text-wrapper a {
+    color: #ff6600; }
 
 .fullDesc__list-wrapper {
   margin: 30px; }
