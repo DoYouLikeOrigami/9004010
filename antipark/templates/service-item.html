@@ -93,7 +93,7 @@
 					</header>
 					<div class="full-desc__first-part__wrapper">
 						<div class="full-desc__first-part__text-wrapper">
-							<p class="full-desc__first-part__p-below">{{ service.text|striptags }}</p>
+							<p class="full-desc__first-part__p-below">{{ service.text|safe }}</p>
 						</div>
 					</div>
 				</section>
@@ -111,6 +111,24 @@
 				</label>
 				<button type="submit" class="orderCall__form-button">Заказать</button>
 			</form>
+		</div>
+		<div class="order-popup">
+			<div class="order-popup__body">
+				<header class="order-popup__header">Оставьте заявку<small>Наш менеджер свяжется с вами в течение рабочего дня</small></header>
+				<form action="/order" class="order-popup__form">
+					<p class="order-popup__text order-popup__text--name">Наименование товара:<strong>Столбик парковочный</strong></p>
+					<!--label.order-popup__label
+					| Укажите количество:
+					input.order-popup__input.order-popup__input--number(type="number" value="" min="0")
+					-->
+					<label class="order-popup__label">Укажите ваши контакты:
+						<input type="email" required placeholder="ivanov@firm.ru" class="order-popup__input order-popup__input--email">
+						<input type="tel" required placeholder="+7 999 999-99-99" class="order-popup__input order-popup__input--tel">
+					</label>
+					<textarea rows="6" placeholder="Количество товара, комментарий о доставке, вопрос менеджеру и так далее..." class="order-popup__textarea"></textarea>
+					<input type="submit" value="Заказать" class="order-popup__btn order-popup__btn--order"><a href="#" class="order-popup__btn order-popup__btn--close">Закрыть</a>
+				</form>
+			</div>
 		</div>
 		<div class="buttonUp">
 			<div href="0" class="buttonUp-body">

@@ -21,4 +21,4 @@ block main-content
         | {{ service.name }}
     .full-desc__first-part__wrapper
       .full-desc__first-part__text-wrapper
-        p.full-desc__first-part__p-below {{ service.text|striptags }}
+        p.full-desc__first-part__p-below {{ service.text|safe }}
