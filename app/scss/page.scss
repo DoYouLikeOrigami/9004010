@@ -446,17 +446,18 @@ $akcentGrey: #e6e6e6;
     &__text-wrapper {
       display: block;
       padding: 20px 20px;
+      color: $footerColor;
 
-      p {
-        color: $footerColor;
+      p, h2 {
         margin-bottom: 10px;
-        text-indent: 20px;
+      }
+
+      h2 {
+        font-size: 18px;
       }
 
       a {
-        //color: $orange;
-        //text-decoration: none;
-        //76font-style: italic;
+        color: $orange;
       }
     }
   }

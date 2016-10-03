@@ -1,62 +1,88 @@
 include _common/mixins
 doctype html
 html(lang="ru")
-	head
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width")
-		link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
-			
-		//IE
-		meta(http-equiv="X-UA-Compatible", content="IE=edge")
-		
-		//SEO
-		meta(name="description", content="Товары для ограждения территории. Услуги по благоустройтсву")
-		meta(name="keywords", content="Ограждение ограждения благоустройство территории СПб Санкт-Петербург Москва Новосибирск")
-		meta(name="author", content="")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width")
+    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 
-		//fonts
-		link(rel="stylesheet", type="text/css", href="/static/fonts/fonts.css")
+    //IE
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
 
-		//Modernizer
-		script(src="/static/bower/modernizr/src/modernizr.js")
+    //SEO
+    meta(name="description", content="Товары для ограждения территории. Услуги по благоустройтсву")
+    meta(name="keywords", content="Ограждение ограждения благоустройство территории СПб Санкт-Петербург Москва Новосибирск")
+    meta(name="author", content="")
 
-		//styles
-		link(rel="stylesheet", type="text/css", href="/static/bower/normalize-css/normalize.css")
-		link(rel="stylesheet", type="text/css" href="/static/css/main.css")
-		block personalStyle
-		
-		//Title
-		title
-			block title
+    //fonts
+    link(rel="stylesheet", type="text/css", href="/static/fonts/fonts.css")
 
-	body
-		wrapper.mainWrapper
-			include _common/_header
-			include _common/_nav
-			include _common/_aside
-			.container
-				block main-content
+    //Modernizer
+    script(src="/static/bower/modernizr/src/modernizr.js")
 
-		.orderCall__popup
-			form(action="php/orderCall.php", class="orderCall__form")
-				.server-mes.success-mes
-				.server-mes.error-mes
-				label.orderCall__form-label.clearfix
-					span.orderCall__form-label-name Ваше имя
-					input(type="text", name="personName", placeholder="Как к Вам обращаться", class="orderCall__form-label-input" id="personName", required)
-				label.orderCall__form-label.clearfix
-					span.orderCall__form-label-name Номер телефона
-					input(type="text", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
-				button(type="submit", class="orderCall__form-button") Заказать
+    //styles
+    link(rel="stylesheet", type="text/css", href="/static/bower/normalize-css/normalize.css")
+    link(rel="stylesheet", type="text/css" href="/static/css/main.css")
+    block personalStyle
 
-		.buttonUp
-			.buttonUp-body(href='0')
-				.buttonUp-triangleUp
+    //Title
+    title
+      block title
 
-		include _common/_footer
+  body
+    wrapper.mainWrapper
+      include _common/_header
+      include _common/_nav
+      include _common/_aside
+      .container
+        block main-content
+
+    .orderCall__popup
+      form(action="php/orderCall.php", class="orderCall__form")
+        .server-mes.success-mes
+        .server-mes.error-mes
+        label.orderCall__form-label.clearfix
+          span.orderCall__form-label-name Ваше имя
+          input(type="text", name="personName", placeholder="Как к Вам обращаться", class="orderCall__form-label-input" id="personName", required)
+        label.orderCall__form-label.clearfix
+          span.orderCall__form-label-name Номер телефона
+          input(type="text", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
+        button(type="submit", class="orderCall__form-button") Заказать
+
+    .order-popup
+      .order-popup__body
+        header.order-popup__header
+          | Оставьте заявку
+          small Наш менеджер свяжется с вами в течение рабочего дня
+        form.order-popup__form(action="/order")
+          p.order-popup__text.order-popup__text--name
+            | Наименование товара:
+            strong Столбик парковочный
+          //label.order-popup__label
+            | Укажите количество:
+            input.order-popup__input.order-popup__input--number(type="number" value="" min="0")
+          label.order-popup__label
+            | Укажите ваши контакты:
+            input.order-popup__input.order-popup__input--email(type="email" required placeholder="ivanov@firm.ru")
+            input.order-popup__input.order-popup__input--tel(type="tel" required placeholder="+7 999 999-99-99")
+          textarea.order-popup__textarea(rows="6" placeholder="Количество товара, комментарий о доставке, вопрос менеджеру и так далее...")
+          input.order-popup__btn.order-popup__btn--order(type="submit" value="Заказать")
+          a.order-popup__btn.order-popup__btn--close(href="#") Закрыть
+
+    .info-popup.info-popup--success
+      | Успех
+
+    .info-popup.info-popup--error
+      | Ошибка
+
+    .buttonUp
+      .buttonUp-body(href='0')
+        .buttonUp-triangleUp
+
+    include _common/_footer
 
 
-		script(src="/static/bower/jquery/jquery.min.js")
-		script(src="/static/bower/bPopup/jquery.bpopup.min.js")
-		script(src="/static/js/main.js")
-		block personalScript
+    script(src="/static/bower/jquery/jquery.min.js")
+    script(src="/static/bower/bPopup/jquery.bpopup.min.js")
+    script(src="/static/js/main.js")
+    block personalScript

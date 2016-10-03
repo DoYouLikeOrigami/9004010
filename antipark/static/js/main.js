@@ -1,4 +1,4 @@
-﻿var mainModule = (function () {
+var mainModule = (function () {
 
 	var init = function () {
 		_setUpListeners();
@@ -9,8 +9,45 @@
 		$('.city__select').on('change', _changeCity);
 		$('.buttonUp').on('click',_buttonUp);
 		$(window).on('scroll',_triangleWhere);
-		$('.form').on('submit', _formSubmit);
+		$('.products__buy-btn').on('click', _showOrderPopup);
+		$('.order-popup__btn--close').on('click', _hideOrderPopup);
+		$('.order-popup__form').on('submit', _makeOrder);
 	};
+
+	var _showSuccPopup = function (message) {
+		console.log('show succ');
+		var succPopup = $('.info-popup--success').text(message);
+		succPopup.fadeIn(400, function() {
+			var timer = setTimeout(function() {
+				succPopup.fadeOut('400');
+			}, 2000);
+		});
+	}
+
+	var _showErrPopup = function (message) {
+		console.log('show error');
+		var errPopup = $('.info-popup--error').text(message);
+		errPopup.fadeIn(400, function() {
+			var timer = setTimeout(function() {
+				errPopup.fadeOut('400');
+			}, 2000);
+		});
+	}
+
+	var _request = function(method, url, data, fn) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    //xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+
+    xhr.addEventListener('readystatechange', function () {
+      if (xhr.readyState == 4) {
+        fn(xhr.responseText);
+      }
+    });
+    xhr.send(JSON.stringify(data));
+  };
 
 	var _showPopup = function (e) {
 		e.preventDefault();
@@ -21,6 +58,61 @@
 			modalColor: '#7E8C99',
 			opacity: 0.75,
 		});
+	};
+
+	var _hideOrderPopup = function (e) {
+		if (e) {
+			e.preventDefault();
+		}
+		var orderPopup = $('.order-popup'),
+		    orderPopupBody = $('.order-popup__body'),
+		    inputs = orderPopupBody.find('.order-popup__input').val(""),
+		    goodsComment = orderPopupBody.find('.order-popup__textarea').val("");
+		orderPopupBody.fadeOut('400', function () {
+			orderPopup.fadeOut('300');
+		});
+	};
+
+	var _showOrderPopup = function (e) {
+		e.preventDefault();
+		var orderPopup = $('.order-popup'),
+		    orderPopupBody = orderPopup.find('.order-popup__body'),
+		    btn = $(this),
+		    good = btn.closest('.products__item'),
+		    goodsName = good.find('.products__attr-name').text(),
+		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName);
+		orderPopup.fadeIn('400', function () {
+			orderPopupBody.fadeIn('300');
+		});
+	};
+
+	var _makeOrder = function (e) {
+		e.preventDefault();
+		var orderPopupForm = $(this),
+		    goodsName = orderPopupForm.find('.order-popup__text--name strong').text() || "Не заполнено",
+		    userMail = orderPopupForm.find('.order-popup__input--mail').val() || "Не заполнено",
+		    userTel = orderPopupForm.find('.order-popup__input--tel').val() || "Не заполнено",
+		    goodsComment = orderPopupForm.find('.order-popup__textarea').val() || "Не заполнено",
+		    btn = orderPopupForm.find('.order-popup__btn--order').val('Отправка...'),
+		    data = {
+		    	good: goodsName,
+		    	mail: userMail,
+		    	tel: userTel,
+		    	comment: goodsComment
+		    };
+
+    _request('post', '/order', data, function (response) {
+      if (response === 'OK') {
+        console.info('Успешно отправлено');
+        _showSuccPopup('Заявка получена');
+      }
+      else {
+        console.info('Ошибка');
+        _showErrPopup('Ошибка на сервере');
+      }
+      _hideOrderPopup();
+      btn.val('Заказать');
+    });
 	};
 
 	var _changeCity = function (e) {
@@ -39,7 +131,7 @@
 			at: 'left center'
 			},
 			text = el.attr('qtip-text');
-	
+
 		el.qtip({
 			content: {
 				text: text
@@ -82,52 +174,7 @@
 			$('.buttonUp-body').addClass('buttonUp-transform');
 		}
 	};
-    /*
-	var _formSubmit = function (e) {
-		e.preventDefault();
-		
-		var form = $(this)
-		    data = form.data("form"),
-		    action = form.attr("action"),
-		    method = form.attr("method"),
-		    inputFile = form.find("input[type='file']").val(),
-		    btn = form.find("input[type='submit']");
 
-		if (data !== "file") {
-			return;
-		}
-
-		if (inputFile === "") {
-			return;
-		}
-
-
-    btn.attr("value", "Отправка...");
-
-    var formData = new FormData(form),
-        xhr = new XMLHttpRequest();
-    
-    xhr.open(method, action);
-    xhr.onreadystatechange = function() {
-    	if (xhr.readyState == 4) {
-    		if(xhr.status == 200) {
-    			data = xhr.responseText;
-    			if(data == "OK") {
-    				btn.attr("value", "Принято!");
-    			} else {
-    				btn.attr("value", "Ошибка! Мб ответ не ОК?");
-    			}
-    		}
-    	}
-    };
-*/
-    setTimeout(function() {
-    	btn.attr("value", "Загрузить");
-    }, 2000);
-
-    xhr.send(formData);
-	};
-  	
 	return {
 		init: init
 	};
