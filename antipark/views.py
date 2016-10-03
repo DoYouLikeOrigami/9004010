@@ -65,7 +65,7 @@ def file():
     return render_template('file.html', categories=all_categories)
 
 
-@app.route('/order') # , methods=['POST'])
+@app.route('/order', methods=['POST'])
 def orderCall():
     if request.method == 'POST':
         data = request.get_json()
