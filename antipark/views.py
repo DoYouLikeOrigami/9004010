@@ -79,7 +79,8 @@ def orderCall():
         msg.html += '<div style="padding: 20px 40px 20px 80px;">'
         msg.html += '<p slyle="color: #000; font-size: 18px;">Товар: <strong>' + data['goods'] + '</strong></p>'
         msg.html += '<p slyle="color: #000; font-size: 18px;">Телефон клиента: <strong><a href="tel: "' + data['tel'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['tel'] + '</a></strong></p>'
-        msg.html += '<p slyle="color: #000; font-size: 18px;">Email клиента: <strong><a href="email: "' + data['email'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['email'] + '</a></strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Email клиента: <strong><a href="email: "' + data['mail'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['email'] + '</a></strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Комментарии к заказу:' + data['comment'] + '</p>'
         msg.html += '<p slyle="color: #000; font-size: 18px;">Время отправки: ' + datetime.datetime.now().ctime() + '</p>'
         msg.html += '<hr>'
         msg.html += '<p slyle="color: #000; font-size: 12px;">Заявка отправлена с сайта <a href="http://antipark.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">antipark.ru</a></p>'
@@ -140,7 +141,7 @@ def save_db():
             import pandas as pd
 
             df_new = pd.read_excel('database/database.xlsx', index_col='id')
-            
+
             for prod in df_new.itertuples():
                 upd_product = Product.query.get(str(prod.Index))
                 for field in prod._fields[1:]:
