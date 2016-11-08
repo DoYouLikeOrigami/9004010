@@ -10,7 +10,7 @@ block title
 block main-content
   nav.bread
     ul.bread__list
-      - var items = {'.': 'Главная', '/services' : 'Услуги', '#' : '{{ service.name }}' }
+      - var items = {'/': 'Главная', '/services' : 'Услуги', '#' : '{{ service.name }}' }
       each val, index in items
         li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
           a(href= index, class="bread__link")= val

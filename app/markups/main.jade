@@ -38,16 +38,11 @@ html(lang="ru")
         block main-content
 
     .orderCall__popup
-      form(action="php/orderCall.php", class="orderCall__form")
-        .server-mes.success-mes
-        .server-mes.error-mes
-        label.orderCall__form-label.clearfix
-          span.orderCall__form-label-name Ваше имя
-          input(type="text", name="personName", placeholder="Как к Вам обращаться", class="orderCall__form-label-input" id="personName", required)
+      form(action="/order-call" method="post" class="orderCall__form")
         label.orderCall__form-label.clearfix
           span.orderCall__form-label-name Номер телефона
-          input(type="text", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
-        button(type="submit", class="orderCall__form-button") Заказать
+          input(type="tel", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
+        input(type="submit", class="orderCall__form-button" value="Заказать звонок")
 
     .order-popup
       .order-popup__body

@@ -33,7 +33,7 @@
 								<li class="mainHeader__mail-item city-change novosib-city hidden"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
 							</ul>
 						</div>
-						<div class="mainHeader__right sm__padding-right">
+						<div class="mainHeader__right sm__padding-right"><a href="/delivery" class="mainHeader__link">Доставка</a>
 							<div class="city">
 								<label class="city__label">Ваш город</label>
 								<select name="select-city" class="city__select">
@@ -56,7 +56,7 @@
 								<h3 class="callUs__text-name">Звоните нам ежедневно</h3><span class="callUs__text-descr">с 8:00 до 23:00</span>
 							</div>
 						</wrapper>
-						<wrapper class="contacts sm__padding-right"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812) <span class="contacts__strong">900-40-10	</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10	</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
+						<wrapper class="contacts sm__padding-right"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812)<span class="contacts__strong">900-40-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
 					</wrapper>
 				</wrapper>
 			</header>
@@ -134,16 +134,11 @@
 			</div>
 		</wrapper>
 		<div class="orderCall__popup">
-			<form action="php/orderCall.php" class="orderCall__form">
-				<div class="server-mes success-mes"></div>
-				<div class="server-mes error-mes"></div>
-				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Ваше имя</span>
-					<input type="text" name="personName" placeholder="Как к Вам обращаться" id="personName" required class="orderCall__form-label-input">
-				</label>
+			<form action="/order-call" method="post" class="orderCall__form">
 				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Номер телефона</span>
-					<input type="text" name="personPhone" placeholder="Куда Вам позвонить" id="personPhone" required class="orderCall__form-label-input">
+					<input type="tel" name="personPhone" placeholder="Куда Вам позвонить" id="personPhone" required class="orderCall__form-label-input">
 				</label>
-				<button type="submit" class="orderCall__form-button">Заказать</button>
+				<input type="submit" value="Заказать звонок" class="orderCall__form-button">
 			</form>
 		</div>
 		<div class="order-popup">
@@ -184,7 +179,7 @@
 					</wrapper>
 					<wrapper class="contacts sm__padding-right">
 						<ul class="contacts__list">
-							<li class="contacts__list-item city-change spb-city"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(812) <span class="contacts__strong">900-40-10</span></a></li>
+							<li class="contacts__list-item city-change spb-city"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(812)<span class="contacts__strong">900-40-10</span></a></li>
 							<li class="contacts__list-item city-change msc-city hidden"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(915)<span class="contacts__strong">340-20-10</span></a></li>
 							<li class="contacts__list-item city-change novosib-city hidden"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(952)<span class="contacts__strong">909-98-88</span></a></li>
 							<li class="contacts__list-item city-change spb-city"><a href="mailto:spb@9004010.ru" class="contacts__list-link">spb@9004010.ru</a></li>
@@ -195,9 +190,9 @@
 				</wrapper>
 			</div>
 			<div class="mainFooter__bottom">
-				<wrapper class="container">
-					<div class="copyright">СТОЛБИК.РФ 2008-2015 &copy; </div>
-				</wrapper>
+				<div class="container">
+					<div class="copyright">СТОЛБИК.РФ 2008-2015 &copy;<a href="/bank">Банковские реквизиты</a></div>
+				</div>
 			</div>
 		</footer>
 		<script src="/static/bower/jquery/jquery.min.js"></script>

@@ -12,6 +12,7 @@ var mainModule = (function () {
 		$('.products__buy-btn').on('click', _showOrderPopup);
 		$('.order-popup__btn--close').on('click', _hideOrderPopup);
 		$('.order-popup__form').on('submit', _makeOrder);
+		$('.orderCall__form').on('submit', _orderCall);
 	};
 
 	var _showSuccPopup = function (message) {
@@ -88,12 +89,14 @@ var mainModule = (function () {
 
 	var _makeOrder = function (e) {
 		e.preventDefault();
-		var orderPopupForm = $(this),
-		    goodsName = orderPopupForm.find('.order-popup__text--name strong').text() || "Не заполнено",
-		    userMail = orderPopupForm.find('.order-popup__input--mail').val() || "Не заполнено",
-		    userTel = orderPopupForm.find('.order-popup__input--tel').val() || "Не заполнено",
-		    goodsComment = orderPopupForm.find('.order-popup__textarea').val() || "Не заполнено",
-		    btn = orderPopupForm.find('.order-popup__btn--order').val('Отправка...'),
+		var form = $(this),
+		    goodsName = form.find('.order-popup__text--name strong').text() || "Не заполнено",
+		    userMail = form.find('.order-popup__input--mail').val() || "Не заполнено",
+		    userTel = form.find('.order-popup__input--tel').val() || "Не заполнено",
+		    goodsComment = form.find('.order-popup__textarea').val() || "Не заполнено",
+		    btn = form.find('.order-popup__btn--order'),
+		    method = form.attr('method'),
+		    action = form.attr('action'),
 		    data = {
 		    	good: goodsName,
 		    	mail: userMail,
@@ -101,8 +104,10 @@ var mainModule = (function () {
 		    	comment: goodsComment
 		    };
 
-    _request('post', '/order', data, function (response) {
-      if (response === 'OK') {
+		btn.val('Отправка...')
+
+    _request(method, action, data, function (response) {
+      if (response == 'OK') {
         console.info('Успешно отправлено');
         _showSuccPopup('Заявка получена');
       }
@@ -110,8 +115,38 @@ var mainModule = (function () {
         console.info('Ошибка');
         _showErrPopup('Ошибка на сервере');
       }
+
       _hideOrderPopup();
       btn.val('Заказать');
+    });
+	};
+
+	var _orderCall = function (e) {
+		e.preventDefault();
+		var form = $(this),
+		    tel = form.find('input[type=tel]').val() || "Не заполнено",
+		    btn = form.find('.orderCall__form-button'),
+		    action = form.attr('action'),
+		    method = form.attr('method'),
+		    data = {
+		    	tel: tel
+		    };
+
+		btn.val('Отправка...');
+
+    _request(method, action, data, function (response) {
+      if (response == 'OK') {
+        console.info('Успешно отправлено');
+        _showSuccPopup('Мы скоро Вам перезвоним');
+      }
+      else {
+        console.info('Ошибка');
+        _showErrPopup('Ошибка на сервере');
+      }
+
+      _hideOrderPopup();
+      btn.val('Заказать звонок');
+      tel.val('');
     });
 	};
 
