@@ -10,7 +10,6 @@ var mainModule = (function () {
 		$('.buttonUp').on('click',_buttonUp);
 		$(window).on('scroll',_triangleWhere);
 		$('.products__buy-btn').on('click', _showOrderPopup);
-		$('.order-popup__btn--close').on('click', _hideOrderPopup);
 		$('.order-popup__form').on('submit', _makeOrder);
 		$('.orderCall__form').on('submit', _orderCall);
 	};
@@ -61,21 +60,26 @@ var mainModule = (function () {
 		});
 	};
 
+	var _hidePopup = function (e) {
+		if (e) {
+			e.preventDefault();
+		}
+		var popup = $('.orderCall__popup');
+		popup.bPopup();
+		popup.close();
+	};
+
 	var _hideOrderPopup = function (e) {
 		if (e) {
 			e.preventDefault();
 		}
-		var orderPopup = $('.order-popup'),
-		    orderPopupBody = $('.order-popup__body'),
-		    inputs = orderPopupBody.find('.order-popup__input').val(""),
-		    goodsComment = orderPopupBody.find('.order-popup__textarea').val("");
-		orderPopupBody.fadeOut('400', function () {
-			orderPopup.fadeOut('300');
-		});
+		var popup = $('.order-popup');
+		popup.bPopup();
+		popup.close();
 	};
 
 	var _showOrderPopup = function (e) {
-		e.preventDefault();
+		/*e.preventDefault();
 		var orderPopup = $('.order-popup'),
 		    orderPopupBody = orderPopup.find('.order-popup__body'),
 		    btn = $(this),
@@ -84,6 +88,21 @@ var mainModule = (function () {
 		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName);
 		orderPopup.fadeIn('400', function () {
 			orderPopupBody.fadeIn('300');
+		});*/
+
+		e.preventDefault();
+		var orderPopup = $('.order-popup'),
+		    orderPopupBody = orderPopup.find('.order-popup__body'),
+		    btn = $(this),
+		    good = btn.closest('.products__item'),
+		    goodsName = good.find('.products__attr-name').text(),
+		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName);;
+		orderPopup.bPopup({
+			speed: 550,
+			transition: 'slideDown',
+			modalColor: '#7E8C99',
+			opacity: 0.75,
+			closeClass: 'order-popup__btn--close'
 		});
 	};
 
@@ -124,12 +143,12 @@ var mainModule = (function () {
 	var _orderCall = function (e) {
 		e.preventDefault();
 		var form = $(this),
-		    tel = form.find('input[type=tel]').val() || "Не заполнено",
+		    tel = form.find('input[type=tel]'),
 		    btn = form.find('.orderCall__form-button'),
 		    action = form.attr('action'),
 		    method = form.attr('method'),
 		    data = {
-		    	tel: tel
+		    	tel: tel.val()|| "Не заполнено"
 		    };
 
 		btn.val('Отправка...');
@@ -144,9 +163,9 @@ var mainModule = (function () {
         _showErrPopup('Ошибка на сервере');
       }
 
-      _hideOrderPopup();
       btn.val('Заказать звонок');
       tel.val('');
+      _hidePopup();
     });
 	};
 

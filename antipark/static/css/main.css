@@ -565,28 +565,10 @@ p {
     border-bottom: 25px solid rgba(0, 0, 50, 0.3); }
 
 .order-popup {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  background: rgba(0, 0, 0, 0.3);
-  -webkit-transition: .3s;
-  transition: .3s; }
-  .order-popup--active {
-    display: block;
-    opacity: 1; }
+  display: none; }
   .order-popup__body {
-    display: none;
-    position: fixed;
+    display: block;
     width: 320px;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
     background: #fff;
     -webkit-border-radius: 10px;
     border-radius: 10px;
