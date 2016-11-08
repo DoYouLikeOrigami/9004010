@@ -13,4 +13,4 @@ if __name__ == '__main__':
     #    os.mkdir(UPLOAD_PATH)
     #except OSError:
     #    pass
-    application.run(port=1234)
+    application.run(host='0', port=4444)
