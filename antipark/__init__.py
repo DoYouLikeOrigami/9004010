@@ -6,6 +6,7 @@ import random
 from flask import Flask
 from flask_mail import Mail
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 
 def filter_shuffle(seq):
@@ -20,6 +21,8 @@ app = Flask(__name__)
 app.config.from_object('config')
 app.jinja_env.filters['shuffle'] = filter_shuffle
 
+login_manager = LoginManager()
+login_manager.init_app(app)
 db = SQLAlchemy(app)
 
 mail = Mail(app)
