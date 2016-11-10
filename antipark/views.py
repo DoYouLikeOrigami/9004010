@@ -221,7 +221,7 @@ def update_market():
             elif col == 'price':
                 pr = re.sub('\D', '', getattr(product, col))
                 if not pr:
-                    pr = '1'
+                    pr = '999999'
                 prods[col].append(pr)
             else:
                 prods[col].append(getattr(product, col))
