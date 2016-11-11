@@ -34,6 +34,11 @@ def delivery():
     return render_template('delivery.html')
 
 
+@app.route('/contacts/')
+def contacts():
+    return render_template('contacts.html')
+
+
 @app.route('/goods/')
 def about():
     return render_template('goods.html', categories=all_categories)

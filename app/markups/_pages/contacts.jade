@@ -1,0 +1,43 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="../static/css/page.css")
+
+block title
+	| Контакты
+
+block main-content
+	section.section
+		header.section__header
+			h2.section__header-name Контакты
+		.section__content
+			.full-desc__first-part__wrapper
+				.full-desc__first-part__text-wrapper
+					p.
+						Адрес производства и склада: Санкт-Петербург, ул Политехническая, д.7
+					.contacts.contacts--margin-bottom
+						ul.contacts__list
+							li.contacts__list-item.city-change.spb-city
+								a(class="contacts__list-link contacts__tel", href="tel:+7(812)900-40-10") +7(812)
+									span.contacts__strong 900-40-10
+							li.contacts__list-item.city-change.msc-city.hidden
+								a(class="contacts__list-link contacts__tel", href="tel:+7(812)900-40-10") +7(915)
+									span.contacts__strong 340-20-10
+							li.contacts__list-item.city-change.novosib-city.hidden
+								a(class="contacts__list-link contacts__tel", href="tel:+7(812)900-40-10") +7(952)
+									span.contacts__strong 909-98-88
+							li.contacts__list-item.city-change.spb-city
+								a(class="contacts__list-link", href="mailto:spb@9004010.ru") spb@9004010.ru
+							li.contacts__list-item.city-change.msc-city.hidden
+								a(class="contacts__list-link", href="mailto:msk@9004010.ru") msk@9004010.ru
+							li.contacts__list-item.city-change.novosib-city.hidden
+								a(class="contacts__list-link", href="mailto:novosib@9004010.ru") novosib@9004010.ru
+					p.
+						Прием заявок по телефону: Понедельник-Воскресенье с 9:00 до 23:00
+					p.
+						Отгрузка товара со склада производится по предварительной записи
+					.full-desc__first-part__img
+						img(src="/static/img/adress.png")
+					iframe(src="https://api-maps.yandex.ru/frame/v1/-/CZskuX5G" width="100%" height="400" frameborder="0")
+
+block personalScript

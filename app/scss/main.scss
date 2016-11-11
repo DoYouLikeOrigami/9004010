@@ -424,6 +424,11 @@ p {
 		padding-top: 5px;
 	}
 
+	.contacts--margin-bottom .contacts__list-item {
+		margin-bottom: 20px;
+	}
+
+
 	.contacts__tel {
 		display: block;
 		text-decoration: none;
@@ -536,20 +541,23 @@ p {
 	}
 
 	.mainFooter__bottom {
-		line-height: 20px;
-		text-align: center;
 		border-top: 1px solid $mainColor;
+		line-height: 20px;
+
+		a {
+			color: $secondaryColor;
+		}
+	}
+
+	.mainFooter__bottom .container {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.copyright {
 		display: inline-block;
 		vertical-align: middle;
 		font-size: 12px;
-
-		a {
-			color: $secondaryColor;
-			margin-left: 10px;
-		}
 	}
 }
 

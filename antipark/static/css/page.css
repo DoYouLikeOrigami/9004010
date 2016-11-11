@@ -307,6 +307,9 @@
   font-size: 19px;
   margin: 40px; }
 
+.full-desc__first-part__img {
+  text-align: center; }
+
 .full-desc__first-part__foto-and-desc {
   display: inline-block;
   margin-left: 15px;
