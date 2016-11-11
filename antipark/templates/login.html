@@ -85,6 +85,21 @@
 						<li class="bread__item"><a href="/login" class="bread__link">Вход</a></li>
 					</ul>
 				</nav>
+				<article class="main">
+                  <div class="red-header">
+                    <div class="wrap">
+                    <h1 class="red-header__title">Авторизация</h1>
+                    </div>
+                  </div>
+                  <section class="about">
+
+                    <form action="" method="post">
+                      <input type="text" id="username" name="username" placeholder="Имя пользователя" required>
+                      <input type="password" id="password" name="password" placeholder="Пароль" required>
+                      <input type="submit" value="Войти">
+                    </form>
+                  </section>
+                </article>
 				<!-- Здесь просто передай переменные-->
 				<section class="section productSection">{% for goods_i in goods %}
 					<var>product = {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }}  )</var>{% endfor %}
