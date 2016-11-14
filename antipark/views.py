@@ -6,17 +6,93 @@ import os
 from flask import Flask, render_template, request, url_for, redirect, flash, \
                             send_file
 from flask_mail import Message
+from flask_login import login_user, logout_user, current_user, login_required
 
-from . import app, db, mail
-from .models import Product, Category, Service
+from . import app, db, mail, login_manager
+from .models import User, Product, Category, Service
 
 
 all_categories = Category.query.all()
 all_goods      = Product.query.all()
 all_services   = Service.query.all()
 
+login_manager.login_view = 'login'
 
-site_url = 'http://antipark.ru/'
+site_url = 'http://9004010.ru/'
+
+
+@app.before_first_request
+def init_request():
+    db.create_all()
+
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if not current_user.is_authenticated:
+        return render_template('index.html', categories=all_categories, services=all_services)
+
+    if request.method == 'GET':
+        return render_template('register.html')
+
+    elif request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+
+        user = User.query.filter_by(username=username)
+        print(user)
+        if user.count() == 0:
+            user = User(username=username, password=password, email=email)
+            print('here')
+            db.session.add(user)
+            db.session.commit()
+
+            flash('Вы зарегистрировались в системе под пользователем {0}. Войдите, пожалуйста.'.format(username))
+            return redirect(url_for('login'))
+        else:
+            flash('Это имя пользователя {0} уже используется. Пожалуйста, выберите дугое.'.format(username))
+            return redirect(url_for('register'))
+
+    else:
+        abort(405)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'GET':
+        return render_template('login.html', goods=all_goods, categories=all_categories)
+
+    elif request.method == 'POST':
+
+        username = request.form['username']
+        password = request.form['password']
+        remember_me = False
+        if 'remember_me' in request.form:
+            remember_me = True
+
+        user = User.query.filter_by(username=username, password=password).first()
+
+        if user is None:
+            flash('Имя пользователя или пароль неверный.', 'error')
+            return redirect(url_for('login'))
+
+        login_user(user, remember=remember_me)
+
+        flash('Добро пожаловать, {0}!'.format(username))
+        return redirect(request.args.get('next') or url_for('index'))
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.route('/')
@@ -32,6 +108,11 @@ def bank():
 @app.route('/delivery/')
 def delivery():
     return render_template('delivery.html')
+
+
+@app.route('/contacts/')
+def contacts():
+    return render_template('contacts.html')
 
 
 @app.route('/goods/')
@@ -69,8 +150,11 @@ def service_item(service_item_id):
                                             categories=all_categories)
 
 
+@login_required
 @app.route('/file/')
 def file():
+    if not current_user.is_authenticated:
+        return 'Not logged in'
     return render_template('file.html', categories=all_categories)
 
 
@@ -99,6 +183,7 @@ def order():
         mail.send(msg)
         return 'OK'
 
+
 @app.route('/order-call', methods=['POST'])
 def orderCall():
     if request.method == 'POST':
@@ -122,8 +207,12 @@ def orderCall():
         return 'OK'
 
 
+@login_required
 @app.route('/update_market/')
 def update_market():
+    if not current_user.is_authenticated:
+        return 'Not logged in'
+
     import pandas as pd
     import re
     from collections import defaultdict
@@ -140,7 +229,7 @@ def update_market():
             elif col == 'price':
                 pr = re.sub('\D', '', getattr(product, col))
                 if not pr:
-                    pr = '1'
+                    pr = '999999'
                 prods[col].append(pr)
             else:
                 prods[col].append(getattr(product, col))
@@ -153,8 +242,11 @@ def update_market():
     return 'OK'
 
 
+@login_required
 @app.route('/save_db/', methods=['POST'])
 def save_db():
+    if not current_user.is_authenticated:
+        return 'Not logged in'
 
     def allowed_file(filename):
         return '.' in filename and \
@@ -181,8 +273,12 @@ def save_db():
             return 'OK'
 
 
+@login_required
 @app.route('/get_db/')
 def get_db():
+    if not current_user.is_authenticated:
+        return 'Not logged in'
+
     import pandas as pd
     from collections import defaultdict
 

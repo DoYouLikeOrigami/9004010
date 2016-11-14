@@ -79,17 +79,6 @@ var mainModule = (function () {
 	};
 
 	var _showOrderPopup = function (e) {
-		/*e.preventDefault();
-		var orderPopup = $('.order-popup'),
-		    orderPopupBody = orderPopup.find('.order-popup__body'),
-		    btn = $(this),
-		    good = btn.closest('.products__item'),
-		    goodsName = good.find('.products__attr-name').text(),
-		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName);
-		orderPopup.fadeIn('400', function () {
-			orderPopupBody.fadeIn('300');
-		});*/
-
 		e.preventDefault();
 		var orderPopup = $('.order-popup'),
 		    orderPopupBody = orderPopup.find('.order-popup__body'),

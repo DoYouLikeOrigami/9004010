@@ -17,9 +17,9 @@
 		<!--styles-->
 		<link rel="stylesheet" type="text/css" href="/static/bower/normalize-css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
-		<link rel="stylesheet" type="text/css" href="../static/css/page.css">
+		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
 		<!--Title-->
-		<title>Доставка</title>
+		<title>Регистрация</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
@@ -79,21 +79,29 @@
 				</nav>
 			</aside>
 			<div class="container">
-				<section class="section bank">
+				<nav class="bread">
+					<ul class="bread__list">
+						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">Регистрация</a></li>
+					</ul>
+				</nav>
+				<section class="section">
 					<header class="section__header">
-						<h2 class="section__header-name">Доставка</h2>
+						<h2 class="section__header-name">Регистрация</h2>{% with messages = get_flashed_messages() %}
+						{% if messages %}
+						{% for message in messages %}
+						<div class="row">
+							<div role="alert" class="alert alert-info">{{ message }}</div>
+						</div>{% endfor %}
+						{% endif %}
+						{% endwith %}
+						<form action="" method="post" class="form">
+							<input type="text" id="username" name="username" placeholder="Введите имя пользователя" required value="{{ request.form.username }}">
+							<input type="password" id="password" name="password" placeholder="Введите пароль" required value="{{ request.form.password }}">
+							<input type="email" id="email" name="email" placeholder="Enter Email" value="{{ request.form.username }}" required>
+							<input type="submit" value="Регистрация">
+						</form>
 					</header>
-					<div class="section__content">
-						<div class="full-desc__first-part__wrapper">
-							<div class="full-desc__first-part__text-wrapper">
-								<p>
-									Стоимость доставки в пределах КАД - 1200р
-									
-									
-								</p>
-							</div>
-						</div>
-					</div>
 				</section>
 			</div>
 		</wrapper>
@@ -162,6 +170,5 @@
 		<script src="/static/bower/jquery/jquery.min.js"></script>
 		<script src="/static/bower/bPopup/jquery.bpopup.min.js"></script>
 		<script src="/static/js/main.js"></script>
-		<script src="../static/js/index.js"></script>
 	</body>
 </html>

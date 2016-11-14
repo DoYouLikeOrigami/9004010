@@ -4,18 +4,24 @@ block personalStyle
 	link(rel="stylesheet", type="text/css", href="/static/css/product.css")
 
 block title
-	| Вход в систему
+	| Авторизация
 
-block main-content	
+block main-content
 	nav.bread
 		ul.bread__list
-			- var items = {'.': 'Главная', '/login' : 'Вход'}
+			- var items = {'.': 'Главная', '#' : 'Вход'}
 			each val, index in items
-				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
+				li(class="bread__item" + ((index === '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
-  
-	// Здесь просто передай переменные
-	section.section.productSection
-		| {% for goods_i in goods %}
-		var product = #[ {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }} ] )
-		| {% endfor %}
+
+	section.section
+		header.section__header
+			h2.section__header-name
+				| Авторизация
+			form.form(action="" method="post")
+				input(type="text" id="username" name="username" placeholder="Имя пользователя" required)
+				input(type="password" id="password" name="password" placeholder="Пароль" required)
+				input(type="submit" value="Войти")
+			| {% if current_user.is_authenticated %}
+			a.btn(href="/logout") Выйти
+			| {% endif %}
