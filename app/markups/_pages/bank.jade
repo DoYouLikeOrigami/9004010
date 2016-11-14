@@ -1,0 +1,42 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="../static/css/page.css")
+
+block title
+	| Банковские реквизиты
+
+block main-content
+	section.section.bank
+		header.section__header
+			h2.section__header-name Банковские реквизиты
+		.section__content
+			.full-desc__first-part__wrapper
+				.full-desc__first-part__text-wrapper
+					p.
+						Индивидуальный предприниматель Тележко Олег Владиславович
+					p.
+						ИНН: 784800909956
+					p.
+						ОГРНИП: 308784703600534
+					p.
+						ОКПО: 0156302861
+					p.
+						196135, г. Санкт-Петербург, ул. Фрунзе, д. 17, кв. 20
+					p.
+						р/с 40802810002890005910 в ПАО АКБ "АВАНГАРД"
+					p.
+						к/с 30101810000000000201, БИК 044525201
+					p.
+						Конт. тел.: +7 (911) 900-22-55
+					p.
+						E-mail: sale@antipark.ru
+					p.
+						Рублевые кошельки для оплаты через электронные платежные системы:
+					p.
+						WebMoney WMR: 114392397704
+					p.
+						Яндекс.Деньги: 410011221397826.
+
+block personalScript
+	script(src="../static/js/index.js")

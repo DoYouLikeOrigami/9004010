@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import datetime
 import json
 import os
 from flask import Flask, render_template, request, url_for, redirect, flash, \
                             send_file
+from flask_mail import Message
 
-from . import app, db
+from . import app, db, mail
 from .models import Product, Category, Service
 
 
@@ -21,6 +23,15 @@ site_url = 'http://antipark.ru/'
 def index():
     return render_template('index.html', categories=all_categories,
                                          services=all_services)
+
+@app.route('/bank/')
+def bank():
+    return render_template('bank.html')
+
+
+@app.route('/delivery/')
+def delivery():
+    return render_template('delivery.html')
 
 
 @app.route('/goods/')
@@ -61,6 +72,54 @@ def service_item(service_item_id):
 @app.route('/file/')
 def file():
     return render_template('file.html', categories=all_categories)
+
+
+@app.route('/order', methods=['POST'])
+def order():
+    if request.method == 'POST':
+        data = request.get_json()
+        msg = Message(subject="Заказ товара с сайта 9004010.ru",
+                        sender="no-reply@jokerinteractive.ru",
+                        recipients=["origami@jokerinteractive.ru"],
+                        charset="utf-8")
+        msg.body = "Поля: " + str(data)
+        msg.html = '<div style="background-color: #fff; width: 500px;">'
+        msg.html += '<p style="color: #fff; background-color: #f97c00; font-size: 24px; padding: 15px 0; text-align: center; margin: 0;">Заказ товара!</p>'
+        msg.html += '<div style="padding: 20px 40px 20px 80px;">'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Товар: <strong>' + data['good'] + '</strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Телефон клиента: <strong><a href="tel: "' + data['tel'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['tel'] + '</a></strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Email клиента: <strong><a href="email: "' + data['mail'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['mail'] + '</a></strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Комментарии к заказу:' + data['comment'] + '</p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Время отправки: ' + datetime.datetime.now().ctime() + '</p>'
+        msg.html += '<hr>'
+        msg.html += '<p slyle="color: #000; font-size: 12px;">Заявка отправлена с сайта <a href="http://antipark.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">antipark.ru</a></p>'
+        msg.html += '<p slyle="color: #000; font-size: 12px;">Сайт с любовью сделан студией <a href="https://jokerinteractive.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">jokerinteractive.ru</a></p>'
+        msg.html += '</div>'
+        msg.html += '</div>'
+        mail.send(msg)
+        return 'OK'
+
+@app.route('/order-call', methods=['POST'])
+def orderCall():
+    if request.method == 'POST':
+        data = request.get_json()
+        msg = Message(subject="Заказ звонка с сайта 9004010.ru",
+                        sender="no-reply@jokerinteractive.ru",
+                        recipients=["origami@jokerinteractive.ru"],
+                        charset="utf-8")
+        msg.body = "Поля: " + str(data)
+        msg.html = '<div style="background-color: #fff; width: 500px;">'
+        msg.html += '<p style="color: #fff; background-color: #f97c00; font-size: 24px; padding: 15px 0; text-align: center; margin: 0;">Заказ обратного звонка!</p>'
+        msg.html += '<div style="padding: 20px 40px 20px 80px;">'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Телефон клиента: <strong><a href="tel: "' + data['tel'] + '" style="color: #2fa4e7; text-decoration: none;">' + data['tel'] + '</a></strong></p>'
+        msg.html += '<p slyle="color: #000; font-size: 18px;">Время отправки: ' + datetime.datetime.now().ctime() + '</p>'
+        msg.html += '<hr>'
+        msg.html += '<p slyle="color: #000; font-size: 12px;">Заявка отправлена с сайта <a href="http://antipark.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">antipark.ru</a></p>'
+        msg.html += '<p slyle="color: #000; font-size: 12px;">Сайт с любовью сделан студией <a href="https://jokerinteractive.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">jokerinteractive.ru</a></p>'
+        msg.html += '</div>'
+        msg.html += '</div>'
+        mail.send(msg)
+        return 'OK'
 
 
 @app.route('/update_market/')
@@ -113,7 +172,7 @@ def save_db():
             import pandas as pd
 
             df_new = pd.read_excel('database/database.xlsx', index_col='id')
-            
+
             for prod in df_new.itertuples():
                 upd_product = Product.query.get(str(prod.Index))
                 for field in prod._fields[1:]:

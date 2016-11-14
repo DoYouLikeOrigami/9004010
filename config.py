@@ -11,13 +11,13 @@ SQLALCHEMY_ECHO = True
 UPLOAD_FOLDER = 'database'
 ALLOWED_EXTENSIONS = set(['xlsx', 'xls'])
 
-"""
 MAIL_SERVER = 'smtp.yandex.ru'
 MAIL_PORT = 465
 MAIL_USE_SSL = True
-MAIL_USERNAME = 'admin@jokerinteractive.ru'
-MAIL_PASSWORD = 'Joker121212'
+MAIL_USERNAME = 'no-reply@jokerinteractive.ru'
+MAIL_PASSWORD = '12345678'
 
+"""
 RESIZE_URL = '.'
 RESIZE_ROOT = '.'
 """
