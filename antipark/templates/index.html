@@ -30,9 +30,9 @@
 					<wrapper class="container clearfix">
 						<div class="mainHeader__left sm__padding-left">
 							<ul class="mainHeader__mail-list">
-								<li class="mainHeader__mail-item city-change spb-city"><a href="mailto:spb@9004010.ru" class="mainHeader__mail-link">spb@9004010.ru</a></li>
-								<li class="mainHeader__mail-item city-change msc-city hidden"><a href="mailto:msk@9004010.ru" class="mainHeader__mail-link">msk@9004010.ru</a></li>
-								<li class="mainHeader__mail-item city-change novosib-city hidden"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
+								<li class="mainHeader__mail-item city-change spb-city city-mail city-mail--active"><a href="mailto:spb@9004010.ru" class="mainHeader__mail-link">spb@9004010.ru</a></li>
+								<li class="mainHeader__mail-item city-change msc-city hidden city-mail"><a href="mailto:msk@9004010.ru" class="mainHeader__mail-link">msk@9004010.ru</a></li>
+								<li class="mainHeader__mail-item city-change novosib-city hidden city-mail"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
 							</ul>
 						</div>
 						<div class="mainHeader__right sm__padding-right">
@@ -255,6 +255,7 @@
 		</wrapper>
 		<div class="orderCall__popup">
 			<form action="/order-call" method="post" class="orderCall__form">
+				<input type="hidden" class="city-mail-input">
 				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Номер телефона</span>
 					<input type="tel" name="personPhone" placeholder="Куда Вам позвонить" id="personPhone" required class="orderCall__form-label-input">
 				</label>
@@ -265,6 +266,7 @@
 			<div class="order-popup__body">
 				<header class="order-popup__header">Оставьте заявку<small>Наш менеджер свяжется с вами в течение рабочего дня</small></header>
 				<form action="/order" method="post" class="order-popup__form">
+					<input type="hidden" class="city-mail-input">
 					<p class="order-popup__text order-popup__text--name">Наименование товара:<strong>Столбик парковочный</strong></p>
 					<!--label.order-popup__label
 					| Укажите количество:

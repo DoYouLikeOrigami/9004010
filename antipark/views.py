@@ -164,7 +164,7 @@ def order():
         data = request.get_json()
         msg = Message(subject="Заказ товара с сайта 9004010.ru",
                         sender="no-reply@jokerinteractive.ru",
-                        recipients=["origami@jokerinteractive.ru"],
+                        recipients=["origami@jokerinteractive.ru", data['sendTo']],
                         charset="utf-8")
         msg.body = "Поля: " + str(data)
         msg.html = '<div style="background-color: #fff; width: 500px;">'
@@ -176,7 +176,7 @@ def order():
         msg.html += '<p slyle="color: #000; font-size: 18px;">Комментарии к заказу:' + data['comment'] + '</p>'
         msg.html += '<p slyle="color: #000; font-size: 18px;">Время отправки: ' + datetime.datetime.now().ctime() + '</p>'
         msg.html += '<hr>'
-        msg.html += '<p slyle="color: #000; font-size: 12px;">Заявка отправлена с сайта <a href="http://antipark.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">antipark.ru</a></p>'
+        msg.html += '<p slyle="color: #000; font-size: 12px;">Заявка отправлена с сайта <a href="http://9004010.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">antipark.ru</a></p>'
         msg.html += '<p slyle="color: #000; font-size: 12px;">Сайт с любовью сделан студией <a href="https://jokerinteractive.ru/" target="_blank" style="color: #2fa4e7; text-decoration: none;">jokerinteractive.ru</a></p>'
         msg.html += '</div>'
         msg.html += '</div>'
@@ -190,7 +190,7 @@ def orderCall():
         data = request.get_json()
         msg = Message(subject="Заказ звонка с сайта 9004010.ru",
                         sender="no-reply@jokerinteractive.ru",
-                        recipients=["origami@jokerinteractive.ru"],
+                        recipients=["origami@jokerinteractive.ru", data['sendTo']],
                         charset="utf-8")
         msg.body = "Поля: " + str(data)
         msg.html = '<div style="background-color: #fff; width: 500px;">'

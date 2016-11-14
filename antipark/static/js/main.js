@@ -51,7 +51,10 @@ var mainModule = (function () {
 
 	var _showPopup = function (e) {
 		e.preventDefault();
-		var bPopup = $('.orderCall__popup');
+		var bPopup = $('.orderCall__popup'),
+		    currentCityMail = $('.city-mail--active a').text(),
+		    cityMail = bPopup.find('.city-mail-input').val(currentCityMail);
+
 		bPopup.bPopup({
 			speed: 550,
 			transition: 'slideDown',
@@ -85,7 +88,9 @@ var mainModule = (function () {
 		    btn = $(this),
 		    good = btn.closest('.products__item'),
 		    goodsName = good.find('.products__attr-name').text(),
-		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName);;
+		    popupGoodsName = orderPopupBody.find('.order-popup__text--name strong').text(goodsName),
+		    currentCityMail = $('.city-mail--active a').text(),
+		    cityMail = orderPopup.find('.city-mail-input').val(currentCityMail);
 		orderPopup.bPopup({
 			speed: 550,
 			transition: 'slideDown',
@@ -102,6 +107,7 @@ var mainModule = (function () {
 		    userMail = form.find('.order-popup__input--mail').val() || "Не заполнено",
 		    userTel = form.find('.order-popup__input--tel').val() || "Не заполнено",
 		    goodsComment = form.find('.order-popup__textarea').val() || "Не заполнено",
+		    sendTo = form.find('.city-mail-input').val() || false,
 		    btn = form.find('.order-popup__btn--order'),
 		    method = form.attr('method'),
 		    action = form.attr('action'),
@@ -109,8 +115,14 @@ var mainModule = (function () {
 		    	good: goodsName,
 		    	mail: userMail,
 		    	tel: userTel,
-		    	comment: goodsComment
+		    	comment: goodsComment,
+		    	sendTo: sendTo
 		    };
+
+		if (!sendTo) {
+			_showErrPopup('Ошибка. Обновите страницу.');
+			return;
+		}
 
 		btn.val('Отправка...')
 
@@ -134,11 +146,23 @@ var mainModule = (function () {
 		var form = $(this),
 		    tel = form.find('input[type=tel]'),
 		    btn = form.find('.orderCall__form-button'),
+		    sendTo = form.find('.city-mail-input').val() || false,
 		    action = form.attr('action'),
 		    method = form.attr('method'),
 		    data = {
-		    	tel: tel.val()|| "Не заполнено"
+		    	tel: tel.val(),
+		    	sendTo: sendTo
 		    };
+
+		if (!sendTo) {
+			_showErrPopup('Ошибка. Обновите страницу.');
+			return;
+		}
+
+		if (tel.val() === "") {
+			_showErrPopup('Ошибка. Введите номер телефона.');
+			return;
+		}
 
 		btn.val('Отправка...');
 
@@ -162,10 +186,19 @@ var mainModule = (function () {
 
 		var $this = $(this),
 			city = $this.val(),
-			city__class = '.' + city + '-city';
+			city__class = '.' + city + '-city',
+			city__obj = $(city__class);
 
 		$('.city-change').addClass('hidden');
-		$(city__class).removeClass('hidden');
+		$('.city-mail').removeClass('city-mail--active');
+
+		for (var i = 0; i < city__obj.length; i++) {
+			if ($(city__obj[i]).hasClass('city-mail')) {
+				$(city__obj[i]).addClass('city-mail--active');
+			}
+		}
+
+		city__obj.removeClass('hidden');
 	};
 
 	var _createQtip = function (el) {
