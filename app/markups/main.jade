@@ -39,6 +39,7 @@ html(lang="ru")
 
 		.orderCall__popup
 			form(action="/order-call" method="post" class="orderCall__form")
+				input.city-mail-input(type="hidden")
 				label.orderCall__form-label.clearfix
 					span.orderCall__form-label-name Номер телефона
 					input(type="tel", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
@@ -50,6 +51,7 @@ html(lang="ru")
 					| Оставьте заявку
 					small Наш менеджер свяжется с вами в течение рабочего дня
 				form.order-popup__form(action="/order" method="post")
+					input.city-mail-input(type="hidden")
 					p.order-popup__text.order-popup__text--name
 						| Наименование товара:
 						strong Столбик парковочный
