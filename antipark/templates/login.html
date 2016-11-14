@@ -19,7 +19,7 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
 		<!--Title-->
-		<title>Вход в систему</title>
+		<title>Авторизация</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
@@ -82,27 +82,18 @@
 				<nav class="bread">
 					<ul class="bread__list">
 						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
-						<li class="bread__item"><a href="/login" class="bread__link">Вход</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">Вход</a></li>
 					</ul>
 				</nav>
-				<article class="main">
-                  <div class="red-header">
-                    <div class="wrap">
-                    <h1 class="red-header__title">Авторизация</h1>
-                    </div>
-                  </div>
-                  <section class="about">
-
-                    <form action="" method="post">
-                      <input type="text" id="username" name="username" placeholder="Имя пользователя" required>
-                      <input type="password" id="password" name="password" placeholder="Пароль" required>
-                      <input type="submit" value="Войти">
-                    </form>
-                  </section>
-                </article>
-				<!-- Здесь просто передай переменные-->
-				<section class="section productSection">{% for goods_i in goods %}
-					<var>product = {{ goods_i.category, goods_i.subcategory, goods_i.title, goods_i.specs, goods_i.price, goods_i.stage_price, goods_i.image }}  )</var>{% endfor %}
+				<section class="section">
+					<header class="section__header">
+						<h2 class="section__header-name">Авторизация</h2>
+						<form action="" method="post" class="form">
+							<input type="text" id="username" name="username" placeholder="Имя пользователя" required>
+							<input type="password" id="password" name="password" placeholder="Пароль" required>
+							<input type="submit" value="Войти">
+						</form>{% if current_user.is_authenticated %}<a href="/logout" class="btn">Выйти</a>{% endif %}
+					</header>
 				</section>
 			</div>
 		</wrapper>
@@ -164,7 +155,7 @@
 			</div>
 			<div class="mainFooter__bottom">
 				<div class="container"><a href="/bank">Банковские реквизиты</a>
-					<div class="copyright">СТОЛБИК.РФ 2008-2015 &copy;</div><a href="#">Liveinternet</a>
+					<div class="copyright">9004010.ru 2008-2016 &copy;</div><a href="#">Liveinternet</a>
 				</div>
 			</div>
 		</footer>

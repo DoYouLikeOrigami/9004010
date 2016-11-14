@@ -18,7 +18,7 @@ all_services   = Service.query.all()
 
 login_manager.login_view = 'login'
 
-site_url = 'http://antipark.ru/'
+site_url = 'http://9004010.ru/'
 
 
 @app.before_first_request
@@ -33,6 +33,9 @@ def load_user(id):
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if not current_user.is_authenticated:
+        return render_template('index.html', categories=all_categories, services=all_services)
+
     if request.method == 'GET':
         return render_template('register.html')
 
@@ -209,7 +212,7 @@ def orderCall():
 def update_market():
     if not current_user.is_authenticated:
         return 'Not logged in'
-    
+
     import pandas as pd
     import re
     from collections import defaultdict
@@ -244,7 +247,7 @@ def update_market():
 def save_db():
     if not current_user.is_authenticated:
         return 'Not logged in'
-    
+
     def allowed_file(filename):
         return '.' in filename and \
             filename.rsplit('.', 1)[1] in app.config['ALLOWED_EXTENSIONS']
@@ -275,7 +278,7 @@ def save_db():
 def get_db():
     if not current_user.is_authenticated:
         return 'Not logged in'
-    
+
     import pandas as pd
     from collections import defaultdict
 
