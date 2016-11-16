@@ -73,8 +73,10 @@
 			</wrapper>
 			<aside class="aside">
 				<nav class="aside__nav">
-					<ul class="aside__list">{% for category_i in categories %}
-						<li class="aside__item">{% if ( ("" ~ category_i.id) in keys) %}<a href="/{{ keys['' ~ category_i.id] }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% else %}<a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% endif %}</li>{% endfor %}
+					<ul class="aside__list">
+						<!-- FIXME -->
+						{% for category_i in categories %}
+						<li class="aside__item">{% if ( ("" ~ category_i.id) in g.keys) %}<a href="/{{ g.keys['' ~ category_i.id] }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% else %}<a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% endif %}</li>{% endfor %}
 					</ul>
 				</nav>
 			</aside>
@@ -84,7 +86,7 @@
 						<h2 class="section__header-name">Категории товаров</h2>
 					</header>
 					<ul class="list goods__list">{% for category_i in categories %}
-						<li class="list__item goods__item">{% if ( ("" ~ category_i.id) in keys) %}<a href="/{{ keys['' ~ category_i.id] }}/" class="goods__link">
+						<li class="list__item goods__item">{% if ( ("" ~ category_i.id) in g.keys) %}<a href="/{{ g.keys['' ~ category_i.id] }}/" class="goods__link">
 								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a>{% else %}<a href="/goods-category/{{ category_i.id }}" class="goods__link">
 								<wrapper class="goods__img-wrapper"><img src="/static/img/goods/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="goods__img"></wrapper><span class="goods__text">{{ category_i.category }}</span></a>{% endif %}</li>{% endfor %}
 					</ul>
