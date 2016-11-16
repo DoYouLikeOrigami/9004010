@@ -120,6 +120,24 @@ def about():
     return render_template('goods.html', categories=all_categories)
 
 
+@app.route('/<alias>/')
+def alias(alias):
+	keys = {"stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj.html" : "3",
+	        "vazon-betonnyj-kupit-cena-dlja-cvetov.html" : "12",
+	        "urna-betonnaya-kupit-cena-dlja-musora.html" : "5",
+	        "skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka.html" : "13",
+	        "polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja.html" : "8",
+	        "konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj.html" : "4",
+	        "barjer-kupit-cena-parkovochnyj-skladnoy.html" : "9"}
+
+	for key, value in keys.items():
+		if (key == alias):
+			category_id = value
+			category = Category.query.get(category_id)
+			goods = Product.query.filter_by(category=category_id).all()
+			return render_template('goods-category.html', categories=all_categories, category=category, goods=goods)
+
+
 @app.route('/goods-category/<category_id>/')
 def goods_category(category_id):
     category = Category.query.get(category_id)
