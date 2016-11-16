@@ -125,7 +125,7 @@
 								<!--			img(src!=val, width=200)-->
 								<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
 								<wrapper class="full-desc__first-part__text-wrapper">
-									<p class="full-desc__first-part__p-below">{{ category.description }}</p>
+									<p class="full-desc__first-part__p-below">{% autoescape false %}{{ category.description|safe }}{%endautoescape %}</p>
 								</wrapper>
 							</div>
 						</header>

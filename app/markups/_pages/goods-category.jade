@@ -55,5 +55,4 @@ block main-content
 				h2.section__header-name
 					| {{ category.category }}
 				.full-desc__first-part__wrapper
-					+full-desc__first-part('{{ category.description }}')
-
+					+full-desc__first-part('{{ category.description|safe }}')
