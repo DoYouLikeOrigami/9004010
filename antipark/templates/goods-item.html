@@ -75,24 +75,24 @@
 			<aside class="aside">
 				<nav class="aside__nav">
 					<ul class="aside__list">{% for category_i in categories %}
-						<li qtip-text="{{ category_i.category }}" class="aside__item"><a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a></li>{% endfor %}
+						<li class="aside__item">{% if ( ("" ~ category_i.id) in keys) %}<a href="/{{ keys['' ~ category_i.id] }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% else %}<a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% endif %}</li>{% endfor %}
 					</ul>
 				</nav>
 			</aside>
 			<div class="container">
 				<nav class="bread">
 					<ul class="bread__list">
-						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
+						<li class="bread__item"><a href="/." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
-						<li class="bread__item"><a href="/goods-category/{{ category.id }}/" class="bread__link">{{ category.category }}</a></li>
+						<li class="bread__item"><a href="{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}" class="bread__link">{{ category.category }}</a></li>
 						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_item.title }}</a></li>
 					</ul>
 				</nav>
 				<section class="section productSection">
 					<ul class="products__list">
 						<li class="products__item">
-							<div class="products__item-inner clearfix"> 
-								<div class="products__left"> 
+							<div class="products__item-inner clearfix">
+								<div class="products__left">
 									<div class="products__left-container">
 										<div class="products__attr"><a href="/goods-item/{{ goods_item.id }}/" class="products__attr-name">{{ goods_item.title }}</a></div>
 									</div>
@@ -100,9 +100,7 @@
 								<div class="products__about clearfix">
 									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.title }}" class="products__image-pic goods__img"></a></div>
 									<div class="products__desc"><a href="/goods-item/{{ goods_item.id }}/" class="products__desc-title">{{ goods_item.title }}</a>
-										<ul class="products__desc-options">
-											 
-											{% for spec in goods_item.specs.strip('{}').split("', '") %}
+										<ul class="products__desc-options">{% for spec in goods_item.specs.strip('{}').split("', '") %}
 											<li class="products__option-item">
 												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
 												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>

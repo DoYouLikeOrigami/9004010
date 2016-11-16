@@ -15,10 +15,21 @@ block main-content
 		ul.list.goods__list
 			| {% for category_i in categories %}
 			li.list__item.goods__item
+				| {% if ( ("" ~ category_i.id) in keys) %}
+
+				a(class="goods__link", href= "/{{ keys['' ~ category_i.id] }}/")
+					wrapper.goods__img-wrapper
+						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}" )
+					span.goods__text {{ category_i.category }}
+
+				| {% else %}
+
 				a(class="goods__link", href= '/goods-category/' + '{{ category_i.id }}')
 					wrapper.goods__img-wrapper
-						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}")
+						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}" )
 					span.goods__text {{ category_i.category }}
+
+				| {% endif %}
 			| {% endfor %}
 
 	section.section.service#service

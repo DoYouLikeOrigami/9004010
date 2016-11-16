@@ -7,19 +7,19 @@ block personalStyle
 block title
 	| {{ goods_item.title }}
 
-block main-content	
+block main-content
 	nav.bread
 		ul.bread__list
-			- var items = {'.': 'Главная', '/goods' : 'Товары', '/goods-category/{{ category.id }}/': '{{ category.category }}', '#' : '{{ goods_item.title }}' }
+			- var items = {'/.': 'Главная', '/goods' : 'Товары', "{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}": "{{ category.category }}", '#' : '{{ goods_item.title }}' }
 			each val, index in items
-				li(class="bread__item" + ((index=== '#') ? ' active' : '' ) )
+				li(class="bread__item" + ((index === '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
-  
+
 	section.section.productSection
 		ul.products__list
 			li.products__item
-				.products__item-inner.clearfix 
-					.products__left 
+				.products__item-inner.clearfix
+					.products__left
 						.products__left-container
 							.products__attr
 								a(href= "/goods-item/{{ goods_item.id }}/").products__attr-name {{ goods_item.title }}
@@ -29,13 +29,13 @@ block main-content
 								img(src='/static/img/' + '{{ goods_item.image }}', alt= '{{ goods_item.title }}').products__image-pic.goods__img
 						.products__desc
 							a(href= '/goods-item/{{ goods_item.id }}/').products__desc-title {{ goods_item.title }}
-							ul.products__desc-options 
+							ul.products__desc-options
 								| {% for spec in goods_item.specs.strip('{}').split("', '") %}
 								li.products__option-item
 									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
 									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
 								| {% endfor %}
-							
+
 					.products__right
 						.products__info
 							.products__price

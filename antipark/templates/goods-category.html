@@ -74,14 +74,14 @@
 			<aside class="aside">
 				<nav class="aside__nav">
 					<ul class="aside__list">{% for category_i in categories %}
-						<li qtip-text="{{ category_i.category }}" class="aside__item"><a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a></li>{% endfor %}
+						<li class="aside__item">{% if ( ("" ~ category_i.id) in keys) %}<a href="/{{ keys['' ~ category_i.id] }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% else %}<a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% endif %}</li>{% endfor %}
 					</ul>
 				</nav>
 			</aside>
 			<div class="container">
 				<nav class="bread">
 					<ul class="bread__list">
-						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
+						<li class="bread__item"><a href="/." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
 						<li class="bread__item active"><a href="#" class="bread__link">{{ category.category }}</a></li>
 					</ul>
@@ -125,7 +125,7 @@
 								<!--			img(src!=val, width=200)-->
 								<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
 								<wrapper class="full-desc__first-part__text-wrapper">
-									<p class="full-desc__first-part__p-below">{% autoescape false %}{{ category.description|safe }}{%endautoescape %}</p>
+									<p class="full-desc__first-part__p-below">{{ category.description|safe }}</p>
 								</wrapper>
 							</div>
 						</header>
