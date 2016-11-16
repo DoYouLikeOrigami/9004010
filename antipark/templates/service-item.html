@@ -75,7 +75,7 @@
 			<aside class="aside">
 				<nav class="aside__nav">
 					<ul class="aside__list">{% for category_i in categories %}
-						<li qtip-text="{{ category_i.category }}" class="aside__item"><a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a></li>{% endfor %}
+						<li class="aside__item">{% if ( ("" ~ category_i.id) in keys) %}<a href="/{{ keys['' ~ category_i.id] }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% else %}<a href="/goods-category/{{ category_i.id }}/" class="aside__item-link aside__item-{{ category_i.category }}"><img src="/static/img/small/{{ category_i.category }}.jpg" alt="{{ category_i.category }}" class="aside__item-img"></a>{% endif %}</li>{% endfor %}
 					</ul>
 				</nav>
 			</aside>
