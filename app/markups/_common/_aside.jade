@@ -1,10 +1,11 @@
 aside.aside
 	nav.aside__nav
 		ul.aside__list
+			| <!-- FIXME -->
 			| {% for category_i in categories %}
 			li(class="aside__item")
-				| {% if ( ("" ~ category_i.id) in keys) %}
-				a(class="aside__item-link aside__item-" + "{{ category_i.category }}", href= "/{{ keys['' ~ category_i.id] }}/")
+				| {% if ( ("" ~ category_i.id) in g.keys) %}
+				a(class="aside__item-link aside__item-" + "{{ category_i.category }}", href= "/{{ g.keys['' ~ category_i.id] }}/")
 					img(src="/static/img/small/{{ category_i.category }}.jpg", alt= '{{ category_i.category }}').aside__item-img
 				| {% else %}
 				a(class="aside__item-link aside__item-" + '{{ category_i.category }}', href= '/goods-category/{{ category_i.id }}/')

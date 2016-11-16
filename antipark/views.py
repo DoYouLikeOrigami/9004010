@@ -4,7 +4,7 @@ import datetime
 import json
 import os
 from flask import Flask, render_template, request, url_for, redirect, flash, \
-                            send_file
+                            send_file, g
 from flask_mail import Message
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -12,17 +12,8 @@ from . import app, db, mail, login_manager
 from .models import User, Product, Category, Service
 
 
-all_categories = Category.query.all()
 all_goods      = Product.query.all()
 all_services   = Service.query.all()
-
-keys = {"3" : "stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj.html",
-        "12" : "vazon-betonnyj-kupit-cena-dlja-cvetov.html",
-        "5" : "urna-betonnaya-kupit-cena-dlja-musora.html",
-        "13" : "skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka.html",
-        "8" : "polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja.html",
-        "4" : "konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj.html",
-        "9" : "barjer-kupit-cena-parkovochnyj-skladnoy.html"}
 
 login_manager.login_view = 'login'
 
@@ -34,6 +25,19 @@ def init_request():
     db.create_all()
 
 
+@app.before_request
+def before_request():
+    g.keys = {
+        "3" : "stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj.html",
+        "12" : "vazon-betonnyj-kupit-cena-dlja-cvetov.html",
+        "5" : "urna-betonnaya-kupit-cena-dlja-musora.html",
+        "13" : "skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka.html",
+        "8" : "polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja.html",
+        "4" : "konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj.html",
+        "9" : "barjer-kupit-cena-parkovochnyj-skladnoy.html"
+        }
+    g.all_categories = Category.query.all()
+
 @login_manager.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -42,7 +46,7 @@ def load_user(id):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if not current_user.is_authenticated:
-        return render_template('index.html', categories=all_categories, services=all_services, keys=keys)
+        return render_template('index.html', categories=g.all_categories, services=all_services)
 
     if request.method == 'GET':
         return render_template('register.html')
@@ -74,7 +78,7 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
-        return render_template('login.html', goods=all_goods, categories=all_categories, keys=keys)
+        return render_template('login.html', goods=all_goods, categories=g.all_categories)
 
     elif request.method == 'POST':
 
@@ -105,52 +109,43 @@ def logout():
 
 @app.route('/')
 def index():
-    return render_template('index.html', categories=all_categories,
-                                         services=all_services,
-                                         keys=keys)
+    return render_template('index.html', categories=g.all_categories,
+                                         services=all_services)
 
 @app.route('/bank/')
 def bank():
-    return render_template('bank.html', keys=keys)
+    return render_template('bank.html', categories=g.all_categories)
 
 
 @app.route('/delivery/')
 def delivery():
-    return render_template('delivery.html', keys=keys)
+    return render_template('delivery.html', categories=g.all_categories)
 
 
 @app.route('/contacts/')
 def contacts():
-    return render_template('contacts.html', keys=keys)
+    return render_template('contacts.html', categories=g.all_categories)
 
 
 @app.route('/goods/')
 def about():
-    return render_template('goods.html', categories=all_categories, keys=keys)
+    return render_template('goods.html', categories=g.all_categories)
 
 
 @app.route('/<alias>/')
 @app.route('/goods-category/<number>/')
-def alias(alias = None, number = None):
-	keys = {"stolbik-kupit-cena-parkovochnyj-dorozhnyj-plastikovyj.html" : "3",
-	        "vazon-betonnyj-kupit-cena-dlja-cvetov.html" : "12",
-	        "urna-betonnaya-kupit-cena-dlja-musora.html" : "5",
-	        "skameyka-betonnaya-kupit-cena-parkovaya-sadovaya-lavka.html" : "13",
-	        "polusfera-betonnaya-kupit-cena-parkovochnaja-dorozhnaja.html" : "8",
-	        "konus-kupit-cena-parkovochnyj-dorozhnyj-signalnyj.html" : "4",
-	        "barjer-kupit-cena-parkovochnyj-skladnoy.html" : "9"}
-
-	for key, value in keys.items():
-		if (key == alias):
-			category_id = value
+def alias(alias=None, number=None):
+	for key, value in g.keys.items():
+		if (value == alias):
+			category_id = key
 			category = Category.query.get(category_id)
 			goods = Product.query.filter_by(category=category_id).all()
-			return render_template('goods-category.html', categories=all_categories, category=category, goods=goods, keys=keys)
+			return render_template('goods-category.html', categories=g.all_categories, category=category, goods=goods)
 
 	if number:
 		category = Category.query.get(number)
 		goods = Product.query.filter_by(category=number).all()
-		return render_template('goods-category.html', categories=all_categories, category=category, goods=goods, keys=keys)
+		return render_template('goods-category.html', categories=g.all_categories, category=category, goods=goods)
 
 
 @app.route('/goods-item/<goods_item_id>/')
@@ -158,24 +153,21 @@ def goods_item(goods_item_id):
     goods_item = Product.query.get(str(goods_item_id))
     category_id = goods_item.category
     category = Category.query.get(category_id)
-    return render_template('goods-item.html', categories=all_categories,
-                                category=category, goods_item=goods_item,
-                                keys=keys)
+    return render_template('goods-item.html', categories=g.all_categories,
+                                category=category, goods_item=goods_item)
 
 
 @app.route('/services/')
 def services():
     return render_template('services.html', services=all_services,
-                                            categories=all_categories,
-                                            keys=keys)
+                                            categories=g.all_categories)
 
 
 @app.route('/service-item/<service_item_id>')
 def service_item(service_item_id):
     service_item = Service.query.get(str(service_item_id))
     return render_template('service-item.html', service=service_item,
-                                            categories=all_categories,
-                                            keys=keys)
+                                            categories=g.all_categories)
 
 
 @login_required
@@ -183,7 +175,7 @@ def service_item(service_item_id):
 def file():
     if not current_user.is_authenticated:
         return 'Not logged in'
-    return render_template('file.html', categories=all_categories, keys=keys)
+    return render_template('file.html', categories=g.all_categories)
 
 
 @app.route('/order', methods=['POST'])
