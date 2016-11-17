@@ -1,0 +1,37 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="../static/css/page.css")
+
+block title
+	| Блог
+
+block main-content
+	section.section
+		header.section__header
+			h2.section__header-name Блог
+		.section__content
+			.blog
+				article.blog__article
+					header.blog__header Заголовок статьи
+					.blog__content
+						img(src="/static/img/goods/Барьеры.jpg" alt="Заголовок статьи")
+						p.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id pulvinar est, at vehicula nisl. Nunc scelerisque dictum fermentum. Fusce vulputate nunc in leo tempor pretium. Maecenas at nulla sed libero pulvinar accumsan. Quisque vitae sagittis urna. Duis vitae faucibus mi. Vivamus ut justo nibh.
+						p.
+							Nam posuere ligula neque, in scelerisque ex auctor eleifend. Morbi rhoncus ut felis quis vehicula. Curabitur bibendum lorem at lacus malesuada maximus. Phasellus consectetur tortor at massa vestibulum, sed cursus odio varius. Integer augue lacus, rhoncus quis erat ac, interdum faucibus dolor. Pellentesque sit amet sodales sapien. Vivamus fermentum quam eu facilisis ultricies. Curabitur sollicitudin massa lectus, a porta eros sagittis non. Praesent eget eros quis lacus scelerisque bibendum sed eget lectus. Nulla facilisi. Duis nec ligula eget neque blandit aliquet. Maecenas ac tristique dui, sed bibendum lectus. Morbi dignissim, enim eget dictum auctor, purus sapien bibendum purus, eu egestas nisi lacus ut nibh.
+					a.blog__link(href="/blog/article/1") Читать дальше
+				article.blog__article
+					header.blog__header Заголовок статьи
+					.blog__content
+						img(src="/static/img/goods/Барьеры.jpg" alt="Заголовок статьи")
+						p.
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras id pulvinar est, at vehicula nisl. Nunc scelerisque dictum fermentum. Fusce vulputate nunc in leo tempor pretium. Maecenas at nulla sed libero pulvinar accumsan. Quisque vitae sagittis urna. Duis vitae faucibus mi. Vivamus ut justo nibh.
+						p.
+							Nam posuere ligula neque, in scelerisque ex auctor eleifend. Morbi rhoncus ut felis quis vehicula. Curabitur bibendum lorem at lacus malesuada maximus. Phasellus consectetur tortor at massa vestibulum, sed cursus odio varius. Integer augue lacus, rhoncus quis erat ac, interdum faucibus dolor. Pellentesque sit amet sodales sapien. Vivamus fermentum quam eu facilisis ultricies. Curabitur sollicitudin massa lectus, a porta eros sagittis non. Praesent eget eros quis lacus scelerisque bibendum sed eget lectus. Nulla facilisi. Duis nec ligula eget neque blandit aliquet. Maecenas ac tristique dui, sed bibendum lectus. Morbi dignissim, enim eget dictum auctor, purus sapien bibendum purus, eu egestas nisi lacus ut nibh.
+					a.blog__link(href="/blog/article/2") Читать дальше
+
+
+
+block personalScript
+	script(src="../static/js/index.js")
