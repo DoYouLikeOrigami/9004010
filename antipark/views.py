@@ -127,6 +127,21 @@ def contacts():
     return render_template('contacts.html', categories=g.all_categories)
 
 
+@app.route('/blog/')
+def blog():
+    return render_template('blog.html', categories=g.all_categories)
+
+
+@app.route('/blog/article/1')
+def article1():
+    return render_template('article1.html', categories=g.all_categories)
+
+
+@app.route('/blog/article/2')
+def article2():
+    return render_template('article2.html', categories=g.all_categories)
+
+
 @app.route('/goods/')
 def about():
     return render_template('goods.html', categories=g.all_categories)
