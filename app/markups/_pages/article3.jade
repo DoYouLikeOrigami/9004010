@@ -1,0 +1,26 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="../static/css/page.css")
+
+block title
+	| Блог
+
+block main-content
+	section.section
+		header.section__header
+			h2.section__header-name Блог
+		.section__content
+			.blog
+				article.blog__article
+					header.blog__header Бетонные скамейки в женский монастырь
+					.blog__content
+						img(src="/static/img/blog/31.jpg" alt="Бетонные скамейки в женский монастырь")
+						p.
+							Установлены бетонные скамейки со спинкой СКМ-1 в Константино-Еленинский женский монастырь в п.Ленинское. Была сохранена фактура дерева благодаря использованию специальной пропитки. Доски были покрыты 5 слоями яхтенного лака.
+						img(src="/static/img/blog/32.jpg" alt="Бетонные скамейки в женский монастырь")
+					a.blog__link(href="/blog/") Вернуться в блог
+
+
+block personalScript
+	script(src="../static/js/index.js")

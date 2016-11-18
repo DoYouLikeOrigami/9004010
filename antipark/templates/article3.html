@@ -17,9 +17,9 @@
 		<!--styles-->
 		<link rel="stylesheet" type="text/css" href="/static/bower/normalize-css/normalize.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
-		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
+		<link rel="stylesheet" type="text/css" href="../static/css/page.css">
 		<!--Title-->
-		<title>Авторизация</title>
+		<title>Блог</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
@@ -81,21 +81,20 @@
 				</nav>
 			</aside>
 			<div class="container">
-				<nav class="bread">
-					<ul class="bread__list">
-						<li class="bread__item"><a href="." class="bread__link">Главная</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">Вход</a></li>
-					</ul>
-				</nav>
 				<section class="section">
 					<header class="section__header">
-						<h2 class="section__header-name">Авторизация</h2>
-						<form action="" method="post" class="form">
-							<input type="text" id="username" name="username" placeholder="Имя пользователя" required>
-							<input type="password" id="password" name="password" placeholder="Пароль" required>
-							<input type="submit" value="Войти">
-						</form>{% if current_user.is_authenticated %}<a href="/logout" class="btn">Выйти</a>{% endif %}
+						<h2 class="section__header-name">Блог</h2>
 					</header>
+					<div class="section__content">
+						<div class="blog">
+							<article class="blog__article">
+								<header class="blog__header">Бетонные скамейки в женский монастырь</header>
+								<div class="blog__content"><img src="/static/img/blog/31.jpg" alt="Бетонные скамейки в женский монастырь">
+									<p>Установлены бетонные скамейки со спинкой СКМ-1 в Константино-Еленинский женский монастырь в п.Ленинское. Была сохранена фактура дерева благодаря использованию специальной пропитки. Доски были покрыты 5 слоями яхтенного лака.</p><img src="/static/img/blog/32.jpg" alt="Бетонные скамейки в женский монастырь">
+								</div><a href="/blog/" class="blog__link">Вернуться в блог</a>
+							</article>
+						</div>
+					</div>
 				</section>
 			</div>
 		</wrapper>
@@ -194,5 +193,6 @@
 		<script src="/static/bower/jquery/jquery.min.js"></script>
 		<script src="/static/bower/bPopup/jquery.bpopup.min.js"></script>
 		<script src="/static/js/main.js"></script>
+		<script src="../static/js/index.js"></script>
 	</body>
 </html>
