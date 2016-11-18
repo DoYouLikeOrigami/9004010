@@ -1,0 +1,25 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="../static/css/page.css")
+
+block title
+	| Блог
+
+block main-content
+	section.section
+		header.section__header
+			h2.section__header-name Блог
+		.section__content
+			.blog
+				article.blog__article
+					header.blog__header Бетонные скамейки в Кудрово
+					.blog__content
+						img(src="/static/img/blog/4.jpg" alt="Бетонные скамейки в Кудрово")
+						p.
+							В Кудрово установлены бетонные скамейки со спинкой СКМ-1 с покраской досок в 5 слоев! Качество продуцкии, низкая цена и оперативная доставка изделий – это наши основные преимущества перед конкурентами.
+					a.blog__link(href="/blog/") Вернуться в блог
+
+
+block personalScript
+	script(src="../static/js/index.js")

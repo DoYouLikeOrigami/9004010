@@ -774,14 +774,13 @@ p {
       margin: 0 auto 30px; }
     .blog__content p {
       color: #4c4c4c;
-      margin: 0 0 30px;
+      margin: 15px auto;
       font-size: 16px;
       line-height: 22px;
       max-height: 110px;
+      max-width: 80%;
       overflow: hidden;
       text-overflow: ellipsis; }
-      .blog__content p:last-of-type {
-        margin-bottom: 0; }
   .blog__link {
     display: block;
     color: #f97c00;
