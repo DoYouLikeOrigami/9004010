@@ -13,8 +13,12 @@ block main-content
 		.section__content
 			.full-desc__first-part__wrapper
 				.full-desc__first-part__text-wrapper
-					p.
-						Адрес производства и склада: Санкт-Петербург, ул Политехническая, д.7
+					p.city-change.spb-city
+						| Адрес производства и склада: Санкт-Петербург, ул Политехническая, д.9
+					p.city-change.msc-city.hidden
+						| Адрес производства и склада: Москва, ул.Короленко, дом 5А
+					p.city-change.novosib-city.hidden
+						| Адрес производства и склада: Новосибирск, ул.Кубовая, дом 38/1
 					.contacts.contacts--margin-bottom
 						ul.contacts__list
 							li.contacts__list-item.city-change.spb-city
@@ -36,8 +40,14 @@ block main-content
 						Прием заявок по телефону: Понедельник-Воскресенье с 9:00 до 23:00
 					p.
 						Отгрузка товара со склада производится по предварительной записи
-					.full-desc__first-part__img
+					.full-desc__first-part__img.city-change.spb-city
 						img(src="/static/img/adress.png")
-					iframe(src="https://api-maps.yandex.ru/frame/v1/-/CZskuX5G" width="100%" height="400" frameborder="0")
+					.full-desc__first-part__img.city-change.msc-city.hidden
+						img(src="/static/img/moscow.png")
+					.full-desc__first-part__img.city-change.novosib-city.hidden
+						img(src="/static/img/novosib.png")
+					iframe.city-change.spb-city(src="https://api-maps.yandex.ru/frame/v1/-/CZskuX5G" width="100%" height="400" frameborder="0")
+					iframe.city-change.msc-city.hidden(src="https://api-maps.yandex.ru/frame/v1/-/CZw4jJ-U" width="100%" height="400" frameborder="0")
+					iframe.city-change.novosib-city.hidden(src="https://api-maps.yandex.ru/frame/v1/-/CZw4f2ZD" width="100%" height="400" frameborder="0")
 
 block personalScript
