@@ -1100,6 +1100,12 @@ p {
 
 			overflow: hidden;
 			text-overflow: ellipsis;
+
+			&.blog__date {
+				text-align: right;
+				color: #ccc;
+				font-size: 14px;
+			}
 		}
 	}
 
