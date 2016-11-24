@@ -781,6 +781,10 @@ p {
       max-width: 80%;
       overflow: hidden;
       text-overflow: ellipsis; }
+      .blog__content p.blog__date {
+        text-align: right;
+        color: #ccc;
+        font-size: 14px; }
   .blog__link {
     display: block;
     color: #f97c00;
