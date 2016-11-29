@@ -229,13 +229,14 @@ def update_market():
             elif col == 'price':
                 pr = re.sub('\D', '', getattr(product, col))
                 if not pr:
-                    pr = '999999'
+                    pr = '1500'
                 prods[col].append(pr)
             else:
                 prods[col].append(getattr(product, col))
 
     df = pd.DataFrame(prods)
     df.set_index('id', inplace=True)
+    df['local_delivery_cost'] = 1200
     df.rename(columns={'title': 'name'}, inplace=True)
     df.to_excel('database/market.xlsx')
 
