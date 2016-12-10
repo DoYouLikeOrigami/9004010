@@ -35,16 +35,16 @@
 								<li class="mainHeader__mail-item city-change novosib-city hidden city-mail"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
 							</ul>
 						</div>
-						<div class="mainHeader__right sm__padding-right">
-							<div class="city">
-								<label class="city__label">Ваш город</label>
-								<select name="select-city" class="city__select">
-									<option value="spb" selected class="city__option">Санкт-Петербург</option>
-									<option value="msc" class="city__option">Москва</option>
-									<option value="novosib" class="city__option">Новосибирск</option>
-								</select>
-							</div>
-						</div>
+						<div class="mainHeader__right sm__padding-right"></div>
+						<!--
+						.city
+							label.city__label Ваш город
+							select(name="select-city", class="city__select")
+								option(value="spb", class="city__option" selected) Санкт-Петербург
+								option(value="msc", class="city__option") Москва
+								option(value="novosib", class="city__option") Новосибирск
+						
+						-->
 					</wrapper>
 				</wrapper>
 				<wrapper class="mainHeader__bottom">
@@ -91,7 +91,9 @@
 					</ul>
 				</nav>
 				<section class="section goodsSection">
-					<ul class="products__list">{% for goods_i in goods %}
+					<ul class="products__list">
+						{% for goods_i in goods %}
+						{% if goods_i.price != '-' %}
 						<li class="products__item">
 							<div class="products__item-inner clearfix">
 								<div class="products__left">
@@ -118,7 +120,8 @@
 									</div>
 								</div>
 							</div>
-						</li>{% endfor %}
+						</li>{% endif %}
+						{% endfor %}
 						<header class="section__header">
 							<h2 class="section__header-name">{{ category.category }}</h2>
 							<div class="full-desc__first-part__wrapper">

@@ -17,6 +17,7 @@ block main-content
 	section.section.goodsSection
 		ul.products__list
 			| {% for goods_i in goods %}
+			| {% if goods_i.price != '-' %}
 			li.products__item
 				.products__item-inner.clearfix
 					.products__left
@@ -49,6 +50,7 @@ block main-content
 							.products__info-button
 								a(href="/order").products__buy-btn Заказать
 
+			| {% endif %}
 			| {% endfor %}
 
 			header.section__header
