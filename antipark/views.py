@@ -4,7 +4,7 @@ import datetime
 import json
 import os
 from flask import Flask, render_template, request, url_for, redirect, flash, \
-                            send_file
+                            send_file, make_response
 from flask_mail import Message
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -241,6 +241,23 @@ def update_market():
     df.to_excel('database/market.xlsx')
 
     return 'OK'
+
+
+@login_required
+@app.route('/update_market_yml/')
+def update_market_yml():
+    if not current_user.is_authenticated:
+        return 'Not logged in'
+
+    import time
+    now = time.strftime('%Y-%m-%d %H:%M', time.gmtime(time.time()))
+
+    pricelist_xml = render_template('pricelist.yml', goods=all_goods, categories=all_categories,
+                                                     now=now)
+    response = make_response(pricelist_xml)
+    response.headers["Content-Type"] = "application/xml"
+
+    return response
 
 
 @login_required
