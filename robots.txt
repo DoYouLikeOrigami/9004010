@@ -2,3 +2,4 @@ User-agent: *
 Allow: *
 Disallow: /register
 Disallow: /login
+Disallow: /file
