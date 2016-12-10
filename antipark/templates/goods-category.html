@@ -87,7 +87,9 @@
 					</ul>
 				</nav>
 				<section class="section goodsSection">
-					<ul class="products__list">{% for goods_i in goods %}
+					<ul class="products__list">
+						{% for goods_i in goods %}
+						{% if goods_i.price != '-' %}
 						<li class="products__item">
 							<div class="products__item-inner clearfix">
 								<div class="products__left">
@@ -114,7 +116,8 @@
 									</div>
 								</div>
 							</div>
-						</li>{% endfor %}
+						</li>{% endif %}
+						{% endfor %}
 						<header class="section__header">
 							<h2 class="section__header-name">{{ category.category }}</h2>
 							<div class="full-desc__first-part__wrapper">
@@ -125,7 +128,7 @@
 								<!--			img(src!=val, width=200)-->
 								<!--		h3.full-desc__first-part__desc!=desc_for_img[index]-->
 								<wrapper class="full-desc__first-part__text-wrapper">
-									<p class="full-desc__first-part__p-below">{% autoescape false %}{{ category.description|safe }}{%endautoescape %}</p>
+									<p class="full-desc__first-part__p-below">{{ category.description|safe }}</p>
 								</wrapper>
 							</div>
 						</header>
