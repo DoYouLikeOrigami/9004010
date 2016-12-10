@@ -3,12 +3,7 @@
 import datetime
 import json
 import os
-from flask import Flask, render_template, request, url_for, redirect, flash, \
-<<<<<<< HEAD
-							send_file, g
-=======
-                            send_file, make_response
->>>>>>> 07430e9dabddaf6db0c4a85b5142d34724902a5c
+from flask import Flask, render_template, request, url_for, redirect, flash, send_file, g, make_response
 from flask_mail import Message
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -203,7 +198,7 @@ def service_item(service_item_id):
 @app.route('/file/')
 def file():
 	if not current_user.is_authenticated:
-		return 'Not logged in'
+		return render_template('index.html', categories=g.all_categories, services=all_services)
 	return render_template('file.html', categories=g.all_categories)
 
 
@@ -259,38 +254,6 @@ def orderCall():
 @login_required
 @app.route('/update_market/')
 def update_market():
-<<<<<<< HEAD
-	if not current_user.is_authenticated:
-		return 'Not logged in'
-
-	import pandas as pd
-	import re
-	from collections import defaultdict
-
-	price_cols = ['id', 'title', 'price', 'category', 'url', 'currencyId']
-
-	prods = defaultdict(list)
-	for col in price_cols:
-		for product in all_goods:
-			if col == 'url':
-				prods[col].append(site_url + 'goods-item/' + str(product.id))
-			elif col == 'currencyId':
-				prods[col].append('RUR')
-			elif col == 'price':
-				pr = re.sub('\D', '', getattr(product, col))
-				if not pr:
-					pr = '999999'
-				prods[col].append(pr)
-			else:
-				prods[col].append(getattr(product, col))
-
-	df = pd.DataFrame(prods)
-	df.set_index('id', inplace=True)
-	df.rename(columns={'title': 'name'}, inplace=True)
-	df.to_excel('database/market.xlsx')
-
-	return 'OK'
-=======
     if not current_user.is_authenticated:
         return 'Not logged in'
 
@@ -322,7 +285,6 @@ def update_market():
     df.to_excel('database/market.xlsx')
 
     return 'OK'
->>>>>>> 07430e9dabddaf6db0c4a85b5142d34724902a5c
 
 
 @login_required
