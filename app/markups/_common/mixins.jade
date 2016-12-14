@@ -19,7 +19,7 @@ mixin products__item(attr, name, href, dest, img, chars, values, price, stage)
 						img(src="img/" + dest + img + ".jpg", alt= name).products__image-pic
 				.products__desc
 					a(href= href + '.html').products__desc-title= name
-					ul.products__desc-options 
+					ul.products__desc-options
 						- var index = 0;
 						- for (var i = 0; i < chars.length; i++)
 							li(class="products__option-item " + ((index++ % 2) ? '' : 'products__option-item-odd') )
@@ -46,7 +46,7 @@ mixin full-desc__first-part(paragraph_below)
 	//			img(src!=val, width=200)
 	//		h3.full-desc__first-part__desc!=desc_for_img[index]
 	wrapper.full-desc__first-part__text-wrapper
-		p.full-desc__first-part__p-below!=paragraph_below 
+		.full-desc__first-part__p-below!=paragraph_below
 
 mixin fullDesc__list(title_list, list_values, list_href)
 	.fullDesc__list-wrapper

@@ -1,26 +1,26 @@
 /*
 @font-face {
-    font-family: 'als_rublregular';
-    src: url('../fonts/rouble-webfont.eot');
-    src: url('../fonts/rouble-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/rouble-webfont.woff2') format('woff2'),
-         url('../fonts/rouble-webfont.woff') format('woff'),
-         url('../fonts/rouble-webfont.ttf') format('truetype'),
-         url('../fonts/rouble-webfont.svg#als_rublregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+		font-family: 'als_rublregular';
+		src: url('../fonts/rouble-webfont.eot');
+		src: url('../fonts/rouble-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('../fonts/rouble-webfont.woff2') format('woff2'),
+				 url('../fonts/rouble-webfont.woff') format('woff'),
+				 url('../fonts/rouble-webfont.ttf') format('truetype'),
+				 url('../fonts/rouble-webfont.svg#als_rublregular') format('svg');
+		font-weight: normal;
+		font-style: normal;
 }
 
 .rub {
-  font-family: 'als_rublregular';
-  font-style: normal;
+	font-family: 'als_rublregular';
+	font-style: normal;
 
-  &:after {
-    content: 'a';
-    font-style: inherit;
-    font-size: inherit;
-    line-height: inherit;
-  }
+	&:after {
+		content: 'a';
+		font-style: inherit;
+		font-size: inherit;
+		line-height: inherit;
+	}
 */
 /* Mixins */
 .section:last-of-type {
@@ -297,8 +297,7 @@
   -webkit-border-radius: 7px;
   border-radius: 7px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  background: #fff;
-  padding-top: 20px; }
+  background: #fff; }
 
 .full-desc__first-part__title {
   color: black;
@@ -344,6 +343,13 @@
     font-size: 18px; }
   .full-desc__first-part__text-wrapper a {
     color: #ff6600; }
+  .full-desc__first-part__text-wrapper .full-desc__first-part__p-below {
+    text-align: justify; }
+    .full-desc__first-part__text-wrapper .full-desc__first-part__p-below p {
+      text-indent: 20px;
+      margin: 0 0 20px; }
+      .full-desc__first-part__text-wrapper .full-desc__first-part__p-below p:last-of-type {
+        margin-bottom: 0; }
 
 .fullDesc__list-wrapper {
   margin: 30px; }
