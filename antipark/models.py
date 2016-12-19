@@ -57,6 +57,7 @@ class Product(db.Model):
     category = db.Column(db.Integer, db.ForeignKey(Category.id))
     subcategory = db.Column(db.Unicode(64))
     title = db.Column(db.Unicode(64))
+    # attr = db.Column(db.Unicode(64))
     specs = db.Column(db.UnicodeText())
     price = db.Column(db.Unicode(10))
     stage_price = db.Column(db.Unicode(10))
