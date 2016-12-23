@@ -32,8 +32,13 @@ block main-content
 							ul.products__desc-options
 								| {% for spec in goods_item.specs.strip('{}').split("', '") %}
 								li.products__option-item
+									| {% if spec.split(": '")[1] %}
 									.products__options-key {{ spec.split(": '")[0].lstrip("'").rstrip("'") }}
 									.products__options-value {{ spec.split(": '")[1].lstrip("'").rstrip("'") }}
+									| {% else %}
+									.products__options-key {{keys[loop.index]}}
+									.products__options-value {{ spec }}
+									| {% endif %}
 								| {% endfor %}
 
 					.products__right

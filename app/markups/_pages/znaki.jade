@@ -1,0 +1,60 @@
+extends ../main
+
+block personalStyle
+	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
+
+block title
+	| {{ category.category }}
+block main-content
+	nav.bread
+		ul.bread__list
+			- var items = {'/.': 'Главная', '/goods' : 'Товары', '#': '{{ category.category }}'}
+			each val, index in items
+				li(class="bread__item" + ((val=== '{{ category.category }}') ? ' active' : '' ) )
+					a(href= index, class="bread__link")= val
+
+
+	section.section.goodsSection
+		ul.products__list
+			| {% for goods_i in goods %}
+			| {% if goods_i.price != '-' %}
+			li.products__item
+				.products__item-inner.clearfix
+					.products__left
+						.products__left-container
+							.products__attr
+								a(href= "/goods-item/{{ goods_i.id }}/").products__attr-name {{ goods_i.attr }}
+					.products__about.clearfix
+						.products__image
+							a(href="/goods-item/{{ goods_i.id }}/").products__image-display
+								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+						.products__desc
+							a(href= '/goods-item/{{ goods_i.id }}/').products__desc-title {{ goods_i.title }}
+							ul.products__desc-options
+								| {% for spec in goods_i.specs.strip('[]').split("', '") %}
+								li.products__option-item
+									.products__options-key {{keys[loop.index]}}
+									.products__options-value {{ spec }}
+								| {% endfor %}
+
+					.products__right
+						.products__info
+							.products__price
+								span.products__price-label Цена
+								span.products__price-num {{ goods_i.price }}
+									i.rub
+							.products__price
+								span.products__price-label Установка
+								span.products__price-num {{ goods_i.stage_price }}
+									i.rub
+							.products__info-button
+								a(href="/order").products__buy-btn Заказать
+
+			| {% endif %}
+			| {% endfor %}
+
+			header.section__header
+				h2.section__header-name
+					| {{ category.category }}
+				.full-desc__first-part__wrapper
+					+full-desc__first-part('{{ category.description|safe }}')

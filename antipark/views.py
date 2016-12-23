@@ -36,6 +36,7 @@ def before_request():
 		"9" : "barjer-kupit-cena-parkovochnyj-skladnoy.html"
 		}
 	g.all_categories = Category.query.all()
+	g.znaki_keys = ["", "Размер знака", "Маска", "Тип А (5 лет)", "Тип А (7 лет)", "Тип Б (10 лет)"]
 
 @login_manager.user_loader
 def load_user(id):
@@ -169,6 +170,10 @@ def alias(alias=None, number=None):
 	if number:
 		category = Category.query.get(number)
 		goods = Product.query.filter_by(category=number).all()
+
+		if (number == "16"):
+			return render_template('znaki.html', categories=g.all_categories, category=category, goods=goods, keys=g.znaki_keys)
+
 		return render_template('goods-category.html', categories=g.all_categories, category=category, goods=goods)
 
 
@@ -178,7 +183,7 @@ def goods_item(goods_item_id):
 	category_id = goods_item.category
 	category = Category.query.get(category_id)
 	return render_template('goods-item.html', categories=g.all_categories,
-								category=category, goods_item=goods_item)
+								category=category, goods_item=goods_item, keys=g.znaki_keys)
 
 
 @app.route('/services/')
