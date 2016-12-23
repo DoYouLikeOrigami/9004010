@@ -34,7 +34,7 @@ block main-content
 								| {% for spec in goods_i.specs.strip('[]').split("', '") %}
 								li.products__option-item
 									.products__options-key {{keys[loop.index]}}
-									.products__options-value {{ spec }}
+									.products__options-value {{ spec.lstrip("'").rstrip("'") }}
 								| {% endfor %}
 
 					.products__right

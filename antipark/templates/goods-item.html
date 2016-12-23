@@ -104,12 +104,12 @@
 								<div class="products__about clearfix">
 									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.title }}" class="products__image-pic goods__img"></a></div>
 									<div class="products__desc"><a href="/goods-item/{{ goods_item.id }}/" class="products__desc-title">{{ goods_item.title }}</a>
-										<ul class="products__desc-options">{% for spec in goods_item.specs.strip('{}').split("', '") %}
+										<ul class="products__desc-options">{% for spec in goods_item.specs.strip('{}').lstrip("[").rstrip("]").split("', '") %}
 											<li class="products__option-item">{% if spec.split(": '")[1] %}
 												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
 												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>{% else %}
 												<div class="products__options-key">{{keys[loop.index]}}</div>
-												<div class="products__options-value">{{ spec }}</div>{% endif %}
+												<div class="products__options-value">{{ spec.lstrip("'").rstrip("'") }}</div>{% endif %}
 											</li>{% endfor %}
 										</ul>
 									</div>

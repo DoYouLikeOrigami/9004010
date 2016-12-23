@@ -107,7 +107,7 @@
 										<ul class="products__desc-options">{% for spec in goods_i.specs.strip('[]').split("', '") %}
 											<li class="products__option-item">
 												<div class="products__options-key">{{keys[loop.index]}}</div>
-												<div class="products__options-value">{{ spec }}</div>
+												<div class="products__options-value">{{ spec.lstrip("'").rstrip("'") }}</div>
 											</li>{% endfor %}
 										</ul>
 									</div>
