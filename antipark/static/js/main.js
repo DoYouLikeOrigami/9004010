@@ -12,6 +12,7 @@ var mainModule = (function () {
 		$('.products__buy-btn').on('click', _showOrderPopup);
 		$('.order-popup__form').on('submit', _makeOrder);
 		$('.orderCall__form').on('submit', _orderCall);
+		$('.mobile-menu__button').on('click', _showMenuPopup);
 	};
 
 	var _showSuccPopup = function (message) {
@@ -92,6 +93,19 @@ var mainModule = (function () {
 		    currentCityMail = $('.city-mail--active a').text(),
 		    cityMail = orderPopup.find('.city-mail-input').val(currentCityMail);
 		orderPopup.bPopup({
+			speed: 550,
+			transition: 'slideDown',
+			modalColor: '#7E8C99',
+			opacity: 0.75,
+			closeClass: 'order-popup__btn--close'
+		});
+	};
+
+	var _showMenuPopup = function (e) {
+		e.preventDefault();
+		var menuPopup = $('.menu-popup');
+
+		menuPopup.bPopup({
 			speed: 550,
 			transition: 'slideDown',
 			modalColor: '#7E8C99',

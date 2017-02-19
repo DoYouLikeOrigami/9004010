@@ -18,14 +18,14 @@ block main-content
 				| {% if ( ("" ~ category_i.id) in g.keys) %}
 
 				a(class="goods__link", href= "/{{ g.keys['' ~ category_i.id] }}/")
-					wrapper.goods__img-wrapper
+					.goods__img-wrapper
 						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}" )
 					span.goods__text {{ category_i.category }}
 
 				| {% else %}
 
 				a(class="goods__link", href= '/goods-category/' + '{{ category_i.id }}')
-					wrapper.goods__img-wrapper
+					.goods__img-wrapper
 						img(src='/static/img/goods/' + '{{ category_i.category }}' + '.jpg', class='goods__img', alt= "{{ category_i.category }}" )
 					span.goods__text {{ category_i.category }}
 
@@ -39,8 +39,8 @@ block main-content
 			| {% for service_i in services %}
 			li.list__item.service__item
 					a(class="service__link", href= '/service-item/{{ service_i.id }}')
-						wrapper.service__wrapper
-							wrapper.service__wrapper-inner
+						.service__wrapper
+							.service__wrapper-inner
 								img(src= "/static/img/{{ service_i.image }}", alt='{{ service_i.name }}', class= ((i === 0) || (i === 4) ) ? "margin-top" : "").service__img
 						span.service__text='{{ service_i.name }}'
 			| {% endfor %}
@@ -53,7 +53,7 @@ block main-content
 			- var fact__text = ['работаем без выходных', 'довольных клиентов', 'наши цены ниже рыночных', 'товаров на складе']
 			- for (var i = 0; i < fact__number.length; i++)
 				li.list__item.about__item
-					wrapper.about__number-wrapper
+					.about__number-wrapper
 						.about__number-border
 							span.about__number= fact__number[i]
 					span.about__text= fact__text[i]
@@ -61,7 +61,7 @@ block main-content
 	section.section.clients#clients
 		header.section__header
 			h2.section__header-name Наши клиенты
-		wrapper.clients__slider
+		.clients__slider
 			- for (var i = 1; i < 22; i++)
 				div( class="clients__slider-slide clients__slide-" + i)
 

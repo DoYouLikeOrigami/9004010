@@ -34,6 +34,7 @@ html(lang="ru")
 
 	body
 		wrapper.mainWrapper
+			include _common/_mobile-menu
 			include _common/_header
 			include _common/_nav
 			include _common/_aside
@@ -44,9 +45,23 @@ html(lang="ru")
 			form(action="/order-call" method="post" class="orderCall__form")
 				input.city-mail-input(type="hidden")
 				label.orderCall__form-label.clearfix
-					span.orderCall__form-label-name Номер телефона
+					span.orderCall__form-label-name Введите ваш номер телефона
 					input(type="tel", name="personPhone", placeholder="Куда Вам позвонить", class="orderCall__form-label-input" id="personPhone", required)
 				input(type="submit", class="orderCall__form-button" value="Заказать звонок")
+
+		.menu-popup
+			.menu-popup__body
+				ul.menu-popup__list
+					li.menu-popup__item
+						a(href="/.") Главная
+					li.menu-popup__item
+						a(href="/goods/") Товары
+					li.menu-popup__item
+						a(href="/services/") Услуги
+					li.menu-popup__item
+						a(href="/contacts/") Контакты
+					li.menu-popup__item
+						a(href="/blog/") Блог
 
 		.order-popup
 			.order-popup__body

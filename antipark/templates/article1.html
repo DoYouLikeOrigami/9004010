@@ -25,17 +25,18 @@
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
+			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="#" class="mobile-menu__button">Меню</a></nav>
 			<header id="mainHeader" class="mainHeader">
 				<wrapper class="mainHeader__top">
 					<wrapper class="container clearfix">
-						<div class="mainHeader__left sm__padding-left">
+						<div class="mainHeader__left">
 							<ul class="mainHeader__mail-list">
 								<li class="mainHeader__mail-item city-change spb-city city-mail city-mail--active"><a href="mailto:spb@9004010.ru" class="mainHeader__mail-link">spb@9004010.ru</a></li>
 								<li class="mainHeader__mail-item city-change msc-city hidden city-mail"><a href="mailto:msk@9004010.ru" class="mainHeader__mail-link">msk@9004010.ru</a></li>
 								<li class="mainHeader__mail-item city-change novosib-city hidden city-mail"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
 							</ul>
 						</div>
-						<div class="mainHeader__right sm__padding-right"></div>
+						<div class="mainHeader__right"></div>
 						<!--
 						.city
 							label.city__label Ваш город
@@ -48,8 +49,7 @@
 					</wrapper>
 				</wrapper>
 				<wrapper class="mainHeader__bottom">
-					<wrapper class="container clearfix sm__padding-left"><a href="/." class="logo">
-							<div class="logo__img"><img src="/static/img/logo.jpg" alt="Лого" class="logo__img-pic"></div>
+					<wrapper class="container clearfix"><a href="/." class="logo">
 							<div class="logo__text"><span class="logo__text-descr">Ограждения и благоустройство</span>
 								<h1 class="logo__text-name">9004010.ru</h1>
 							</div></a>
@@ -58,7 +58,7 @@
 								<h3 class="callUs__text-name">Звоните нам ежедневно</h3><span class="callUs__text-descr">с 8:00 до 23:00</span>
 							</div>
 						</wrapper>
-						<wrapper class="contacts sm__padding-right"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812)<span class="contacts__strong">900-40-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
+						<wrapper class="contacts"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812)<span class="contacts__strong">900-40-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
 					</wrapper>
 				</wrapper>
 			</header>
@@ -91,7 +91,7 @@
 						<div class="blog">
 							<article class="blog__article">
 								<header class="blog__header">Тяжелые бетонные скамейки со спинкой СКМ-17</header>
-								<div class="blog__content"><img src="/static/img/blog/1.jpg" alt="Тяжелые бетонные скамейки со спинкой СКМ-17">
+								<div class="blog__content blog__content--article"><img src="/static/img/blog/1.jpg" alt="Тяжелые бетонные скамейки со спинкой СКМ-17">
 									<p>Мы начали производить тяжелые бетонные скамейки со спинкой СКМ-17. Толщина досок по-прежнему 45мм, что гарантирует их жесткость! Покраска осуществляется при помощи фирменных норвежских материалов Jotun Paints.</p>
 									<p class="blog__date">01.10.16</p>
 								</div><a href="/blog/" class="blog__link">Вернуться в блог</a>
@@ -104,11 +104,22 @@
 		<div class="orderCall__popup">
 			<form action="/order-call" method="post" class="orderCall__form">
 				<input type="hidden" class="city-mail-input">
-				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Номер телефона</span>
+				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Введите ваш номер телефона</span>
 					<input type="tel" name="personPhone" placeholder="Куда Вам позвонить" id="personPhone" required class="orderCall__form-label-input">
 				</label>
 				<input type="submit" value="Заказать звонок" class="orderCall__form-button">
 			</form>
+		</div>
+		<div class="menu-popup">
+			<div class="menu-popup__body">
+				<ul class="menu-popup__list">
+					<li class="menu-popup__item"><a href="/.">Главная</a></li>
+					<li class="menu-popup__item"><a href="/goods/">Товары</a></li>
+					<li class="menu-popup__item"><a href="/services/">Услуги</a></li>
+					<li class="menu-popup__item"><a href="/contacts/">Контакты</a></li>
+					<li class="menu-popup__item"><a href="/blog/">Блог</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="order-popup">
 			<div class="order-popup__body">
@@ -139,15 +150,15 @@
 		<footer class="mainFooter">
 			<div class="mainFooter__top">
 				<wrapper class="container clearfix">
-					<div class="adress sm__padding-left">
+					<div class="adress">
 						<ul class="adress__list">
-							<li class="adress__list-item city-change spb-city">Санкт-Петербург, ул Политехническая, дом 9</li>
-							<li class="adress__list-item city-change msc-city hidden">Москва, ул.Короленко, дом 5А</li>
-							<li class="adress__list-item city-change novosib-city hidden">Новосибирск, ул.Кубовая, дом 38/1</li>
-							<li class="adress__list-item">Отгрузка товара ежедневно с 9:00 до 19:00</li>
+							<li class="adress__list-item city-change spb-city">Санкт-Петербург, ул.&nbsp;Политехническая, дом&nbsp;9</li>
+							<li class="adress__list-item city-change msc-city hidden">Москва, ул.&nbsp;Короленко, дом&nbsp;5А</li>
+							<li class="adress__list-item city-change novosib-city hidden">Новосибирск, ул.&nbsp;Кубовая, дом&nbsp;38/1</li>
+							<li class="adress__list-item">Отгрузка товара ежедневно с&nbsp;9:00&nbsp;до&nbsp;19:00</li>
 						</ul>
 					</div>
-					<div class="contacts sm__padding-right">
+					<div class="contacts">
 						<ul class="contacts__list">
 							<li class="contacts__list-item city-change spb-city"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(812)<span class="contacts__strong">900-40-10</span></a></li>
 							<li class="contacts__list-item city-change msc-city hidden"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(915)<span class="contacts__strong">340-20-10</span></a></li>
