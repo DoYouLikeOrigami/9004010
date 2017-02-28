@@ -22,11 +22,11 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/page.css">
 		<!--Title-->
-		<title>{{ goods_item.title }}</title>
+		<title>{{ goods_item.attr }}</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
-			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="#" class="mobile-menu__button">Меню</a></nav>
+			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="/contacts" class="mobile-menu__button mobile-menu__button--centered">Контакты</a><a href="#" class="mobile-menu__button mobile-menu__button--js-menu">Меню</a></nav>
 			<header id="mainHeader" class="mainHeader">
 				<wrapper class="mainHeader__top">
 					<wrapper class="container clearfix">
@@ -89,7 +89,7 @@
 						<li class="bread__item"><a href="/." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
 						<li class="bread__item"><a href="{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}" class="bread__link">{{ category.category }}</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_item.title }}</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_item.attr }}</a></li>
 					</ul>
 				</nav>
 				<section class="section productSection">
@@ -98,11 +98,11 @@
 							<div class="products__item-inner clearfix">
 								<div class="products__left">
 									<div class="products__left-container">
-										<div class="products__attr"><a href="/goods-item/{{ goods_item.id }}/" class="products__attr-name">{{ goods_item.title }}</a></div>
+										<div class="products__attr"><a href="/goods-item/{{ goods_item.id }}/" class="products__attr-name">{{ goods_item.attr }}</a></div>
 									</div>
 								</div>
 								<div class="products__about clearfix">
-									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.title }}" class="products__image-pic goods__img"></a></div>
+									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.attr }}" class="products__image-pic goods__img"></a></div>
 									<div class="products__desc"><a href="/goods-item/{{ goods_item.id }}/" class="products__desc-title">{{ goods_item.title }}</a>
 										<ul class="products__desc-options products__desc-options--active">{% for spec in goods_item.specs.strip('{}').lstrip("[").rstrip("]").split("', '") %}
 											<li class="products__option-item">{% if spec.split(": '")[1] %}

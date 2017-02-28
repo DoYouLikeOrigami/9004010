@@ -27,7 +27,7 @@ block main-content
 					.products__about.clearfix
 						.products__image
 							a(href="/goods-item/{{ goods_i.id }}/").products__image-display
-								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.attr }}').products__image-pic.goods__img
 						.products__desc
 							a(href= '/goods-item/{{ goods_i.id }}/').products__desc-title {{ goods_i.title }}
 							ul.products__desc-options

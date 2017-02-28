@@ -58,8 +58,9 @@
     @media screen and (max-width: 600px) {
       .goods__item {
         display: block;
-        margin: 0 0 15px;
-        text-align: left; }
+        margin: 0 0 10px;
+        text-align: left;
+        width: 100%; }
         .goods__item:last-of-type {
           margin-bottom: 0; } }
     .goods__item img {
@@ -73,7 +74,7 @@
     border-radius: 5px; }
     @media screen and (max-width: 600px) {
       .goods__link {
-        padding: 10px 15px; } }
+        padding: 5px 10px; } }
   .goods__img-wrapper {
     display: block;
     width: 150px;
@@ -148,7 +149,9 @@
         margin-right: 0; } }
     @media screen and (max-width: 600px) {
       .service__item {
-        margin: 0 0 15px; } }
+        margin: 0 0 15px; }
+        .service__item:nth-of-type(3n) {
+          margin-right: 0; } }
   .service__link {
     display: block;
     padding: 10px 15px;

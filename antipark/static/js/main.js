@@ -12,7 +12,7 @@ var mainModule = (function () {
 		$('.products__buy-btn').on('click', _showOrderPopup);
 		$('.order-popup__form').on('submit', _makeOrder);
 		$('.orderCall__form').on('submit', _orderCall);
-		$('.mobile-menu__button').on('click', _showMenuPopup);
+		$('.mobile-menu__button--js-menu').on('click', _showMenuPopup);
 	};
 
 	var _showSuccPopup = function (message) {

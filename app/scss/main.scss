@@ -89,6 +89,21 @@ p {
 	display: none !important;
 }
 
+.mobile-hidden {
+	@media #{$mobile} {
+		display: none !important;
+	}
+}
+
+.mobile-only,
+.mobile-only > .mainHeader {
+	display: none !important;
+
+	@media #{$mobile} {
+		display: block !important;
+	}
+}
+
 .strong {
 	font-weight: bold;
 }
@@ -309,6 +324,10 @@ p {
 
 	@media #{$laptop} {
 
+	}
+
+	@media #{$mobile} {
+		display: none;
 	}
 
 	.mainHeader__top {
@@ -1383,6 +1402,7 @@ p {
 
 	background: $mainColor;
 	box-shadow: 0px 3px 3px 2px #ccc;
+	text-align: center;
 
 	z-index: 999;
 
@@ -1400,6 +1420,8 @@ p {
 	}
 
 	&__logo {
+		float: left;
+
 		font-size: 22px;
 		font-weight: 600;
 
@@ -1416,5 +1438,9 @@ p {
 		color: $mainColor;
 
 		box-shadow: 0px 0px 3px 2px #ccc;
+
+		&--centered {
+			float: none;
+		}
 	}
 }

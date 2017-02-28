@@ -105,6 +105,7 @@ $desktop: "screen and (max-width: 1280px)";
 
 	@media #{$mobile} {
 		padding: 10px 5%;
+		margin-top: 50px;
 	}
 }
 
@@ -223,13 +224,28 @@ $desktop: "screen and (max-width: 1280px)";
 	border-right: 1px solid white;
 
 	@media #{$mobile} {
-		display: none;
+		position: relative;
+
+		top: auto;
+		bottom: auto;
+		left: auto;
+		width: auto;
+		padding: 0;
+		border: none;
+
+		margin-bottom: 15px;
+		text-align: center;
 	}
 
 	&-container {
 		position: relative;
 		width: 100%;
 		height: 100%;
+
+		@media #{$mobile} {
+			width: auto;
+			height: auto;
+		}
 	}
 }
 
@@ -243,6 +259,18 @@ $desktop: "screen and (max-width: 1280px)";
 	right: 0;
 	left: 0;
 	margin: auto;
+
+	@media #{$mobile} {
+		display: block;
+		position: relative;
+
+		width: auto;
+		top: auto;
+		bottom: auto;
+		right: auto;
+		left: auto;
+		margin: 0;
+	}
 }
 
 .products__attr-name {
@@ -517,6 +545,10 @@ $desktop: "screen and (max-width: 1280px)";
 		}
 		&__img {
 			text-align: center;
+
+			img {
+				width: 100%;
+			}
 		}
 		&__foto-and-desc {
 			display: inline-block;

@@ -25,7 +25,7 @@
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
-			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="#" class="mobile-menu__button">Меню</a></nav>
+			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="/contacts" class="mobile-menu__button mobile-menu__button--centered">Контакты</a><a href="#" class="mobile-menu__button mobile-menu__button--js-menu">Меню</a></nav>
 			<header id="mainHeader" class="mainHeader">
 				<wrapper class="mainHeader__top">
 					<wrapper class="container clearfix">
@@ -102,7 +102,7 @@
 									</div>
 								</div>
 								<div class="products__about clearfix">
-									<div class="products__image"><a href="/goods-item/{{ goods_i.id }}/" class="products__image-display"><img src="/static/img/{{ goods_i.image }}" alt="{{ goods_i.title }}" class="products__image-pic goods__img"></a></div>
+									<div class="products__image"><a href="/goods-item/{{ goods_i.id }}/" class="products__image-display"><img src="/static/img/{{ goods_i.image }}" alt="{{ goods_i.attr }}" class="products__image-pic goods__img"></a></div>
 									<div class="products__desc"><a href="/goods-item/{{ goods_i.id }}/" class="products__desc-title">{{ goods_i.title }}</a>
 										<ul class="products__desc-options">{% for spec in goods_i.specs.strip('{}').split("', '") %}
 											<li class="products__option-item">

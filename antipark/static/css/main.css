@@ -44,6 +44,18 @@ p {
 .hidden {
   display: none !important; }
 
+@media screen and (max-width: 600px) {
+  .mobile-hidden {
+    display: none !important; } }
+
+.mobile-only,
+.mobile-only > .mainHeader {
+  display: none !important; }
+  @media screen and (max-width: 600px) {
+    .mobile-only,
+    .mobile-only > .mainHeader {
+      display: block !important; } }
+
 .strong {
   font-weight: bold; }
 
@@ -207,6 +219,9 @@ p {
 .mainHeader {
   display: block;
   position: relative; }
+  @media screen and (max-width: 600px) {
+    .mainHeader {
+      display: none; } }
   .mainHeader .mainHeader__top {
     display: block;
     background: #4c4c4c;
@@ -973,6 +988,7 @@ p {
   background: #fff;
   -webkit-box-shadow: 0px 3px 3px 2px #ccc;
   box-shadow: 0px 3px 3px 2px #ccc;
+  text-align: center;
   z-index: 999; }
   @media screen and (max-width: 600px) {
     .mobile-menu {
@@ -983,6 +999,7 @@ p {
     line-height: 25px;
     text-decoration: none; }
   .mobile-menu__logo {
+    float: left;
     font-size: 22px;
     font-weight: 600;
     color: #f97c00; }
@@ -994,3 +1011,5 @@ p {
     color: #fff;
     -webkit-box-shadow: 0px 0px 3px 2px #ccc;
     box-shadow: 0px 0px 3px 2px #ccc; }
+    .mobile-menu__button--centered {
+      float: none; }

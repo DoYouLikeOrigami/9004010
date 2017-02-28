@@ -94,8 +94,10 @@ $desktop: "screen and (max-width: 1280px)";
 		@media #{$mobile} {
 			display: block;
 
-			margin: 0 0 15px;
+			margin: 0 0 10px;
 			text-align: left;
+
+			width: 100%;
 
 			&:last-of-type {
 				margin-bottom: 0;
@@ -114,7 +116,7 @@ $desktop: "screen and (max-width: 1280px)";
 		border-radius: 5px;
 
 		@media #{$mobile} {
-			padding: 10px 15px;
+			padding: 5px 10px;
 		}
 	}
 
@@ -224,6 +226,10 @@ $desktop: "screen and (max-width: 1280px)";
 
 		@media #{$mobile} {
 			margin: 0 0 15px;
+
+			&:nth-of-type(3n) {
+				margin-right: 0;
+			}
 		}
 	}
 

@@ -27,7 +27,7 @@
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
-			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="#" class="mobile-menu__button">Меню</a></nav>
+			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="/contacts" class="mobile-menu__button mobile-menu__button--centered">Контакты</a><a href="#" class="mobile-menu__button mobile-menu__button--js-menu">Меню</a></nav>
 			<header id="mainHeader" class="mainHeader">
 				<wrapper class="mainHeader__top">
 					<wrapper class="container clearfix">
@@ -87,7 +87,7 @@
 			<div class="container">
 				<section id="goods" class="section goods">
 					<header class="section__header">
-						<h2 class="section__header-name">Категории товаров</h2>
+						<h2 class="section__header-name mobile-hidden">Категории товаров</h2>
 					</header>
 					<ul class="list goods__list">{% for category_i in categories %}
 						<li class="list__item goods__item">{% if ( ("" ~ category_i.id) in g.keys) %}<a href="/{{ g.keys['' ~ category_i.id] }}/" class="goods__link">
