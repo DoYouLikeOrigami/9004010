@@ -1,5 +1,5 @@
 User-agent: *
 Allow: *
-Disallow: /register
-Disallow: /login
-Disallow: /file
+
+User-agent: *
+Disallow: /login /register /file /update_market

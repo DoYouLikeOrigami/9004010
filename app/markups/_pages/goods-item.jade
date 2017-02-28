@@ -5,12 +5,12 @@ block personalStyle
 	link(rel="stylesheet", type="text/css", href="/static/css/page.css")
 
 block title
-	| {{ goods_item.title }}
+	| {{ goods_item.attr }}
 
 block main-content
 	nav.bread
 		ul.bread__list
-			- var items = {'/.': 'Главная', '/goods' : 'Товары', "{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}": "{{ category.category }}", '#' : '{{ goods_item.title }}' }
+			- var items = {'/.': 'Главная', '/goods' : 'Товары', "{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}": "{{ category.category }}", '#' : '{{ goods_item.attr }}' }
 			each val, index in items
 				li(class="bread__item" + ((index === '#') ? ' active' : '' ) )
 					a(href= index, class="bread__link")= val
@@ -22,14 +22,14 @@ block main-content
 					.products__left
 						.products__left-container
 							.products__attr
-								a(href= "/goods-item/{{ goods_item.id }}/").products__attr-name {{ goods_item.title }}
+								a(href= "/goods-item/{{ goods_item.id }}/").products__attr-name {{ goods_item.attr }}
 					.products__about.clearfix
 						.products__image
 							a(href="/goods-item/{{ goods_item.id }}/").products__image-display
-								img(src='/static/img/' + '{{ goods_item.image }}', alt= '{{ goods_item.title }}').products__image-pic.goods__img
+								img(src='/static/img/' + '{{ goods_item.image }}', alt= '{{ goods_item.attr }}').products__image-pic.goods__img
 						.products__desc
 							a(href= '/goods-item/{{ goods_item.id }}/').products__desc-title {{ goods_item.title }}
-							ul.products__desc-options
+							ul.products__desc-options.products__desc-options--active
 								| {% for spec in goods_item.specs.strip('{}').lstrip("[").rstrip("]").split("', '") %}
 								li.products__option-item
 									| {% if spec.split(": '")[1] %}
@@ -53,3 +53,4 @@ block main-content
 									i.rub
 							.products__info-button
 								a(href="/order").products__buy-btn Заказать
+								a(href="{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}").products__more-btn Назад

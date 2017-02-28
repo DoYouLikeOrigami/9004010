@@ -22,21 +22,22 @@
 		<link rel="stylesheet" type="text/css" href="/static/css/product.css">
 		<link rel="stylesheet" type="text/css" href="/static/css/page.css">
 		<!--Title-->
-		<title>{{ goods_item.title }}</title>
+		<title>{{ goods_item.attr }}</title>
 	</head>
 	<body>
 		<wrapper class="mainWrapper">
+			<nav class="mobile-menu clearfix"><a href="/." class="mobile-menu__logo">9004010.ru</a><a href="/contacts" class="mobile-menu__button mobile-menu__button--centered">Контакты</a><a href="#" class="mobile-menu__button mobile-menu__button--js-menu">Меню</a></nav>
 			<header id="mainHeader" class="mainHeader">
 				<wrapper class="mainHeader__top">
 					<wrapper class="container clearfix">
-						<div class="mainHeader__left sm__padding-left">
+						<div class="mainHeader__left">
 							<ul class="mainHeader__mail-list">
 								<li class="mainHeader__mail-item city-change spb-city city-mail city-mail--active"><a href="mailto:spb@9004010.ru" class="mainHeader__mail-link">spb@9004010.ru</a></li>
 								<li class="mainHeader__mail-item city-change msc-city hidden city-mail"><a href="mailto:msk@9004010.ru" class="mainHeader__mail-link">msk@9004010.ru</a></li>
 								<li class="mainHeader__mail-item city-change novosib-city hidden city-mail"><a href="mailto:novosib@9004010.ru" class="mainHeader__mail-link">novosib@9004010.ru</a></li>
 							</ul>
 						</div>
-						<div class="mainHeader__right sm__padding-right"></div>
+						<div class="mainHeader__right"></div>
 						<!--
 						.city
 							label.city__label Ваш город
@@ -49,8 +50,7 @@
 					</wrapper>
 				</wrapper>
 				<wrapper class="mainHeader__bottom">
-					<wrapper class="container clearfix sm__padding-left"><a href="/." class="logo">
-							<div class="logo__img"><img src="/static/img/logo.jpg" alt="Лого" class="logo__img-pic"></div>
+					<wrapper class="container clearfix"><a href="/." class="logo">
 							<div class="logo__text"><span class="logo__text-descr">Ограждения и благоустройство</span>
 								<h1 class="logo__text-name">9004010.ru</h1>
 							</div></a>
@@ -59,7 +59,7 @@
 								<h3 class="callUs__text-name">Звоните нам ежедневно</h3><span class="callUs__text-descr">с 8:00 до 23:00</span>
 							</div>
 						</wrapper>
-						<wrapper class="contacts sm__padding-right"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812)<span class="contacts__strong">900-40-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
+						<wrapper class="contacts"><a href="tel:+7(812)900-40-10" class="contacts__tel city-change spb-city">+7(812)<span class="contacts__strong">900-40-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change msc-city hidden">+7(915)<span class="contacts__strong">340-20-10</span></a><a href="tel:+7(812)900-40-10" class="contacts__tel city-change novosib-city hidden">+7(952)<span class="contacts__strong">909-98-88</span></a><a href="#" class="contacts__button">Заказать звонок</a></wrapper>
 					</wrapper>
 				</wrapper>
 			</header>
@@ -89,7 +89,7 @@
 						<li class="bread__item"><a href="/." class="bread__link">Главная</a></li>
 						<li class="bread__item"><a href="/goods" class="bread__link">Товары</a></li>
 						<li class="bread__item"><a href="{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}" class="bread__link">{{ category.category }}</a></li>
-						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_item.title }}</a></li>
+						<li class="bread__item active"><a href="#" class="bread__link">{{ goods_item.attr }}</a></li>
 					</ul>
 				</nav>
 				<section class="section productSection">
@@ -98,13 +98,13 @@
 							<div class="products__item-inner clearfix">
 								<div class="products__left">
 									<div class="products__left-container">
-										<div class="products__attr"><a href="/goods-item/{{ goods_item.id }}/" class="products__attr-name">{{ goods_item.title }}</a></div>
+										<div class="products__attr"><a href="/goods-item/{{ goods_item.id }}/" class="products__attr-name">{{ goods_item.attr }}</a></div>
 									</div>
 								</div>
 								<div class="products__about clearfix">
-									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.title }}" class="products__image-pic goods__img"></a></div>
+									<div class="products__image"><a href="/goods-item/{{ goods_item.id }}/" class="products__image-display"><img src="/static/img/{{ goods_item.image }}" alt="{{ goods_item.attr }}" class="products__image-pic goods__img"></a></div>
 									<div class="products__desc"><a href="/goods-item/{{ goods_item.id }}/" class="products__desc-title">{{ goods_item.title }}</a>
-										<ul class="products__desc-options">{% for spec in goods_item.specs.strip('{}').lstrip("[").rstrip("]").split("', '") %}
+										<ul class="products__desc-options products__desc-options--active">{% for spec in goods_item.specs.strip('{}').lstrip("[").rstrip("]").split("', '") %}
 											<li class="products__option-item">{% if spec.split(": '")[1] %}
 												<div class="products__options-key">{{ spec.split(": '")[0].lstrip("'").rstrip("'") }}</div>
 												<div class="products__options-value">{{ spec.split(": '")[1].lstrip("'").rstrip("'") }}</div>{% else %}
@@ -118,7 +118,7 @@
 									<div class="products__info">
 										<div class="products__price"><span class="products__price-label">Цена</span><span class="products__price-num">{{ goods_item.price }}<i class="rub"></i></span></div>
 										<div class="products__price"><span class="products__price-label">Установка</span><span class="products__price-num">{{ goods_item.stage_price }}<i class="rub"></i></span></div>
-										<div class="products__info-button"><a href="/order" class="products__buy-btn">Заказать</a></div>
+										<div class="products__info-button"><a href="/order" class="products__buy-btn">Заказать</a><a href="{% if ( ('' ~ category.id) in keys) %} /{{ keys['' ~ category.id] }}/ {% else %} /goods-category/{{ category.id }}/ {% endif %}" class="products__more-btn">Назад</a></div>
 									</div>
 								</div>
 							</div>
@@ -130,11 +130,22 @@
 		<div class="orderCall__popup">
 			<form action="/order-call" method="post" class="orderCall__form">
 				<input type="hidden" class="city-mail-input">
-				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Номер телефона</span>
+				<label class="orderCall__form-label clearfix"><span class="orderCall__form-label-name">Введите ваш номер телефона</span>
 					<input type="tel" name="personPhone" placeholder="Куда Вам позвонить" id="personPhone" required class="orderCall__form-label-input">
 				</label>
 				<input type="submit" value="Заказать звонок" class="orderCall__form-button">
 			</form>
+		</div>
+		<div class="menu-popup">
+			<div class="menu-popup__body">
+				<ul class="menu-popup__list">
+					<li class="menu-popup__item"><a href="/.">Главная</a></li>
+					<li class="menu-popup__item"><a href="/goods/">Товары</a></li>
+					<li class="menu-popup__item"><a href="/services/">Услуги</a></li>
+					<li class="menu-popup__item"><a href="/contacts/">Контакты</a></li>
+					<li class="menu-popup__item"><a href="/blog/">Блог</a></li>
+				</ul>
+			</div>
 		</div>
 		<div class="order-popup">
 			<div class="order-popup__body">
@@ -165,15 +176,15 @@
 		<footer class="mainFooter">
 			<div class="mainFooter__top">
 				<wrapper class="container clearfix">
-					<div class="adress sm__padding-left">
+					<div class="adress">
 						<ul class="adress__list">
-							<li class="adress__list-item city-change spb-city">Санкт-Петербург, ул Политехническая, дом 9</li>
-							<li class="adress__list-item city-change msc-city hidden">Москва, ул.Короленко, дом 5А</li>
-							<li class="adress__list-item city-change novosib-city hidden">Новосибирск, ул.Кубовая, дом 38/1</li>
-							<li class="adress__list-item">Отгрузка товара ежедневно с 9:00 до 19:00</li>
+							<li class="adress__list-item city-change spb-city">Санкт-Петербург, ул.&nbsp;Политехническая, дом&nbsp;9</li>
+							<li class="adress__list-item city-change msc-city hidden">Москва, ул.&nbsp;Короленко, дом&nbsp;5А</li>
+							<li class="adress__list-item city-change novosib-city hidden">Новосибирск, ул.&nbsp;Кубовая, дом&nbsp;38/1</li>
+							<li class="adress__list-item">Отгрузка товара ежедневно с&nbsp;9:00&nbsp;до&nbsp;19:00</li>
 						</ul>
 					</div>
-					<div class="contacts sm__padding-right">
+					<div class="contacts">
 						<ul class="contacts__list">
 							<li class="contacts__list-item city-change spb-city"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(812)<span class="contacts__strong">900-40-10</span></a></li>
 							<li class="contacts__list-item city-change msc-city hidden"><a href="tel:+7(812)900-40-10" class="contacts__list-link contacts__tel">+7(915)<span class="contacts__strong">340-20-10</span></a></li>

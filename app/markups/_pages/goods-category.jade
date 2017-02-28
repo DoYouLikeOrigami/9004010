@@ -27,7 +27,7 @@ block main-content
 					.products__about.clearfix
 						.products__image
 							a(href="/goods-item/{{ goods_i.id }}/").products__image-display
-								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.title }}').products__image-pic.goods__img
+								img(src='/static/img/' + '{{ goods_i.image }}', alt= '{{ goods_i.attr }}').products__image-pic.goods__img
 						.products__desc
 							a(href= '/goods-item/{{ goods_i.id }}/').products__desc-title {{ goods_i.title }}
 							ul.products__desc-options
@@ -49,12 +49,13 @@ block main-content
 									i.rub
 							.products__info-button
 								a(href="/order").products__buy-btn Заказать
+								a(href="/goods-item/{{ goods_i.id }}/").products__more-btn Подробнее
 
 			| {% endif %}
 			| {% endfor %}
 
-			header.section__header
-				h2.section__header-name
-					| {{ category.category }}
-				.full-desc__first-part__wrapper
-					+full-desc__first-part('{{ category.description|safe }}')
+		header.section__header
+			h2.section__header-name
+				| {{ category.category }}
+		.full-desc__first-part__wrapper
+			+full-desc__first-part('{{ category.description|safe }}')
